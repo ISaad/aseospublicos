@@ -1,57 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Mapa de Aseos Públicos</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0; padding: 0;
-            background: #f5f5f7;
-            color: #333;
-        }
-        header {
-            background: #4caf50;
-            color: #fff;
-            padding: 1.5em 1em;
-            text-align: center;
-        }
-        main {
-            padding: 2em 1em;
-            max-width: 600px;
-            margin: 2em auto 0;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-        h1 {
-            margin: 0 0 0.4em 0;
-        }
-        p {
-            margin: 1.5em 0;
-        }
-        footer {
-            text-align: center;
-            color: #888;
-            font-size: 0.95em;
-            padding: 2em 0 1em;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Mapa de Aseos Públicos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #f5f5f7;
+      color: #333;
+    }
+    header {
+      background: #4caf50;
+      color: #fff;
+      padding: 1.5em 1em;
+      text-align: center;
+    }
+    main {
+      padding: 2em 1em;
+      max-width: 700px;
+      margin: 2em auto 0;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    h1 {
+      margin: 0 0 0.4em 0;
+    }
+    p {
+      margin: 1.5em 0;
+    }
+    .responsive-iframe {
+      position: relative;
+      width: 100%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 2em;
+      background: #eee;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    /* Map aspect ratio: 640x480 = 75% */
+    .map-iframe {
+      padding-bottom: 75%;
+    }
+    /* Form aspect ratio: 640x926 = 144.7% */
+    .form-iframe {
+      padding-bottom: 145%;
+    }
+    .responsive-iframe iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+      background: #fff;
+      border-radius: 8px;
+    }
+    @media (max-width: 700px) {
+      main {
+        padding: 1em 0.5em;
+      }
+    }
+    @media (max-width: 500px) {
+      .responsive-iframe {
+        margin-bottom: 1em;
+      }
+    }
+    footer {
+      text-align: center;
+      color: #888;
+      font-size: 0.95em;
+      padding: 2em 0 1em;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Mapa de Aseos Públicos</h1>
-    </header>
-    <main>
-        <h2>Mapa de aseos públicos en España</h2>
-        <p>
-            Este sitio web tiene como objetivo recopilar y mostrar información sobre aseos públicos en España. Ayúdanos a mejorar el mapa completando el siguiente formulario.
-        </p>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe7JmVcb1ItOxqq2nTpmOV9bXP7o0c1JROk6YSjmBOrxNsD6Q/viewform?embedded=true" width="640" height="926" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
-    </main>
-    <footer>
-        Proyecto Aseos Públicos
-    </footer>
+  <header>
+    <h1>Proyecto Aseos Públicos</h1>
+  </header>
+  <main>
+    <h2>Mapa de aseos públicos en España</h2>
+    <p>
+      Este sitio web tiene como objetivo recopilar y mostrar información sobre aseos públicos.<br>
+      Puedes contribuir añadiendo nuevos aseos mediante el formulario y consultar el mapa colaborativo.
+    </p>
+    <!-- Responsive Google Map iframe -->
+    <div class="responsive-iframe map-iframe">
+      <iframe src="https://www.google.com/maps/d/embed?mid=1YRT_X5tf7YNgvNL7ubI6jaO1EoAFxlM&ehbc=2E312F&noprof=1" allowfullscreen></iframe>
+    </div>
+    <!-- Responsive Google Form iframe -->
+    <div class="responsive-iframe form-iframe">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe7JmVcb1ItOxqq2nTpmOV9bXP7o0c1JROk6YSjmBOrxNsD6Q/viewform?embedded=true" allowfullscreen></iframe>
+    </div>
+  </main>
+  <footer>
+    &copy; 2025 Proyecto Aseos Públicos. Colabora para mejorar el acceso a aseos públicos en España.
+  </footer>
 </body>
 </html>
