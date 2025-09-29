@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <title>Mapa de Aseos Públicos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- PWA manifest, theme, iconos -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#4caf50">
+  <link rel="icon" href="/icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="/icon-192.png">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -73,6 +78,26 @@
       font-size: 0.95em;
       padding: 2em 0 1em;
     }
+    /* Botón instalación PWA */
+    #install-btn {
+      display:none;
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      z-index:1000;
+      background: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 1em 1.5em;
+      font-size: 1em;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      cursor:pointer;
+      transition: background 0.2s;
+    }
+    #install-btn:hover {
+      background: #388e3c;
+    }
   </style>
 </head>
 <body>
@@ -94,8 +119,16 @@
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe7JmVcb1ItOxqq2nTpmOV9bXP7o0c1JROk6YSjmBOrxNsD6Q/viewform?embedded=true" allowfullscreen></iframe>
     </div>
   </main>
+  <button id="install-btn">Instalar la App</button>
   <footer>
     &copy; 2025 Proyecto Aseos Públicos. Colabora para mejorar el acceso a aseos públicos en España.
   </footer>
+  <!-- PWA scripts -->
+  <script src="/install.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  </script>
 </body>
 </html>
