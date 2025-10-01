@@ -81,13 +81,6 @@
     .map-iframe {
       padding-bottom: 65%;
     }
-    /* Form más compacto */
-    .form-iframe {
-      height: 500px; /* tamaño fijo */
-    }
-    .form-iframe iframe {
-      height: 100%;
-    }
 
     footer {
       text-align: center;
@@ -116,11 +109,63 @@
     #install-btn:hover {
       background: var(--primary-dark);
     }
+
+    /* Botón abrir formulario */
+    #open-form-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.7em 1.2em;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: var(--shadow);
+    }
+    #open-form-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+    }
+    .modal-content {
+      background: #fff;
+      margin: 5% auto;
+      padding: 1em;
+      border-radius: var(--radius);
+      width: 90%;
+      max-width: 700px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .modal-content iframe {
+      width: 100%;
+      height: 600px;
+      border: 0;
+      border-radius: var(--radius);
+    }
+    .close {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #555;
+    }
+    .close:hover {
+      color: #000;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>🚻 Aseos Públicos</h1>
+    <h1>🚻 Proyecto Aseos Públicos</h1>
   </header>
   <main>
     <section>
@@ -145,24 +190,47 @@
     </div>
 
     <div class="card">
-      <h2>Añade un aseo al mapa</h2>
-      <div class="responsive-iframe form-iframe">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe7JmVcb1ItOxqq2nTpmOV9bXP7o0c1JROk6YSjmBOrxNsD6Q/viewform?embedded=true" allowfullscreen></iframe>
-      </div>
+      <h2>Colaborar</h2>
+      <button id="open-form-btn">Añadir nuevo baño</button>
     </div>
   </main>
+
+  <!-- Modal del formulario -->
+  <div id="form-modal" class="modal">
+    <div class="modal-content">
+      <span id="close-form-btn" class="close">&times;</span>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe7JmVcb1ItOxqq2nTpmOV9bXP7o0c1JROk6YSjmBOrxNsD6Q/viewform?embedded=true"></iframe>
+    </div>
+  </div>
 
   <button id="install-btn">Instalar la App</button>
   <footer>
     &copy; 2025 Proyecto Aseos Públicos. Colabora para mejorar el acceso a aseos públicos en España.
   </footer>
 
-  <!-- PWA scripts -->
+  <!-- Scripts -->
   <script src="/install.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js');
     }
+
+    // Lógica del modal
+    const modal = document.getElementById("form-modal");
+    const openBtn = document.getElementById("open-form-btn");
+    const closeBtn = document.getElementById("close-form-btn");
+
+    openBtn.addEventListener("click", () => {
+      modal.style.display = "block";
+    });
+
+    closeBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    });
   </script>
 </body>
 </html>
