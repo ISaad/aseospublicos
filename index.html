@@ -6,78 +6,96 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- PWA manifest, theme, iconos -->
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#4caf50">
+  <meta name="theme-color" content="#2e7d32">
   <link rel="icon" href="/icon-192.png" sizes="192x192">
   <link rel="apple-touch-icon" href="/icon-192.png">
+
   <style>
+    :root {
+      --primary: #2e7d32; /* verde elegante */
+      --primary-dark: #1b5e20;
+      --background: #f9fafb;
+      --card-bg: #fff;
+      --text: #333;
+      --muted: #666;
+      --radius: 12px;
+      --shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
       margin: 0; padding: 0;
-      background: #f5f5f7;
-      color: #333;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
     }
     header {
-      background: #4caf50;
+      background: var(--primary);
       color: #fff;
-      padding: 1.5em 1em;
+      padding: 1.8em 1em;
       text-align: center;
+      box-shadow: var(--shadow);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 600;
     }
     main {
       padding: 2em 1em;
-      max-width: 700px;
+      max-width: 800px;
       margin: 2em auto 0;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
-    h1 {
-      margin: 0 0 0.4em 0;
+    section, .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.5em;
+      margin-bottom: 2em;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      color: var(--primary-dark);
     }
     p {
-      margin: 1.5em 0;
+      margin: 1em 0;
     }
+
+    /* Responsive Iframe Contenedor */
     .responsive-iframe {
       position: relative;
       width: 100%;
-      height: 0;
       overflow: hidden;
-      margin-bottom: 2em;
       background: #eee;
-      border-radius: 8px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
-    /* Map aspect ratio: 640x480 = 75% */
-    .map-iframe {
-      padding-bottom: 75%;
-    }
-    /* Form aspect ratio: 640x926 = 144.7% */
-    .form-iframe {
-      padding-bottom: 145%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
     .responsive-iframe iframe {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
       border: 0;
-      background: #fff;
-      border-radius: 8px;
+      border-radius: var(--radius);
     }
-    @media (max-width: 700px) {
-      main {
-        padding: 1em 0.5em;
-      }
+    /* Map aspect ratio */
+    .map-iframe {
+      padding-bottom: 65%;
     }
-    @media (max-width: 500px) {
-      .responsive-iframe {
-        margin-bottom: 1em;
-      }
+    /* Form más compacto */
+    .form-iframe {
+      height: 500px; /* tamaño fijo */
     }
+    .form-iframe iframe {
+      height: 100%;
+    }
+
     footer {
       text-align: center;
-      color: #888;
+      color: var(--muted);
       font-size: 0.95em;
-      padding: 2em 0 1em;
+      padding: 2em 1em;
     }
+
     /* Botón instalación PWA */
     #install-btn {
       display:none;
@@ -85,44 +103,60 @@
       bottom:20px;
       right:20px;
       z-index:1000;
-      background: #4caf50;
+      background: var(--primary);
       color: #fff;
       border: none;
       border-radius: 24px;
-      padding: 1em 1.5em;
+      padding: 0.9em 1.4em;
       font-size: 1em;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      box-shadow: var(--shadow);
       cursor:pointer;
       transition: background 0.2s;
     }
     #install-btn:hover {
-      background: #388e3c;
+      background: var(--primary-dark);
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Proyecto Aseos Públicos</h1>
+    <h1>🚻 Aseos Públicos</h1>
   </header>
   <main>
-    <h2>Mapa de aseos públicos en España</h2>
-    <p>
-      Este sitio web tiene como objetivo recopilar y mostrar información sobre aseos públicos.<br>
-      Puedes contribuir añadiendo nuevos aseos mediante el formulario y consultar el mapa colaborativo.
-    </p>
-    <!-- Responsive Google Map iframe -->
-    <div class="responsive-iframe map-iframe">
-      <iframe src="https://www.google.com/maps/d/embed?mid=1YRT_X5tf7YNgvNL7ubI6jaO1EoAFxlM&ehbc=2E312F&noprof=1" allowfullscreen></iframe>
+    <section>
+      <h2>¿Por qué un mapa de aseos públicos?</h2>
+      <p>
+        Todos lo hemos vivido: estás paseando tranquilamente, disfrutando de tu café con leche de media mañana,
+        cuando de repente… ¡zas! la urgencia aparece. Y ahí empieza la misión imposible: 
+        encontrar un baño público cercano. 🕵️‍♂️
+      </p>
+      <p>
+        Este proyecto nace para que nadie en España tenga que sufrir la temida “búsqueda del aseo perdido”.
+        Aquí podrás localizar servicios públicos en diferentes ciudades, añadir nuevos aseos que descubras
+        y ayudar a otras personas que, como tú, solo quieren un poco de paz… y un WC limpio.
+      </p>
+    </section>
+
+    <div class="card">
+      <h2>Mapa de aseos públicos en España</h2>
+      <div class="responsive-iframe map-iframe">
+        <iframe src="https://www.google.com/maps/d/embed?mid=1YRT_X5tf7YNgvNL7ubI6jaO1EoAFxlM&ehbc=2E312F&noprof=1" allowfullscreen></iframe>
+      </div>
     </div>
-    <!-- Responsive Google Form iframe -->
-    <div class="responsive-iframe form-iframe">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe7JmVcb1ItOxqq2nTpmOV9bXP7o0c1JROk6YSjmBOrxNsD6Q/viewform?embedded=true" allowfullscreen></iframe>
+
+    <div class="card">
+      <h2>Añade un aseo al mapa</h2>
+      <div class="responsive-iframe form-iframe">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe7JmVcb1ItOxqq2nTpmOV9bXP7o0c1JROk6YSjmBOrxNsD6Q/viewform?embedded=true" allowfullscreen></iframe>
+      </div>
     </div>
   </main>
+
   <button id="install-btn">Instalar la App</button>
   <footer>
     &copy; 2025 Proyecto Aseos Públicos. Colabora para mejorar el acceso a aseos públicos en España.
   </footer>
+
   <!-- PWA scripts -->
   <script src="/install.js"></script>
   <script>
