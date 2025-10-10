@@ -4,15 +4,13 @@
   <meta charset="UTF-8">
   <title>Mapa de Aseos Públicos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- PWA manifest, theme, iconos -->
+  <!-- PWA manifest, theme -->
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#2e7d32">
-  <link rel="icon" href="/icon-192.png" sizes="192x192">
-  <link rel="apple-touch-icon" href="/icon-192.png">
 
   <style>
     :root {
-      --primary: #2e7d32; /* verde elegante */
+      --primary: #2e7d32;
       --primary-dark: #1b5e20;
       --background: #f9fafb;
       --card-bg: #fff;
@@ -57,11 +55,8 @@
       font-size: 1.4rem;
       color: var(--primary-dark);
     }
-    p {
-      margin: 1em 0;
-    }
+    p { margin: 1em 0; }
 
-    /* Responsive Iframe Contenedor */
     .responsive-iframe {
       position: relative;
       width: 100%;
@@ -77,10 +72,7 @@
       border: 0;
       border-radius: var(--radius);
     }
-    /* Map aspect ratio */
-    .map-iframe {
-      padding-bottom: 65%;
-    }
+    .map-iframe { padding-bottom: 65%; }
 
     footer {
       text-align: center;
@@ -89,7 +81,6 @@
       padding: 2em 1em;
     }
 
-    /* Botón instalación PWA */
     #install-btn {
       display:none;
       position:fixed;
@@ -106,11 +97,8 @@
       cursor:pointer;
       transition: background 0.2s;
     }
-    #install-btn:hover {
-      background: var(--primary-dark);
-    }
+    #install-btn:hover { background: var(--primary-dark); }
 
-    /* Botón abrir formulario */
     #open-form-btn {
       background: var(--primary);
       color: white;
@@ -121,11 +109,8 @@
       font-size: 1rem;
       box-shadow: var(--shadow);
     }
-    #open-form-btn:hover {
-      background: var(--primary-dark);
-    }
+    #open-form-btn:hover { background: var(--primary-dark); }
 
-    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -144,23 +129,35 @@
       box-shadow: var(--shadow);
       position: relative;
     }
-    .modal-content iframe {
+    .modal-content iframe { width:100%; height:600px; border:0; border-radius:var(--radius);}
+    .close { position:absolute; right:15px; top:10px; font-size:1.8rem; cursor:pointer; color:#555;}
+    .close:hover { color:#000;}
+
+    /* Banner AdSense */
+    .ad-container { text-align: center; margin: 2em 0; }
+
+    /* Popup cookies */
+    #cookieBanner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
       width: 100%;
-      height: 600px;
-      border: 0;
-      border-radius: var(--radius);
+      background: rgba(0,0,0,0.85);
+      color: white;
+      text-align: center;
+      padding: 14px;
+      z-index: 10000;
+      font-family: sans-serif;
     }
-    .close {
-      position: absolute;
-      right: 15px;
-      top: 10px;
-      font-size: 1.8rem;
+    #cookieBanner button {
+      margin-left: 10px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
       cursor: pointer;
-      color: #555;
     }
-    .close:hover {
-      color: #000;
-    }
+    #btnAceptarCookies { background: #4CAF50; color:white; }
+    #btnRechazarCookies { background: #d9534f; color:white; margin-left:5px; }
   </style>
 </head>
 <body>
@@ -182,9 +179,19 @@
       </p>
     </section>
 
+    <!-- Banner de cookies -->
+    <div id="cookieBanner">
+      Este sitio utiliza cookies para mostrar anuncios personalizados y mejorar la experiencia.
+      <button id="btnAceptarCookies">Aceptar</button>
+      <button id="btnRechazarCookies">Rechazar</button>
+    </div>
+
+    <!-- Banner de AdSense -->
+    <div class="ad-container" id="ad-container"></div>
+
     <div class="card">
       <h2>Mapa de aseos públicos en España</h2>
-	  <p><b>Haz click en el botón "Ampliar el mapa" para verlo en google maps</b></p>
+      <p><b>Haz click en el botón "Ampliar el mapa" para verlo en google maps</b></p>
       <div class="responsive-iframe map-iframe">
         <iframe src="https://www.google.com/maps/d/embed?mid=1YRT_X5tf7YNgvNL7ubI6jaO1EoAFxlM&ehbc=2E312F&noprof=1" allowfullscreen></iframe>
       </div>
@@ -209,28 +216,57 @@
     &copy; 2025 Proyecto Aseos Públicos. Colabora para mejorar el acceso a aseos públicos en España.
   </footer>
 
-  <!-- Scripts -->
   <script src="/install.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js');
     }
 
-    // Lógica del modal
+    // Modal
     const modal = document.getElementById("form-modal");
     const openBtn = document.getElementById("open-form-btn");
     const closeBtn = document.getElementById("close-form-btn");
+    openBtn.addEventListener("click", ()=>modal.style.display="block");
+    closeBtn.addEventListener("click", ()=>modal.style.display="none");
+    window.addEventListener("click", e=>{if(e.target===modal) modal.style.display="none";});
 
-    openBtn.addEventListener("click", () => {
-      modal.style.display = "block";
+    // Cookies + AdSense
+    const cookieBanner = document.getElementById("cookieBanner");
+    const btnAceptarCookies = document.getElementById("btnAceptarCookies");
+    const btnRechazarCookies = document.getElementById("btnRechazarCookies");
+    const adContainer = document.getElementById("ad-container");
+
+    function loadAdSense(){
+      adContainer.innerHTML = `
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0180568308288225" crossorigin="anonymous"><\/script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-0180568308288225"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>
+      `;
+    }
+
+    const decision = localStorage.getItem("cookiesDecision");
+    if(decision==="accepted"){ 
+      cookieBanner.style.display="none"; 
+      loadAdSense();
+    } else if(decision==="rejected"){
+      cookieBanner.style.display="none";
+    } else {
+      cookieBanner.style.display="block";
+    }
+
+    btnAceptarCookies.addEventListener("click", ()=>{
+      localStorage.setItem("cookiesDecision","accepted");
+      cookieBanner.style.display="none";
+      loadAdSense();
     });
-
-    closeBtn.addEventListener("click", () => {
-      modal.style.display = "none";
-    });
-
-    window.addEventListener("click", (e) => {
-      if (e.target === modal) modal.style.display = "none";
+    btnRechazarCookies.addEventListener("click", ()=>{
+      localStorage.setItem("cookiesDecision","rejected");
+      cookieBanner.style.display="none";
     });
   </script>
 </body>
