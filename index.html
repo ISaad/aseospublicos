@@ -19,18 +19,20 @@
       --shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
     * {margin: 0; padding: 0; box-sizing: border-box;}
-    body {font-family: "Segoe UI", Roboto, Arial, sans-serif; margin: 0; padding: 0; background: var(--background); color: var(--text); line-height: 1.6; padding-left: 0;}
+    body {font-family: "Segoe UI", Roboto, Arial, sans-serif; margin: 0; padding: 0; background: var(--background); color: var(--text); line-height: 1.6; padding-left: 0; transition: transform 0.3s ease;}
     @media (min-width: 768px) {body {padding-left: 250px;}}
-    header {background: var(--primary); color: #fff; padding: 1.5em 1em; text-align: center; box-shadow: var(--shadow); position: relative; z-index: 100;}
+    header {background: var(--primary); color: #fff; padding: 1.5em 1em; text-align: center; box-shadow: var(--shadow); position: relative; z-index: 90;}
     header h1 {margin: 0; font-size: 1.6rem; font-weight: 600;}
-    #sidebar {position: fixed; left: 0; top: 0; width: 250px; height: 100vh; background: #fff; box-shadow: 2px 0 10px rgba(0,0,0,0.1); padding: 2em 0; z-index: 1000; overflow-y: auto; display: none;}
-    @media (min-width: 768px) {#sidebar {display: block;}}
-    #sidebar.mobile-open {display: block;}
+    #sidebar {position: fixed; left: -250px; top: 0; width: 250px; height: 100vh; background: #fff; box-shadow: 2px 0 10px rgba(0,0,0,0.1); padding: 1em 0; z-index: 1100; overflow-y: auto; transition: left 0.3s ease;}
+    @media (min-width: 768px) {#sidebar {left: 0; padding: 2em 0;}}
+    #sidebar.mobile-open {left: 0;}
+    #sidebar nav {padding-top: 1em;}
     #sidebar nav a {display: block; padding: 0.8em 1.5em; color: var(--text); text-decoration: none; transition: all 0.3s; border-left: 3px solid transparent;}
     #sidebar nav a:hover, #sidebar nav a.active {background: #f0f0f0; border-left-color: var(--primary); color: var(--primary);}
-    #hamburger {position: fixed; top: 1.2em; left: 1em; z-index: 2000; background: white; border: none; border-radius: 8px; padding: 0.8em; cursor: pointer; box-shadow: var(--shadow); font-size: 1.5rem; display: block;}
+    #hamburger {position: fixed; top: 1.2em; left: 1em; z-index: 2000; background: white; border: none; border-radius: 8px; padding: 0.8em; cursor: pointer; box-shadow: var(--shadow); font-size: 1.5rem; display: block; transition: opacity 0.3s ease, transform 0.3s ease;}
     @media (min-width: 768px) {#hamburger {display: none;}}
-    main {padding: 2em 1em; max-width: 1200px; margin: 0 auto;}
+    #hamburger.hidden {opacity: 0; pointer-events: none; transform: scale(0.8);}
+    main {padding: 2em 1em; max-width: 1200px; margin: 0 auto; position: relative; z-index: 80;}
     section, .card {background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2em; margin-bottom: 2em; max-width: 800px; margin-left: auto; margin-right: auto;}
     h2 {margin-top: 0; margin-bottom: 1em; font-size: 1.6rem; color: var(--primary-dark);}
     h3 {margin-top: 1.5em; margin-bottom: 0.8em; font-size: 1.3rem; color: var(--primary-dark);}
@@ -38,8 +40,9 @@
     ul {margin: 1em 0; padding-left: 2em;}
     li {margin: 0.5em 0;}
     .hero-section {text-align: center;}
-    .hero-section h1 {font-size: 2rem; color: var(--primary-dark); margin-bottom: 0.5em; white-space: nowrap;}
+    .hero-section h1 {font-size: 2rem; color: var(--primary-dark); margin-bottom: 0.5em; line-height: 1.2; word-wrap: break-word;}
     @media (max-width: 768px) {.hero-section h1 {font-size: 1.5rem;}}
+    @media (max-width: 480px) {.hero-section h1 {font-size: 1.3rem;}}
     .hero-section .subtitle {font-size: 1.1rem; color: var(--muted); margin-top: 0.5em;}
     .responsive-iframe {position: relative; width: 100%; overflow: hidden; background: #eee; border-radius: var(--radius); box-shadow: var(--shadow); margin: 1.5em 0;}
     .responsive-iframe iframe {position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: var(--radius);}
@@ -61,7 +64,12 @@
     #install-btn:hover {background: var(--primary-dark);}
     footer {text-align: center; color: var(--muted); font-size: 0.95em; padding: 2em 1em;}
     .faq-item {margin-bottom: 2em;}
-    .faq-item h3 {color: var(--primary); margin-top: 0;}</style>
+    .faq-item h3 {color: var(--primary); margin-top: 0;}
+    .menu-overlay {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1050;}
+    @media (min-width: 768px) {.menu-overlay {display: none !important;}}
+    .menu-overlay.active {display: block;}
+    body.menu-open {overflow: hidden;}
+    @media (max-width: 767px) {body.menu-open main, body.menu-open header, body.menu-open footer {filter: blur(2px); pointer-events: none;}}</style>
 </head>
 <body>
   <button id="hamburger">☰</button>
@@ -81,10 +89,6 @@
       <p class="subtitle">Ya sea que estés explorando el centro de Madrid, paseando por las Ramblas de Barcelona, visitando la Basílica del Pilar en Zaragoza o disfrutando de la playa en Valencia, nuestro mapa colaborativo te ayuda a localizar baños públicos rápidamente.</p>
     </section>
     <div class="ad-container" id="ad-container"></div>
-    <section>
-      <h2>🎯 ¿Por qué un Mapa de Aseos Públicos?</h2>
-      <p>Todos lo hemos vivido: estás paseando por Madrid, Barcelona o Zaragoza cuando aparece la urgencia. Este proyecto nace para que nadie tenga que sufrir la "búsqueda del aseo perdido".</p>
-    </section>
     <section id="mapa-section">
       <h2>🗺️ Mapa Interactivo de Aseos Públicos en España</h2>
       <p><strong>Explora el mapa para encontrar aseos públicos cerca de ti:</strong></p>
@@ -92,6 +96,10 @@
         <iframe src="https://www.google.com/maps/d/embed?mid=1YRT_X5tf7YNgvNL7ubI6jaO1EoAFxlM&ehbc=2E312F&noprof=1" allowfullscreen></iframe>
       </div>
       <div style="text-align: center;"><button id="open-form-btn" class="btn-primary">Añadir nuevo baño al mapa</button></div>
+    </section>
+    <section>
+      <h2>🎯 ¿Por qué un Mapa de Aseos Públicos?</h2>
+      <p>Todos lo hemos vivido: estás paseando por Madrid, Barcelona o Zaragoza cuando aparece la urgencia. Este proyecto nace para que nadie tenga que sufrir la "búsqueda del aseo perdido".</p>
     </section>
     <section>
       <h2>📖 Guía de Aseos Públicos en España</h2>
@@ -119,6 +127,46 @@
   <div id="cookieBanner">Este sitio utiliza cookies para mostrar anuncios personalizados.<button id="btnAceptarCookies">Aceptar</button><button id="btnRechazarCookies">Rechazar</button></div>
   <button id="install-btn">Instalar la App</button>
   <footer>&copy; 2025 Aseos Públicos Cerca de Mí.</footer>
-  <script>const modal=document.getElementById("form-modal");const openBtn=document.getElementById("open-form-btn");const closeBtn=document.getElementById("close-form-btn");openBtn.addEventListener("click",()=>modal.style.display="block");closeBtn.addEventListener("click",()=>modal.style.display="none");window.addEventListener("click",e=>{if(e.target===modal)modal.style.display="none";});if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js');}const hamburger=document.getElementById('hamburger');const sidebar=document.getElementById('sidebar');hamburger.addEventListener('click',()=>{sidebar.classList.toggle('mobile-open');});document.addEventListener('click',(e)=>{if(!sidebar.contains(e.target)&&!hamburger.contains(e.target)){sidebar.classList.remove('mobile-open');}});const cookieBanner=document.getElementById("cookieBanner");const btnAceptarCookies=document.getElementById("btnAceptarCookies");const btnRechazarCookies=document.getElementById("btnRechazarCookies");const adContainer=document.getElementById("ad-container");function loadAdSense(){adContainer.innerHTML='<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0180568308288225" crossorigin="anonymous"></scr'+'ipt><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0180568308288225" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins><scr'+'ipt>(adsbygoogle=window.adsbygoogle||[]).push({});</scr'+'ipt>';}const decision=localStorage.getItem("cookiesDecision");if(decision==="accepted"){cookieBanner.style.display="none";loadAdSense();}else if(decision==="rejected"){cookieBanner.style.display="none";}else{cookieBanner.style.display="block";}btnAceptarCookies.addEventListener("click",()=>{localStorage.setItem("cookiesDecision","accepted");cookieBanner.style.display="none";loadAdSense();});btnRechazarCookies.addEventListener("click",()=>{localStorage.setItem("cookiesDecision","rejected");cookieBanner.style.display="none";});let deferredPrompt;const installBtn=document.getElementById('install-btn');window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;installBtn.style.display='block';});installBtn.addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();const result=await deferredPrompt.userChoice;deferredPrompt=null;installBtn.style.display='none';}});</script>
+  <script>const modal=document.getElementById("form-modal");const openBtn=document.getElementById("open-form-btn");const closeBtn=document.getElementById("close-form-btn");openBtn.addEventListener("click",()=>modal.style.display="block");closeBtn.addEventListener("click",()=>modal.style.display="none");window.addEventListener("click",e=>{if(e.target===modal)modal.style.display="none";});if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js');}
+const hamburger=document.getElementById('hamburger');
+const sidebar=document.getElementById('sidebar');
+const overlay=document.createElement('div');
+overlay.className='menu-overlay';
+document.body.appendChild(overlay);
+function openMenu(){
+  sidebar.classList.add('mobile-open');
+  overlay.classList.add('active');
+  document.body.classList.add('menu-open');
+  hamburger.classList.add('hidden');
+}
+function closeMenu(){
+  sidebar.classList.remove('mobile-open');
+  overlay.classList.remove('active');
+  document.body.classList.remove('menu-open');
+  hamburger.classList.remove('hidden');
+}
+hamburger.addEventListener('click',()=>{
+  if(sidebar.classList.contains('mobile-open')){closeMenu();}else{openMenu();}
+});
+overlay.addEventListener('click',closeMenu);
+const sidebarLinks=sidebar.querySelectorAll('a');
+sidebarLinks.forEach(link=>{
+  link.addEventListener('click',()=>{
+    if(window.innerWidth<768){closeMenu();}
+  });
+});
+const cookieBanner=document.getElementById("cookieBanner");
+const btnAceptarCookies=document.getElementById("btnAceptarCookies");
+const btnRechazarCookies=document.getElementById("btnRechazarCookies");
+const adContainer=document.getElementById("ad-container");
+function loadAdSense(){adContainer.innerHTML='<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0180568308288225" crossorigin="anonymous"></scr'+'ipt><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0180568308288225" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins><scr'+'ipt>(adsbygoogle=window.adsbygoogle||[]).push({});</scr'+'ipt>';}
+const decision=localStorage.getItem("cookiesDecision");
+if(decision==="accepted"){cookieBanner.style.display="none";loadAdSense();}else if(decision==="rejected"){cookieBanner.style.display="none";}else{cookieBanner.style.display="block";}
+btnAceptarCookies.addEventListener("click",()=>{localStorage.setItem("cookiesDecision","accepted");cookieBanner.style.display="none";loadAdSense();});
+btnRechazarCookies.addEventListener("click",()=>{localStorage.setItem("cookiesDecision","rejected");cookieBanner.style.display="none";});
+let deferredPrompt;
+const installBtn=document.getElementById('install-btn');
+window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;installBtn.style.display='block';});
+installBtn.addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();const result=await deferredPrompt.userChoice;deferredPrompt=null;installBtn.style.display='none';}});</script>
 </body>
 </html>
