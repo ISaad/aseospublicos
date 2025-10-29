@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Salud e Higiene - Aseos Públicos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-adsense-account" content="ca-pub-0180568308288225">
+  <style>    :root {
+      --primary: #2e7d32;
+      --primary-dark: #1b5e20;
+      --background: #f9fafb;
+      --card-bg: #fff;
+      --text: #333;
+      --muted: #666;
+      --radius: 12px;
+      --shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {font-family: "Segoe UI", Roboto, Arial, sans-serif; margin: 0; padding: 0; background: var(--background); color: var(--text); line-height: 1.6; padding-left: 0;}
+    @media (min-width: 768px) {body {padding-left: 250px;}}
+    header {background: var(--primary); color: #fff; padding: 1.5em 1em; text-align: center; box-shadow: var(--shadow); position: relative; z-index: 100;}
+    header h1 {margin: 0; font-size: 1.6rem; font-weight: 600;}
+    #sidebar {position: fixed; left: 0; top: 0; width: 250px; height: 100vh; background: #fff; box-shadow: 2px 0 10px rgba(0,0,0,0.1); padding: 2em 0; z-index: 1000; overflow-y: auto; display: none;}
+    @media (min-width: 768px) {#sidebar {display: block;}}
+    #sidebar.mobile-open {display: block;}
+    #sidebar nav a {display: block; padding: 0.8em 1.5em; color: var(--text); text-decoration: none; transition: all 0.3s; border-left: 3px solid transparent;}
+    #sidebar nav a:hover, #sidebar nav a.active {background: #f0f0f0; border-left-color: var(--primary); color: var(--primary);}
+    #hamburger {position: fixed; top: 1.2em; left: 1em; z-index: 2000; background: white; border: none; border-radius: 8px; padding: 0.8em; cursor: pointer; box-shadow: var(--shadow); font-size: 1.5rem; display: block;}
+    @media (min-width: 768px) {#hamburger {display: none;}}
+    main {padding: 2em 1em; max-width: 1200px; margin: 0 auto;}
+    section, .card {background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2em; margin-bottom: 2em; max-width: 800px; margin-left: auto; margin-right: auto;}
+    h2 {margin-top: 0; margin-bottom: 1em; font-size: 1.6rem; color: var(--primary-dark);}
+    h3 {margin-top: 1.5em; margin-bottom: 0.8em; font-size: 1.3rem; color: var(--primary-dark);}
+    p {margin: 1em 0; line-height: 1.7;}
+    ul {margin: 1em 0; padding-left: 2em;}
+    li {margin: 0.5em 0;}
+    .hero-section {text-align: center;}
+    .hero-section h1 {font-size: 2rem; color: var(--primary-dark); margin-bottom: 0.5em; white-space: nowrap;}
+    @media (max-width: 768px) {.hero-section h1 {font-size: 1.5rem;}}
+    .hero-section .subtitle {font-size: 1.1rem; color: var(--muted); margin-top: 0.5em;}
+    .responsive-iframe {position: relative; width: 100%; overflow: hidden; background: #eee; border-radius: var(--radius); box-shadow: var(--shadow); margin: 1.5em 0;}
+    .responsive-iframe iframe {position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: var(--radius);}
+    .map-iframe {padding-bottom: 65%;}
+    .btn-primary {background: var(--primary); color: white; border: none; padding: 1em 2em; border-radius: 8px; cursor: pointer; font-size: 1rem; box-shadow: var(--shadow); transition: background 0.3s; display: inline-block; text-decoration: none; margin: 1em 0;}
+    .btn-primary:hover {background: var(--primary-dark);}
+    .modal {display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6);}
+    .modal-content {background: #fff; margin: 5% auto; padding: 1em; border-radius: var(--radius); width: 90%; max-width: 700px; box-shadow: var(--shadow); position: relative;}
+    .modal-content iframe {width: 100%; height: 600px; border: 0; border-radius: var(--radius);}
+    .close {position: absolute; right: 15px; top: 10px; font-size: 1.8rem; cursor: pointer; color: #555;}
+    .close:hover {color: #000;}
+    .ad-container {text-align: center; margin: 2em 0;}
+    .ad-container:empty {display: none; margin: 0; padding: 0;}
+    #cookieBanner {position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.85); color: white; text-align: center; padding: 14px; z-index: 10000;}
+    #cookieBanner button {margin-left: 10px; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer;}
+    #btnAceptarCookies {background: #4CAF50; color: white;}
+    #btnRechazarCookies {background: #d9534f; color: white;}
+    #install-btn {display: none; position: fixed; bottom: 20px; right: 20px; z-index: 1000; background: var(--primary); color: #fff; border: none; border-radius: 24px; padding: 0.9em 1.4em; font-size: 1em; box-shadow: var(--shadow); cursor: pointer; transition: background 0.2s;}
+    #install-btn:hover {background: var(--primary-dark);}
+    footer {text-align: center; color: var(--muted); font-size: 0.95em; padding: 2em 1em;}
+    .faq-item {margin-bottom: 2em;}
+    .faq-item h3 {color: var(--primary); margin-top: 0;}</style>
+</head>
+<body>
+  <button id="hamburger">☰</button>
+  <div id="sidebar"><nav>
+      <a href="index.html#mapa-section">🗺️ Mapa Interactivo</a>
+      <a href="faq.html">❓ FAQ</a>
+      <a href="contribuir.html">🤝 Contribuir</a>
+      <a href="guia-viaje.html">📚 Guía de Viaje</a>
+      <a href="salud-higiene.html" class="active">🏥 Salud e Higiene</a>
+      <a href="accesibilidad.html">♿ Accesibilidad</a>
+      <a href="contacto.html">📞 Contacto</a>
+    </nav></div>
+  <header><h1>🚻 Aseos públicos cerca de mí</h1></header>
+  <main>
+    <div class="ad-container" id="ad-container"></div>
+    <section>
+      <h2>🏥 Salud e Higiene en Aseos Públicos</h2>
+      <p>La higiene personal es fundamental cuando usamos aseos públicos en Madrid, Barcelona, Zaragoza, Valencia y Sevilla.</p>
+      <h3>Prevención de Enfermedades</h3>
+      <p>Los aseos pueden transmitir E. coli, norovirus e influenza. El lavado correcto de manos reduce el riesgo drásticamente: 20 segundos con jabón, frotando todas las superficies.</p>
+      <h3>Productos Recomendados</h3>
+      <ul>
+        <li>Gel desinfectante 60%+ alcohol</li>
+        <li>Papel higiénico portátil</li>
+        <li>Toallitas desinfectantes</li>
+        <li>Jabón en láminas</li>
+        <li>Bolsas de plástico</li>
+      </ul>
+      <h3>Técnica de Lavado</h3>
+      <p>Moja manos, aplica jabón, frota palmas, dorso, entre dedos, uñas, aclara abundantemente, seca con papel desechable.</p>
+      <h3>Evaluación de Limpieza</h3>
+      <p>Busca: ausencia de malos olores, papel y jabón disponibles, papeleras sin desbordar, suelo seco, inodoros sin residuos.</p>
+    </section>
+  </main>
+  <div id="cookieBanner">Este sitio utiliza cookies.<button id="btnAceptarCookies">Aceptar</button><button id="btnRechazarCookies">Rechazar</button></div>
+  <button id="install-btn">Instalar la App</button>
+  <footer>&copy; 2025 Aseos Públicos Cerca de Mí.</footer>
+  <script>if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js');}const hamburger=document.getElementById('hamburger');const sidebar=document.getElementById('sidebar');hamburger.addEventListener('click',()=>{sidebar.classList.toggle('mobile-open');});document.addEventListener('click',(e)=>{if(!sidebar.contains(e.target)&&!hamburger.contains(e.target)){sidebar.classList.remove('mobile-open');}});const cookieBanner=document.getElementById("cookieBanner");const btnAceptarCookies=document.getElementById("btnAceptarCookies");const btnRechazarCookies=document.getElementById("btnRechazarCookies");const adContainer=document.getElementById("ad-container");function loadAdSense(){adContainer.innerHTML='<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0180568308288225" crossorigin="anonymous"></scr'+'ipt><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0180568308288225" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins><scr'+'ipt>(adsbygoogle=window.adsbygoogle||[]).push({});</scr'+'ipt>';}const decision=localStorage.getItem("cookiesDecision");if(decision==="accepted"){cookieBanner.style.display="none";loadAdSense();}else if(decision==="rejected"){cookieBanner.style.display="none";}else{cookieBanner.style.display="block";}btnAceptarCookies.addEventListener("click",()=>{localStorage.setItem("cookiesDecision","accepted");cookieBanner.style.display="none";loadAdSense();});btnRechazarCookies.addEventListener("click",()=>{localStorage.setItem("cookiesDecision","rejected");cookieBanner.style.display="none";});let deferredPrompt;const installBtn=document.getElementById('install-btn');window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;installBtn.style.display='block';});installBtn.addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();const result=await deferredPrompt.userChoice;deferredPrompt=null;installBtn.style.display='none';}});</script>
+</body>
+</html>
