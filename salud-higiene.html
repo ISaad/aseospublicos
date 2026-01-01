@@ -2,10 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Salud e Higiene - Aseos</title>
+  <title>Salud e Higiene en Aseos Públicos - Consejos Prácticos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guía completa sobre higiene y salud al utilizar baños públicos. Aprende a prevenir contagios y mantente seguro en tus viajes por España.">
   <meta name="google-adsense-account" content="ca-pub-0180568308288225">
-  <style>    :root {
+  <style>
+    :root {
       --primary: #2e7d32;
       --primary-dark: #1b5e20;
       --background: #f9fafb;
@@ -16,62 +18,38 @@
       --shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
     * {margin: 0; padding: 0; box-sizing: border-box;}
-    body {font-family: "Segoe UI", Roboto, Arial, sans-serif; margin: 0; padding: 0; background: var(--background); color: var(--text); line-height: 1.6; padding-left: 0; transition: transform 0.3s ease;}
+    body {font-family: "Segoe UI", Roboto, Arial, sans-serif; background: var(--background); color: var(--text); line-height: 1.6; padding-left: 0; transition: transform 0.3s ease;}
     @media (min-width: 768px) {body {padding-left: 250px;}}
     header {background: var(--primary); color: #fff; padding: 1.5em 1em; text-align: center; box-shadow: var(--shadow); position: relative; z-index: 90;}
     header h1 {margin: 0; font-size: 1.6rem; font-weight: 600;}
     #sidebar {position: fixed; left: -250px; top: 0; width: 250px; height: 100vh; background: #fff; box-shadow: 2px 0 10px rgba(0,0,0,0.1); padding: 1em 0; z-index: 1100; overflow-y: auto; transition: left 0.3s ease;}
     @media (min-width: 768px) {#sidebar {left: 0; padding: 2em 0;}}
     #sidebar.mobile-open {left: 0;}
-    #sidebar nav {padding-top: 1em;}
     #sidebar nav a {display: block; padding: 0.8em 1.5em; color: var(--text); text-decoration: none; transition: all 0.3s; border-left: 3px solid transparent;}
     #sidebar nav a:hover, #sidebar nav a.active {background: #f0f0f0; border-left-color: var(--primary); color: var(--primary);}
-    #hamburger {position: fixed; top: 1.2em; left: 1em; z-index: 2000; background: white; border: none; border-radius: 8px; padding: 0.8em; cursor: pointer; box-shadow: var(--shadow); font-size: 1.5rem; display: block; transition: opacity 0.3s ease, transform 0.3s ease;}
+    #hamburger {position: fixed; top: 1.2em; left: 1em; z-index: 2000; background: white; border: none; border-radius: 8px; padding: 0.8em; cursor: pointer; box-shadow: var(--shadow); font-size: 1.5rem;}
     @media (min-width: 768px) {#hamburger {display: none;}}
-    #hamburger.hidden {opacity: 0; pointer-events: none; transform: scale(0.8);}
     main {padding: 2em 1em; max-width: 1200px; margin: 0 auto; position: relative; z-index: 80;}
-    section, .card {background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2em; margin-bottom: 2em; max-width: 800px; margin-left: auto; margin-right: auto;}
-    h2 {margin-top: 0; margin-bottom: 1em; font-size: 1.6rem; color: var(--primary-dark);}
-    h3 {margin-top: 1.5em; margin-bottom: 0.8em; font-size: 1.3rem; color: var(--primary-dark);}
-    p {margin: 1em 0; line-height: 1.7;}
+    section {background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2.5em; margin-bottom: 2em; max-width: 850px; margin-left: auto; margin-right: auto;}
+    h2 {margin-top: 0; margin-bottom: 1em; font-size: 1.8rem; color: var(--primary-dark);}
+    h3 {margin-top: 1.5em; margin-bottom: 0.8em; font-size: 1.4rem; color: var(--primary-dark);}
+    p {margin: 1em 0; line-height: 1.8;}
     ul {margin: 1em 0; padding-left: 2em;}
     li {margin: 0.5em 0;}
-    .hero-section {text-align: center;}
-    .hero-section h1 {font-size: 2rem; color: var(--primary-dark); margin-bottom: 0.5em; line-height: 1.2; word-wrap: break-word;}
-    @media (max-width: 768px) {.hero-section h1 {font-size: 1.5rem;}}
-    @media (max-width: 480px) {.hero-section h1 {font-size: 1.3rem;}}
-    .hero-section .subtitle {font-size: 1.1rem; color: var(--muted); margin-top: 0.5em;}
-    .responsive-iframe {position: relative; width: 100%; overflow: hidden; background: #eee; border-radius: var(--radius); box-shadow: var(--shadow); margin: 1.5em 0;}
-    .responsive-iframe iframe {position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: var(--radius);}
-    .map-iframe {padding-bottom: 65%;}
-    .btn-primary {background: var(--primary); color: white; border: none; padding: 1em 2em; border-radius: 8px; cursor: pointer; font-size: 1rem; box-shadow: var(--shadow); transition: background 0.3s; display: inline-block; text-decoration: none; margin: 1em 0;}
-    .btn-primary:hover {background: var(--primary-dark);}
-    .modal {display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6);}
-    .modal-content {background: #fff; margin: 5% auto; padding: 1em; border-radius: var(--radius); width: 90%; max-width: 700px; box-shadow: var(--shadow); position: relative;}
-    .modal-content iframe {width: 100%; height: 600px; border: 0; border-radius: var(--radius);}
-    .close {position: absolute; right: 15px; top: 10px; font-size: 1.8rem; cursor: pointer; color: #555;}
-    .close:hover {color: #000;}
-    .ad-container {text-align: center; margin: 2em 0;}
-    .ad-container:empty {display: none; margin: 0; padding: 0;}
     #cookieBanner {position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.85); color: white; text-align: center; padding: 14px; z-index: 10000;}
     #cookieBanner button {margin-left: 10px; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer;}
     #btnAceptarCookies {background: #4CAF50; color: white;}
     #btnRechazarCookies {background: #d9534f; color: white;}
-    #install-btn {display: none; position: fixed; bottom: 20px; right: 20px; z-index: 1000; background: var(--primary); color: #fff; border: none; border-radius: 24px; padding: 0.9em 1.4em; font-size: 1em; box-shadow: var(--shadow); cursor: pointer; transition: background 0.2s;}
-    #install-btn:hover {background: var(--primary-dark);}
-    footer {text-align: center; color: var(--muted); font-size: 0.95em; padding: 2em 1em;}
-    .faq-item {margin-bottom: 2em;}
-    .faq-item h3 {color: var(--primary); margin-top: 0;}
+    footer {text-align: center; color: var(--muted); font-size: 0.95em; padding: 2em 1em; border-top: 1px solid #ddd; margin-top: 20px;}
+    footer a {color: var(--primary); text-decoration: none; margin: 0 10px;}
     .menu-overlay {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1050;}
-    @media (min-width: 768px) {.menu-overlay {display: none !important;}}
     .menu-overlay.active {display: block;}
-    body.menu-open {overflow: hidden;}
-    @media (max-width: 767px) {body.menu-open main, body.menu-open header, body.menu-open footer {filter: blur(2px); pointer-events: none;}}</style>
+  </style>
 </head>
 <body>
   <button id="hamburger">☰</button>
   <div id="sidebar"><nav>
-      <a href="index.html#mapa-section">🗺️ Mapa Interactivo</a>
+      <a href="index.html">🗺️ Mapa Interactivo</a>
       <a href="faq.html">❓ FAQ</a>
       <a href="contribuir.html">🤝 Contribuir</a>
       <a href="guia-viaje.html">📚 Guía de Viaje</a>
@@ -79,61 +57,93 @@
       <a href="accesibilidad.html">♿ Accesibilidad</a>
       <a href="contacto.html">📞 Contacto</a>
     </nav></div>
-  <header><h1>🚻 Aseos públicos cerca de mí</h1></header>
+  <header><h1>🏥 Salud e Higiene</h1></header>
   <main>
-    <div class="ad-container" id="ad-container"></div>
-    <section><h2>🏥 Salud e Higiene</h2>
-      <p>La higiene es fundamental en aseos públicos de Madrid, Barcelona, Zaragoza, Valencia y Sevilla.</p>
-      <h3>Prevención</h3><p>Lavado correcto: 20 segundos con jabón, todas las superficies.</p>
-      <h3>Productos</h3><ul><li>Gel 60%+ alcohol</li><li>Papel portátil</li><li>Toallitas</li><li>Jabón láminas</li><li>Bolsas plástico</li></ul>
-      <h3>Técnica Lavado</h3><p>Moja, jabón, frota palmas/dorso/dedos/uñas, aclara, seca con papel.</p>
-      <h3>Limpieza</h3><p>Busca: sin olores, papel disponible, suelo seco, inodoros limpios.</p>
+    <div class="ad-container" id="ad-container" style="text-align: center; margin-bottom: 20px;"></div>
+    <section>
+      <h2>Protocolos de Seguridad en Aseos Públicos</h2>
+      <p>Utilizar aseos públicos en grandes ciudades como Madrid, Barcelona o Sevilla requiere un mínimo de precaución para evitar el contacto con gérmenes y bacterias. Aunque la mayoría de los servicios listados en nuestro mapa cuentan con servicios de limpieza regulares, seguir estos consejos te mantendrá seguro.</p>
+      
+      <h3>La regla de oro: El lavado de manos</h3>
+      <p>Parece obvio, pero hacerlo correctamente salva vidas. Sigue estos pasos siempre:</p>
+      <ul>
+        <li><strong>Duración:</strong> Al menos 20 segundos frotando con energía.</li>
+        <li><strong>Superficie:</strong> No olvides el dorso de las manos, entre los dedos y debajo de las uñas.</li>
+        <li><strong>Secado:</strong> Usa siempre papel desechable si está disponible. Evita los secadores de aire caliente si el baño no parece bien ventilado, ya que pueden dispersar partículas.</li>
+      </ul>
+
+      <h3>Tu Kit de Higiene Personal</h3>
+      <p>Si eres de los que prefiere prevenir, te recomendamos llevar siempre encima un pequeño neceser con:</p>
+      <ul>
+        <li><strong>Gel Hidroalcohólico:</strong> Con al menos un 60% de alcohol para cuando no hay jabón disponible.</li>
+        <li><strong>Toallitas desinfectantes:</strong> Útiles para limpiar superficies de contacto antes de usarlas.</li>
+        <li><strong>Jabón en láminas:</strong> Ocupan poquísimo espacio y te aseguran poder lavarte las manos aunque el dispensador del baño esté vacío.</li>
+      </ul>
+
+      <h3>¿Cómo identificar un baño seguro?</h3>
+      <p>Antes de usar una instalación, fíjate en estos detalles que indican un buen mantenimiento:</p>
+      <p>Un suelo seco, la ausencia de olores fuertes y la presencia de suministros básicos (papel higiénico y jabón) son indicadores de que el servicio recibe mantenimiento constante. En ciudades como Valencia o Zaragoza, los baños autolimpiables de la calle cuentan con sistemas de desinfección automática tras cada uso, lo que los hace extremadamente seguros.</p>
+      
+      <h3>Prevención de Contagios</h3>
+      <p>Evita tocar directamente los pomos de las puertas o los grifos al salir. Un truco clásico es usar el mismo papel con el que te has secado las manos para abrir la puerta y tirarlo a la papelera justo antes de salir. ¡Higiene máxima, cabronazo!</p>
     </section>
   </main>
   
-  <div id="cookieBanner">Este sitio utiliza cookies.<button id="btnAceptarCookies">Aceptar</button><button id="btnRechazarCookies">Rechazar</button></div>
-  <button id="install-btn">Instalar la App</button>
-  <footer>&copy; 2025 Aseos Públicos Cerca de Mí.</footer>
-  <script>if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js');}
-const hamburger=document.getElementById('hamburger');
-const sidebar=document.getElementById('sidebar');
-const overlay=document.createElement('div');
-overlay.className='menu-overlay';
-document.body.appendChild(overlay);
-function openMenu(){
-  sidebar.classList.add('mobile-open');
-  overlay.classList.add('active');
-  document.body.classList.add('menu-open');
-  hamburger.classList.add('hidden');
-}
-function closeMenu(){
-  sidebar.classList.remove('mobile-open');
-  overlay.classList.remove('active');
-  document.body.classList.remove('menu-open');
-  hamburger.classList.remove('hidden');
-}
-hamburger.addEventListener('click',()=>{
-  if(sidebar.classList.contains('mobile-open')){closeMenu();}else{openMenu();}
-});
-overlay.addEventListener('click',closeMenu);
-const sidebarLinks=sidebar.querySelectorAll('a');
-sidebarLinks.forEach(link=>{
-  link.addEventListener('click',()=>{
-    if(window.innerWidth<768){closeMenu();}
-  });
-});
-const cookieBanner=document.getElementById("cookieBanner");
-const btnAceptarCookies=document.getElementById("btnAceptarCookies");
-const btnRechazarCookies=document.getElementById("btnRechazarCookies");
-const adContainer=document.getElementById("ad-container");
-function loadAdSense(){adContainer.innerHTML='<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0180568308288225" crossorigin="anonymous"></scr'+'ipt><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0180568308288225" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins><scr'+'ipt>(adsbygoogle=window.adsbygoogle||[]).push({});</scr'+'ipt>';}
-const decision=localStorage.getItem("cookiesDecision");
-if(decision==="accepted"){cookieBanner.style.display="none";loadAdSense();}else if(decision==="rejected"){cookieBanner.style.display="none";}else{cookieBanner.style.display="block";}
-btnAceptarCookies.addEventListener("click",()=>{localStorage.setItem("cookiesDecision","accepted");cookieBanner.style.display="none";loadAdSense();});
-btnRechazarCookies.addEventListener("click",()=>{localStorage.setItem("cookiesDecision","rejected");cookieBanner.style.display="none";});
-let deferredPrompt;
-const installBtn=document.getElementById('install-btn');
-window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;installBtn.style.display='block';});
-installBtn.addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();const result=await deferredPrompt.userChoice;deferredPrompt=null;installBtn.style.display='none';}});</script>
+  <div id="cookieBanner">
+    Este sitio utiliza cookies para mejorar tu experiencia. 
+    <a href="politica-cookies.html" style="color: #4CAF50; text-decoration: underline;">Saber más</a>.
+    <button id="btnAceptarCookies">Aceptar</button>
+    <button id="btnRechazarCookies">Rechazar</button>
+  </div>
+  
+  <footer>
+    <p>© 2026 Aseos Públicos Cerca de Mí.</p>
+    <p>
+      <a href="aviso-legal.html">Aviso Legal</a> | 
+      <a href="politica-privacidad.html">Privacidad</a> | 
+      <a href="politica-cookies.html">Cookies</a>
+    </p>
+  </footer>
+
+  <script>
+    if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js');}
+    const hamburger=document.getElementById('hamburger');
+    const sidebar=document.getElementById('sidebar');
+    const overlay=document.createElement('div');
+    overlay.className='menu-overlay';
+    document.body.appendChild(overlay);
+    
+    hamburger.addEventListener('click',()=>{
+      sidebar.classList.toggle('mobile-open');
+      overlay.classList.toggle('active');
+    });
+    overlay.addEventListener('click',()=>{
+      sidebar.classList.remove('mobile-open');
+      overlay.classList.remove('active');
+    });
+
+    const cookieBanner=document.getElementById("cookieBanner");
+    const btnAceptarCookies=document.getElementById("btnAceptarCookies");
+    const btnRechazarCookies=document.getElementById("btnRechazarCookies");
+    const adContainer=document.getElementById("ad-container");
+
+    function loadAdSense(){
+      adContainer.innerHTML='<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0180568308288225" crossorigin="anonymous"></scr'+'ipt><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0180568308288225" data-ad-slot="1234567890" data-ad-format="auto"></ins><scr'+'ipt>(adsbygoogle=window.adsbygoogle||[]).push({});</scr'+'ipt>';
+    }
+
+    const decision=localStorage.getItem("cookiesDecision");
+    if(decision==="accepted"){cookieBanner.style.display="none";loadAdSense();}
+    else if(decision==="rejected"){cookieBanner.style.display="none";}
+    
+    btnAceptarCookies.addEventListener("click",()=>{
+      localStorage.setItem("cookiesDecision","accepted");
+      cookieBanner.style.display="none";
+      loadAdSense();
+    });
+    btnRechazarCookies.addEventListener("click",()=>{
+      localStorage.setItem("cookiesDecision","rejected");
+      cookieBanner.style.display="none";
+    });
+  </script>
 </body>
 </html>
