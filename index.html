@@ -5,11 +5,12 @@
   <meta charset="UTF-8">
   <title>Aseos Públicos Cerca de Mí - Mapa de Baños Públicos en España</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Encuentra aseos públicos cerca de ti en Madrid, Barcelona, Zaragoza, Valencia y todas las ciudades de España.">
+  <meta name="description" content="Localizador de aseos públicos en España. Encuentra baños cerca de ti en Madrid, Barcelona, Valencia y más. Guía completa y mapa colaborativo.">
   <meta name="google-adsense-account" content="ca-pub-0180568308288225">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#2e7d32">
-  <style>    :root {
+  <style>
+    :root {
       --primary: #2e7d32;
       --primary-dark: #1b5e20;
       --background: #f9fafb;
@@ -63,111 +64,173 @@
     #btnRechazarCookies {background: #d9534f; color: white;}
     #install-btn {display: none; position: fixed; bottom: 20px; right: 20px; z-index: 1000; background: var(--primary); color: #fff; border: none; border-radius: 24px; padding: 0.9em 1.4em; font-size: 1em; box-shadow: var(--shadow); cursor: pointer; transition: background 0.2s;}
     #install-btn:hover {background: var(--primary-dark);}
-    footer {text-align: center; color: var(--muted); font-size: 0.95em; padding: 2em 1em;}
-    .faq-item {margin-bottom: 2em;}
-    .faq-item h3 {color: var(--primary); margin-top: 0;}
+    footer {text-align: center; color: var(--muted); font-size: 0.95em; padding: 2em 1em; border-top: 1px solid #ddd; margin-top: 20px;}
+    footer a {color: var(--primary); text-decoration: none; margin: 0 10px;}
     .menu-overlay {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1050;}
     @media (min-width: 768px) {.menu-overlay {display: none !important;}}
     .menu-overlay.active {display: block;}
     body.menu-open {overflow: hidden;}
-    @media (max-width: 767px) {body.menu-open main, body.menu-open header, body.menu-open footer {filter: blur(2px); pointer-events: none;}}</style>
+    @media (max-width: 767px) {body.menu-open main, body.menu-open header, body.menu-open footer {filter: blur(2px); pointer-events: none;}}
+  </style>
+  
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Aseos Públicos Cerca de Mí",
+  "operatingSystem": "All",
+  "applicationCategory": "TravelApplication",
+  "description": "Localizador interactivo de baños y aseos públicos en España. Encuentra servicios sanitarios gratuitos y de pago en Madrid, Barcelona y más.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "¿Dónde hay aseos públicos gratuitos cerca de mí?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Puedes encontrar aseos públicos gratuitos en bibliotecas, centros culturales, parques municipales y algunos centros comerciales. Usa nuestro mapa interactivo para localizar el más cercano a tu posición actual."
+    }
+  }, {
+    "@type": "Question",
+    "name": "¿Son todos los baños públicos gratis en España?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No todos. Mientras que los municipales suelen ser gratuitos o muy baratos, los baños en estaciones de tren o intercambiadores suelen ser de pago (entre 0,50€ y 1€) para garantizar su limpieza."
+    }
+  }]
+}
+</script>
+  
 </head>
 <body>
   <button id="hamburger">☰</button>
   <div id="sidebar"><nav>
-      <a href="index.html#mapa-section">🗺️ Mapa Interactivo</a>
+      <a href="index.html#mapa-section" class="active">🗺️ Mapa Interactivo</a>
       <a href="faq.html">❓ FAQ</a>
       <a href="contribuir.html">🤝 Contribuir</a>
       <a href="guia-viaje.html">📚 Guía de Viaje</a>
       <a href="salud-higiene.html">🏥 Salud e Higiene</a>
-      <a href="accesibilidad.html">♿ Accesibilidad</a>
       <a href="contacto.html">📞 Contacto</a>
     </nav></div>
   <header><h1>🚻 Aseos públicos cerca de mí</h1></header>
   <main>
     <section id="hero" class="hero-section">
-      <h1>🗺️ Encuentra Aseos Públicos Cerca de Ti</h1>
-      <p class="subtitle">Ya sea que estés explorando el centro de Madrid, paseando por las Ramblas de Barcelona, visitando la Basílica del Pilar en Zaragoza o disfrutando de la playa en Valencia, nuestro mapa colaborativo te ayuda a localizar baños públicos rápidamente.</p>
+      <h1>🗺️ Encuentra Baños Públicos Rápidamente</h1>
+      <p class="subtitle">La herramienta definitiva para localizar aseos en Madrid, Barcelona, Valencia y toda España.</p>
+      <p style="margin-top: 1.5em;">En <strong>AseosPublicos.es</strong> sabemos que la necesidad puede surgir en cualquier momento. Por eso, hemos cartografiado los mejores puntos de alivio en las principales ciudades españolas. Ya sea que busques un <strong>baño público gratuito</strong> o uno de pago con mejores servicios, nuestra comunidad te ayuda a encontrarlos en segundos. No pierdas tiempo dando vueltas y usa nuestro localizador en tiempo real.</p>
     </section>
+
     <div class="ad-container" id="ad-container"></div>
+
     <section id="mapa-section">
-      <h2>🗺️ Mapa Interactivo de Aseos Públicos en España</h2>
-      <p><strong>Explora el mapa para encontrar aseos públicos cerca de ti:</strong></p>
+      <h2>🗺️ Mapa de Aseos Públicos en España</h2>
+      <p><strong>Usa el mapa interactivo para localizar el servicio más cercano:</strong></p>
       <div class="responsive-iframe map-iframe">
         <iframe src="https://www.google.com/maps/d/embed?mid=1YRT_X5tf7YNgvNL7ubI6jaO1EoAFxlM&ehbc=2E312F&noprof=1" allowfullscreen></iframe>
       </div>
+      <p style="font-size: 0.9em; color: var(--muted); margin-bottom: 1.5em;">Este mapa colaborativo incluye cabinas municipales, centros culturales y establecimientos recomendados. Ten en cuenta que, aunque muchos son gratuitos, algunos requieren el pago de una pequeña tasa de mantenimiento.</p>
       <div style="text-align: center;"><button id="open-form-btn" class="btn-primary">Añadir nuevo baño al mapa</button></div>
     </section>
+
     <section>
-      <h2>🎯 ¿Por qué un Mapa de Aseos Públicos?</h2>
-      <p>Todos lo hemos vivido: estás paseando por Madrid, Barcelona o Zaragoza cuando aparece la urgencia. Este proyecto nace para que nadie tenga que sufrir la "búsqueda del aseo perdido".</p>
+      <h2>🎯 ¿Gratis o de Pago? Lo que debes saber</h2>
+      <p>Una de las preguntas más frecuentes es si los <strong>aseos públicos son gratis</strong>. En España, la situación varía según la ubicación y el gestor. La mayoría de las cabinas municipales en parques y plazas suelen ser gratuitas o funcionar con una moneda simbólica de 0,10€ a 0,50€. Sin embargo, en grandes nudos de transporte como estaciones de tren (Atocha, Sants) o estaciones de autobús, es muy común encontrar servicios privatizados de alta calidad que cobran entre 0,50€ y 1€.</p>
+      <p>Pagar por un aseo suele garantizar una limpieza constante y mayor seguridad. Aun así, nuestro mapa te indica opciones en bibliotecas, centros comerciales y edificios públicos donde el acceso suele ser totalmente gratuito. Te recomendamos llevar siempre algo de calderilla encima por si la urgencia te pilla en un lugar de pago.</p>
     </section>
+
     <section>
-      <h2>📖 Guía de Aseos Públicos en España</h2>
-      <h3>Madrid</h3><p>Los aseos públicos en Madrid se encuentran en estaciones de Metro, el Retiro, y centros comerciales.</p>
-      <h3>Barcelona</h3><p>Barcelona ofrece servicios en Las Ramblas, Barrio Gótico y cerca de la Sagrada Familia.</p>
-      <h3>Zaragoza</h3><p>En Zaragoza, los aseos están cerca de la Basílica del Pilar y el Parque Grande.</p>
-      <h3>Valencia</h3><p>Valencia cuenta con servicios en la Ciudad de las Artes y las playas.</p>
-      <h3>Sevilla</h3><p>Sevilla ofrece aseos en el centro histórico y el Parque de María Luisa.</p>
+      <h2>📖 Guía de Aseos por Ciudades</h2>
+      <p>Cada ciudad gestiona sus servicios de forma distinta. Es importante conocer las costumbres locales para no llevarse sorpresas.</p>
+      
+      <h3>Madrid y Barcelona</h3>
+      <p>En Madrid, los tótems autolimpiables son un clásico del centro. En Barcelona, los mercados municipales son el mejor refugio para quien busca un baño limpio. En ambas ciudades, los centros comerciales de las zonas turísticas son opciones excelentes y seguras.</p>
+      
+      <h3>Valencia, Zaragoza y Sevilla</h3>
+      <p>En el resto de España, los parques urbanos (como el Turia en Valencia o el Parque Grande en Zaragoza) cuentan con dotaciones sanitarias integradas. En Sevilla, los baños cerca de los monumentos principales suelen estar muy concurridos, por lo que te sugerimos consultar nuestro mapa para encontrar alternativas menos saturadas.</p>
     </section>
+
     <section>
-      <h2>💡 Consejos Prácticos</h2>
-      <p>Dirígete a estaciones de transporte, centros comerciales o parques urbanos. Lleva papel higiénico y gel desinfectante.</p>
-    </section>
-    <section>
-      <h2>⭐ Importancia de los Aseos Públicos</h2>
-      <p>Los aseos públicos son fundamentales para la salud pública, el turismo y la inclusión social en ciudades como Madrid, Barcelona, Zaragoza, Valencia y Sevilla.</p>
+      <h2>💡 Consejos de Supervivencia Urbana</h2>
+      <p>Para moverte por la ciudad sin agobios, recuerda estos tres pilares: lleva siempre gel desinfectante, ten monedas sueltas a mano para los baños de pago y consulta siempre nuestra web para ver si el punto al que vas sigue abierto o ha sido reportado como cerrado por la comunidad.</p>
     </section>
   </main>
+
   <div id="form-modal" class="modal">
     <div class="modal-content">
-      <span id="close-form-btn" class="close">&times;</span>
+      <span id="close-form-btn" class="close">×</span>
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe7JmVcb1ItOxqq2nTpmOV9bXP7o0c1JROk6YSjmBOrxNsD6Q/viewform?embedded=true"></iframe>
     </div>
   </div>
-  <div id="cookieBanner">Este sitio utiliza cookies para mostrar anuncios personalizados.<button id="btnAceptarCookies">Aceptar</button><button id="btnRechazarCookies">Rechazar</button></div>
+
+  <div id="cookieBanner">Este sitio utiliza cookies para mostrar anuncios personalizados. 
+  <a href="politica-cookies.html" style="color: #4CAF50; text-decoration: underline;">Leer más</a>.
+  <button id="btnAceptarCookies">Aceptar</button>
+  <button id="btnRechazarCookies">Rechazar</button>
+</div>
   <button id="install-btn">Instalar la App</button>
-  <footer>&copy; 2025 Aseos Públicos Cerca de Mí.</footer>
-  <script>const modal=document.getElementById("form-modal");const openBtn=document.getElementById("open-form-btn");const closeBtn=document.getElementById("close-form-btn");openBtn.addEventListener("click",()=>modal.style.display="block");closeBtn.addEventListener("click",()=>modal.style.display="none");window.addEventListener("click",e=>{if(e.target===modal)modal.style.display="none";});if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js');}
-const hamburger=document.getElementById('hamburger');
-const sidebar=document.getElementById('sidebar');
-const overlay=document.createElement('div');
-overlay.className='menu-overlay';
-document.body.appendChild(overlay);
-function openMenu(){
-  sidebar.classList.add('mobile-open');
-  overlay.classList.add('active');
-  document.body.classList.add('menu-open');
-  hamburger.classList.add('hidden');
-}
-function closeMenu(){
-  sidebar.classList.remove('mobile-open');
-  overlay.classList.remove('active');
-  document.body.classList.remove('menu-open');
-  hamburger.classList.remove('hidden');
-}
-hamburger.addEventListener('click',()=>{
-  if(sidebar.classList.contains('mobile-open')){closeMenu();}else{openMenu();}
-});
-overlay.addEventListener('click',closeMenu);
-const sidebarLinks=sidebar.querySelectorAll('a');
-sidebarLinks.forEach(link=>{
-  link.addEventListener('click',()=>{
-    if(window.innerWidth<768){closeMenu();}
-  });
-});
-const cookieBanner=document.getElementById("cookieBanner");
-const btnAceptarCookies=document.getElementById("btnAceptarCookies");
-const btnRechazarCookies=document.getElementById("btnRechazarCookies");
-const adContainer=document.getElementById("ad-container");
-function loadAdSense(){adContainer.innerHTML='<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0180568308288225" crossorigin="anonymous"></scr'+'ipt><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0180568308288225" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins><scr'+'ipt>(adsbygoogle=window.adsbygoogle||[]).push({});</scr'+'ipt>';}
-const decision=localStorage.getItem("cookiesDecision");
-if(decision==="accepted"){cookieBanner.style.display="none";loadAdSense();}else if(decision==="rejected"){cookieBanner.style.display="none";}else{cookieBanner.style.display="block";}
-btnAceptarCookies.addEventListener("click",()=>{localStorage.setItem("cookiesDecision","accepted");cookieBanner.style.display="none";loadAdSense();});
-btnRechazarCookies.addEventListener("click",()=>{localStorage.setItem("cookiesDecision","rejected");cookieBanner.style.display="none";});
-let deferredPrompt;
-const installBtn=document.getElementById('install-btn');
-window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;installBtn.style.display='block';});
-installBtn.addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();const result=await deferredPrompt.userChoice;deferredPrompt=null;installBtn.style.display='none';}});</script>
+
+  <footer>
+    <p>© 2026 Aseos Públicos Cerca de Mí.</p>
+    <p>
+      <a href="aviso-legal.html">Aviso Legal</a> | 
+      <a href="politica-privacidad.html">Privacidad</a> | 
+      <a href="politica-cookies.html">Cookies</a>
+    </p>
+  </footer>
+
+  <script>
+    /* Tu lógica original intacta */
+    const modal=document.getElementById("form-modal");const openBtn=document.getElementById("open-form-btn");const closeBtn=document.getElementById("close-form-btn");openBtn.addEventListener("click",()=>modal.style.display="block");closeBtn.addEventListener("click",()=>modal.style.display="none");window.addEventListener("click",e=>{if(e.target===modal)modal.style.display="none";});if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js');}
+    const hamburger=document.getElementById('hamburger');
+    const sidebar=document.getElementById('sidebar');
+    const overlay=document.createElement('div');
+    overlay.className='menu-overlay';
+    document.body.appendChild(overlay);
+    function openMenu(){
+      sidebar.classList.add('mobile-open');
+      overlay.classList.add('active');
+      document.body.classList.add('menu-open');
+      hamburger.classList.add('hidden');
+    }
+    function closeMenu(){
+      sidebar.classList.remove('mobile-open');
+      overlay.classList.remove('active');
+      document.body.classList.remove('menu-open');
+      hamburger.classList.remove('hidden');
+    }
+    hamburger.addEventListener('click',()=>{
+      if(sidebar.classList.contains('mobile-open')){closeMenu();}else{openMenu();}
+    });
+    overlay.addEventListener('click',closeMenu);
+    const sidebarLinks=sidebar.querySelectorAll('a');
+    sidebarLinks.forEach(link=>{
+      link.addEventListener('click',()=>{
+        if(window.innerWidth<768){closeMenu();}
+      });
+    });
+    const cookieBanner=document.getElementById("cookieBanner");
+    const btnAceptarCookies=document.getElementById("btnAceptarCookies");
+    const btnRechazarCookies=document.getElementById("btnRechazarCookies");
+    const adContainer=document.getElementById("ad-container");
+    function loadAdSense(){adContainer.innerHTML='<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0180568308288225" crossorigin="anonymous"></scr'+'ipt><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0180568308288225" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins><scr'+'ipt>(adsbygoogle=window.adsbygoogle||[]).push({});</scr'+'ipt>';}
+    const decision=localStorage.getItem("cookiesDecision");
+    if(decision==="accepted"){cookieBanner.style.display="none";loadAdSense();}else if(decision==="rejected"){cookieBanner.style.display="none";}else{cookieBanner.style.display="block";}
+    btnAceptarCookies.addEventListener("click",()=>{localStorage.setItem("cookiesDecision","accepted");cookieBanner.style.display="none";loadAdSense();});
+    btnRechazarCookies.addEventListener("click",()=>{localStorage.setItem("cookiesDecision","rejected");cookieBanner.style.display="none";});
+    let deferredPrompt;
+    const installBtn=document.getElementById('install-btn');
+    window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;installBtn.style.display='block';});
+    installBtn.addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();const result=await deferredPrompt.userChoice;deferredPrompt=null;installBtn.style.display='none';}});
+  </script>
 </body>
 </html>
