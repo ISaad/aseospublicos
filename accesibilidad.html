@@ -2,10 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Accesibilidad - Aseos</title>
+  <title>Accesibilidad en Baños Públicos - Aseos cerca de mí</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guía de accesibilidad en aseos públicos de España. Normativa, características de baños adaptados y estado de la red en Madrid, Barcelona y otras ciudades.">
   <meta name="google-adsense-account" content="ca-pub-0180568308288225">
-  <style>    :root {
+  <style>
+    :root {
       --primary: #2e7d32;
       --primary-dark: #1b5e20;
       --background: #f9fafb;
@@ -30,48 +32,28 @@
     @media (min-width: 768px) {#hamburger {display: none;}}
     #hamburger.hidden {opacity: 0; pointer-events: none; transform: scale(0.8);}
     main {padding: 2em 1em; max-width: 1200px; margin: 0 auto; position: relative; z-index: 80;}
-    section, .card {background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2em; margin-bottom: 2em; max-width: 800px; margin-left: auto; margin-right: auto;}
+    section {background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2em; margin-bottom: 2em; max-width: 800px; margin-left: auto; margin-right: auto;}
     h2 {margin-top: 0; margin-bottom: 1em; font-size: 1.6rem; color: var(--primary-dark);}
     h3 {margin-top: 1.5em; margin-bottom: 0.8em; font-size: 1.3rem; color: var(--primary-dark);}
     p {margin: 1em 0; line-height: 1.7;}
     ul {margin: 1em 0; padding-left: 2em;}
     li {margin: 0.5em 0;}
-    .hero-section {text-align: center;}
-    .hero-section h1 {font-size: 2rem; color: var(--primary-dark); margin-bottom: 0.5em; line-height: 1.2; word-wrap: break-word;}
-    @media (max-width: 768px) {.hero-section h1 {font-size: 1.5rem;}}
-    @media (max-width: 480px) {.hero-section h1 {font-size: 1.3rem;}}
-    .hero-section .subtitle {font-size: 1.1rem; color: var(--muted); margin-top: 0.5em;}
-    .responsive-iframe {position: relative; width: 100%; overflow: hidden; background: #eee; border-radius: var(--radius); box-shadow: var(--shadow); margin: 1.5em 0;}
-    .responsive-iframe iframe {position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: var(--radius);}
-    .map-iframe {padding-bottom: 65%;}
-    .btn-primary {background: var(--primary); color: white; border: none; padding: 1em 2em; border-radius: 8px; cursor: pointer; font-size: 1rem; box-shadow: var(--shadow); transition: background 0.3s; display: inline-block; text-decoration: none; margin: 1em 0;}
-    .btn-primary:hover {background: var(--primary-dark);}
-    .modal {display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6);}
-    .modal-content {background: #fff; margin: 5% auto; padding: 1em; border-radius: var(--radius); width: 90%; max-width: 700px; box-shadow: var(--shadow); position: relative;}
-    .modal-content iframe {width: 100%; height: 600px; border: 0; border-radius: var(--radius);}
-    .close {position: absolute; right: 15px; top: 10px; font-size: 1.8rem; cursor: pointer; color: #555;}
-    .close:hover {color: #000;}
-    .ad-container {text-align: center; margin: 2em 0;}
-    .ad-container:empty {display: none; margin: 0; padding: 0;}
     #cookieBanner {position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.85); color: white; text-align: center; padding: 14px; z-index: 10000;}
     #cookieBanner button {margin-left: 10px; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer;}
     #btnAceptarCookies {background: #4CAF50; color: white;}
     #btnRechazarCookies {background: #d9534f; color: white;}
     #install-btn {display: none; position: fixed; bottom: 20px; right: 20px; z-index: 1000; background: var(--primary); color: #fff; border: none; border-radius: 24px; padding: 0.9em 1.4em; font-size: 1em; box-shadow: var(--shadow); cursor: pointer; transition: background 0.2s;}
-    #install-btn:hover {background: var(--primary-dark);}
-    footer {text-align: center; color: var(--muted); font-size: 0.95em; padding: 2em 1em;}
-    .faq-item {margin-bottom: 2em;}
-    .faq-item h3 {color: var(--primary); margin-top: 0;}
+    footer {text-align: center; color: var(--muted); font-size: 0.95em; padding: 2em 1em; border-top: 1px solid #ddd; margin-top: 20px;}
+    footer a {color: var(--primary); text-decoration: none; margin: 0 10px;}
     .menu-overlay {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1050;}
-    @media (min-width: 768px) {.menu-overlay {display: none !important;}}
     .menu-overlay.active {display: block;}
     body.menu-open {overflow: hidden;}
-    @media (max-width: 767px) {body.menu-open main, body.menu-open header, body.menu-open footer {filter: blur(2px); pointer-events: none;}}</style>
+  </style>
 </head>
 <body>
   <button id="hamburger">☰</button>
   <div id="sidebar"><nav>
-      <a href="index.html#mapa-section">🗺️ Mapa Interactivo</a>
+      <a href="index.html">🗺️ Mapa Interactivo</a>
       <a href="faq.html">❓ FAQ</a>
       <a href="contribuir.html">🤝 Contribuir</a>
       <a href="guia-viaje.html">📚 Guía de Viaje</a>
@@ -79,65 +61,88 @@
       <a href="accesibilidad.html" class="active">♿ Accesibilidad</a>
       <a href="contacto.html">📞 Contacto</a>
     </nav></div>
-  <header><h1>🚻 Aseos públicos cerca de mí</h1></header>
+  <header><h1>♿ Accesibilidad en Aseos Públicos</h1></header>
   <main>
     <div class="ad-container" id="ad-container"></div>
-    <section><h2>♿ Accesibilidad</h2>
-      <p>Madrid, Barcelona, Zaragoza, Valencia y Sevilla han invertido en accesibilidad.</p>
-      <h3>Normativa</h3><p>Real Decreto 505/2007. Código Técnico de Edificación.</p>
-      <h3>Por Ciudad</h3>
-      <p><strong>Madrid:</strong> 70% Metro adaptado. Retiro con aseos accesibles.</p>
-      <p><strong>Barcelona:</strong> TMB mejorando. Playas adaptadas.</p>
-      <p><strong>Zaragoza:</strong> Modelo accesibilidad. Casco adaptado.</p>
-      <p><strong>Valencia:</strong> Ciudad Artes referente. Turia cada 500m.</p>
-      <p><strong>Sevilla:</strong> Centro mejorado. Catedral adaptada.</p>
-      <h3>Características</h3><p>1,50x1,80m, giro 1,50m, inodoro 45-50cm, barras apoyo, lavabo 70-80cm.</p>
+    <section>
+      <h2>Compromiso con la Accesibilidad Universal</h2>
+      <p>Garantizar el acceso a <strong>baños adaptados</strong> no es solo una cuestión de cumplir con la ley, es una necesidad social básica. En España, las grandes capitales como Madrid, Barcelona, Zaragoza, Valencia y Sevilla han realizado inversiones millonarias en la última década para eliminar barreras arquitectónicas en la red de servicios sanitarios públicos. Sin embargo, todavía queda mucho camino por recorrer para alcanzar una accesibilidad del 100%.</p>
+      
+      <h3>Normativa Vigente y Requisitos Técnicos</h3>
+      <p>La construcción y mantenimiento de aseos para personas con movilidad reducida se rige principalmente por el <strong>Real Decreto 505/2007</strong> y las especificaciones del Código Técnico de Edificación (CTE). Para que un baño sea considerado realmente accesible, debe cumplir con una serie de dimensiones mínimas:</p>
+      <ul>
+        <li><strong>Espacio de maniobra:</strong> Debe permitir un giro libre de obstáculos con un diámetro de 1,50 metros.</li>
+        <li><strong>Inodoro:</strong> La altura del asiento debe situarse entre los 45 y 50 cm para facilitar la transferencia desde la silla.</li>
+        <li><strong>Barras de apoyo:</strong> Deben instalarse barras firmes, preferiblemente una fija y otra abatible, para garantizar la seguridad.</li>
+        <li><strong>Lavabos:</strong> Deben estar a una altura de entre 70 y 80 cm, dejando espacio libre inferior para las piernas.</li>
+      </ul>
+
+      <h3>Situación por Ciudades: Análisis Detallado</h3>
+      <p><strong>Madrid:</strong> La capital destaca por tener más del 70% de su red de Metro totalmente adaptada, lo que incluye aseos en los intercambiadores principales. Parques históricos como El Retiro cuentan con módulos de aseos autolimpiables que incorporan tecnología de acceso para sillas de ruedas, aunque su mantenimiento a veces es irregular.</p>
+      <p><strong>Barcelona:</strong> La red de TMB está en constante mejora. Uno de los puntos fuertes de Barcelona es la accesibilidad en sus playas, donde los módulos de temporada suelen incluir servicios adaptados de alta calidad. Además, los mercados municipales renovados son el estándar de oro en accesibilidad urbana.</p>
+      <p><strong>Zaragoza:</strong> Se ha convertido en un modelo de accesibilidad nacional. Su casco histórico ha sido adaptado progresivamente y el recinto de la Expo es uno de los espacios con mejor dotación de baños públicos accesibles por metro cuadrado.</p>
+      <p><strong>Valencia y Sevilla:</strong> Valencia es un referente gracias a la Ciudad de las Artes y las Ciencias, totalmente adaptada. Por su parte, Sevilla ha hecho grandes esfuerzos en su centro histórico, adaptando incluso edificios monumentales para que los aseos cumplan con la normativa sin romper la estética del entorno.</p>
+
+      <h3>Desafíos y Futuro de la Inclusión</h3>
+      <p>El principal problema que detectamos en <strong>AseosPublicos.es</strong> no es solo la falta de infraestructura, sino la falta de información en tiempo real sobre si estos baños están operativos. Muchas veces, un baño adaptado está cerrado por avería o se usa como almacén improvisado. Por eso, animamos a nuestra comunidad a reportar cualquier incidencia. La accesibilidad universal solo será real cuando cualquier persona, independientemente de su condición, pueda planificar su ruta por la ciudad con la certeza de que encontrará un servicio digno y funcional.</p>
     </section>
   </main>
   
-  <div id="cookieBanner">Este sitio utiliza cookies.<button id="btnAceptarCookies">Aceptar</button><button id="btnRechazarCookies">Rechazar</button></div>
+  <div id="cookieBanner">
+    Este sitio utiliza cookies para mostrar anuncios personalizados. 
+    <a href="politica-cookies.html" style="color: #4CAF50; text-decoration: underline;">Leer más</a>.
+    <button id="btnAceptarCookies">Aceptar</button>
+    <button id="btnRechazarCookies">Rechazar</button>
+  </div>
   <button id="install-btn">Instalar la App</button>
-  <footer>&copy; 2025 Aseos Públicos Cerca de Mí.</footer>
-  <script>if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js');}
-const hamburger=document.getElementById('hamburger');
-const sidebar=document.getElementById('sidebar');
-const overlay=document.createElement('div');
-overlay.className='menu-overlay';
-document.body.appendChild(overlay);
-function openMenu(){
-  sidebar.classList.add('mobile-open');
-  overlay.classList.add('active');
-  document.body.classList.add('menu-open');
-  hamburger.classList.add('hidden');
-}
-function closeMenu(){
-  sidebar.classList.remove('mobile-open');
-  overlay.classList.remove('active');
-  document.body.classList.remove('menu-open');
-  hamburger.classList.remove('hidden');
-}
-hamburger.addEventListener('click',()=>{
-  if(sidebar.classList.contains('mobile-open')){closeMenu();}else{openMenu();}
-});
-overlay.addEventListener('click',closeMenu);
-const sidebarLinks=sidebar.querySelectorAll('a');
-sidebarLinks.forEach(link=>{
-  link.addEventListener('click',()=>{
-    if(window.innerWidth<768){closeMenu();}
-  });
-});
-const cookieBanner=document.getElementById("cookieBanner");
-const btnAceptarCookies=document.getElementById("btnAceptarCookies");
-const btnRechazarCookies=document.getElementById("btnRechazarCookies");
-const adContainer=document.getElementById("ad-container");
-function loadAdSense(){adContainer.innerHTML='<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0180568308288225" crossorigin="anonymous"></scr'+'ipt><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0180568308288225" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins><scr'+'ipt>(adsbygoogle=window.adsbygoogle||[]).push({});</scr'+'ipt>';}
-const decision=localStorage.getItem("cookiesDecision");
-if(decision==="accepted"){cookieBanner.style.display="none";loadAdSense();}else if(decision==="rejected"){cookieBanner.style.display="none";}else{cookieBanner.style.display="block";}
-btnAceptarCookies.addEventListener("click",()=>{localStorage.setItem("cookiesDecision","accepted");cookieBanner.style.display="none";loadAdSense();});
-btnRechazarCookies.addEventListener("click",()=>{localStorage.setItem("cookiesDecision","rejected");cookieBanner.style.display="none";});
-let deferredPrompt;
-const installBtn=document.getElementById('install-btn');
-window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;installBtn.style.display='block';});
-installBtn.addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();const result=await deferredPrompt.userChoice;deferredPrompt=null;installBtn.style.display='none';}});</script>
+  
+  <footer>
+    <p>© 2026 Aseos Públicos Cerca de Mí.</p>
+    <p>
+      <a href="aviso-legal.html">Aviso Legal</a> | 
+      <a href="politica-privacidad.html">Privacidad</a> | 
+      <a href="politica-cookies.html">Cookies</a>
+    </p>
+  </footer>
+
+  <script>
+    if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js');}
+    const hamburger=document.getElementById('hamburger');
+    const sidebar=document.getElementById('sidebar');
+    const overlay=document.createElement('div');
+    overlay.className='menu-overlay';
+    document.body.appendChild(overlay);
+    function openMenu(){
+      sidebar.classList.add('mobile-open');
+      overlay.classList.add('active');
+      document.body.classList.add('menu-open');
+      hamburger.classList.add('hidden');
+    }
+    function closeMenu(){
+      sidebar.classList.remove('mobile-open');
+      overlay.classList.remove('active');
+      document.body.classList.remove('menu-open');
+      hamburger.classList.remove('hidden');
+    }
+    hamburger.addEventListener('click',()=>{
+      if(sidebar.classList.contains('mobile-open')){closeMenu();}else{openMenu();}
+    });
+    overlay.addEventListener('click',closeMenu);
+    
+    const cookieBanner=document.getElementById("cookieBanner");
+    const btnAceptarCookies=document.getElementById("btnAceptarCookies");
+    const btnRechazarCookies=document.getElementById("btnRechazarCookies");
+    const adContainer=document.getElementById("ad-container");
+    function loadAdSense(){adContainer.innerHTML='<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0180568308288225" crossorigin="anonymous"></scr'+'ipt><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0180568308288225" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins><scr'+'ipt>(adsbygoogle=window.adsbygoogle||[]).push({});</scr'+'ipt>';}
+    const decision=localStorage.getItem("cookiesDecision");
+    if(decision==="accepted"){cookieBanner.style.display="none";loadAdSense();}else if(decision==="rejected"){cookieBanner.style.display="none";}else{cookieBanner.style.display="block";}
+    btnAceptarCookies.addEventListener("click",()=>{localStorage.setItem("cookiesDecision","accepted");cookieBanner.style.display="none";loadAdSense();});
+    btnRechazarCookies.addEventListener("click",()=>{localStorage.setItem("cookiesDecision","rejected");cookieBanner.style.display="none";});
+
+    let deferredPrompt;
+    const installBtn=document.getElementById('install-btn');
+    window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;installBtn.style.display='block';});
+    installBtn.addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();const result=await deferredPrompt.userChoice;deferredPrompt=null;installBtn.style.display='none';}});
+  </script>
 </body>
 </html>
