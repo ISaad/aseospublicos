@@ -1,141 +1,156 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Contacto - Aseos</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-adsense-account" content="ca-pub-0180568308288225">
-  <style>    :root {
-      --primary: #2e7d32;
-      --primary-dark: #1b5e20;
-      --background: #f9fafb;
-      --card-bg: #fff;
-      --text: #333;
-      --muted: #666;
-      --radius: 12px;
-      --shadow: 0 4px 12px rgba(0,0,0,0.06);
-    }
-    * {margin: 0; padding: 0; box-sizing: border-box;}
-    body {font-family: "Segoe UI", Roboto, Arial, sans-serif; margin: 0; padding: 0; background: var(--background); color: var(--text); line-height: 1.6; padding-left: 0; transition: transform 0.3s ease;}
-    @media (min-width: 768px) {body {padding-left: 250px;}}
-    header {background: var(--primary); color: #fff; padding: 1.5em 1em; text-align: center; box-shadow: var(--shadow); position: relative; z-index: 90;}
-    header h1 {margin: 0; font-size: 1.6rem; font-weight: 600;}
-    #sidebar {position: fixed; left: -250px; top: 0; width: 250px; height: 100vh; background: #fff; box-shadow: 2px 0 10px rgba(0,0,0,0.1); padding: 1em 0; z-index: 1100; overflow-y: auto; transition: left 0.3s ease;}
-    @media (min-width: 768px) {#sidebar {left: 0; padding: 2em 0;}}
-    #sidebar.mobile-open {left: 0;}
-    #sidebar nav {padding-top: 1em;}
-    #sidebar nav a {display: block; padding: 0.8em 1.5em; color: var(--text); text-decoration: none; transition: all 0.3s; border-left: 3px solid transparent;}
-    #sidebar nav a:hover, #sidebar nav a.active {background: #f0f0f0; border-left-color: var(--primary); color: var(--primary);}
-    #hamburger {position: fixed; top: 1.2em; left: 1em; z-index: 2000; background: white; border: none; border-radius: 8px; padding: 0.8em; cursor: pointer; box-shadow: var(--shadow); font-size: 1.5rem; display: block; transition: opacity 0.3s ease, transform 0.3s ease;}
-    @media (min-width: 768px) {#hamburger {display: none;}}
-    #hamburger.hidden {opacity: 0; pointer-events: none; transform: scale(0.8);}
-    main {padding: 2em 1em; max-width: 1200px; margin: 0 auto; position: relative; z-index: 80;}
-    section, .card {background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2em; margin-bottom: 2em; max-width: 800px; margin-left: auto; margin-right: auto;}
-    h2 {margin-top: 0; margin-bottom: 1em; font-size: 1.6rem; color: var(--primary-dark);}
-    h3 {margin-top: 1.5em; margin-bottom: 0.8em; font-size: 1.3rem; color: var(--primary-dark);}
-    p {margin: 1em 0; line-height: 1.7;}
-    ul {margin: 1em 0; padding-left: 2em;}
-    li {margin: 0.5em 0;}
-    .hero-section {text-align: center;}
-    .hero-section h1 {font-size: 2rem; color: var(--primary-dark); margin-bottom: 0.5em; line-height: 1.2; word-wrap: break-word;}
-    @media (max-width: 768px) {.hero-section h1 {font-size: 1.5rem;}}
-    @media (max-width: 480px) {.hero-section h1 {font-size: 1.3rem;}}
-    .hero-section .subtitle {font-size: 1.1rem; color: var(--muted); margin-top: 0.5em;}
-    .responsive-iframe {position: relative; width: 100%; overflow: hidden; background: #eee; border-radius: var(--radius); box-shadow: var(--shadow); margin: 1.5em 0;}
-    .responsive-iframe iframe {position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; border-radius: var(--radius);}
-    .map-iframe {padding-bottom: 65%;}
-    .btn-primary {background: var(--primary); color: white; border: none; padding: 1em 2em; border-radius: 8px; cursor: pointer; font-size: 1rem; box-shadow: var(--shadow); transition: background 0.3s; display: inline-block; text-decoration: none; margin: 1em 0;}
-    .btn-primary:hover {background: var(--primary-dark);}
-    .modal {display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6);}
-    .modal-content {background: #fff; margin: 5% auto; padding: 1em; border-radius: var(--radius); width: 90%; max-width: 700px; box-shadow: var(--shadow); position: relative;}
-    .modal-content iframe {width: 100%; height: 600px; border: 0; border-radius: var(--radius);}
-    .close {position: absolute; right: 15px; top: 10px; font-size: 1.8rem; cursor: pointer; color: #555;}
-    .close:hover {color: #000;}
-    .ad-container {text-align: center; margin: 2em 0;}
-    .ad-container:empty {display: none; margin: 0; padding: 0;}
-    #cookieBanner {position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.85); color: white; text-align: center; padding: 14px; z-index: 10000;}
-    #cookieBanner button {margin-left: 10px; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer;}
-    #btnAceptarCookies {background: #4CAF50; color: white;}
-    #btnRechazarCookies {background: #d9534f; color: white;}
-    #install-btn {display: none; position: fixed; bottom: 20px; right: 20px; z-index: 1000; background: var(--primary); color: #fff; border: none; border-radius: 24px; padding: 0.9em 1.4em; font-size: 1em; box-shadow: var(--shadow); cursor: pointer; transition: background 0.2s;}
-    #install-btn:hover {background: var(--primary-dark);}
-    footer {text-align: center; color: var(--muted); font-size: 0.95em; padding: 2em 1em;}
-    .faq-item {margin-bottom: 2em;}
-    .faq-item h3 {color: var(--primary); margin-top: 0;}
-    .menu-overlay {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1050;}
-    @media (min-width: 768px) {.menu-overlay {display: none !important;}}
-    .menu-overlay.active {display: block;}
-    body.menu-open {overflow: hidden;}
-    @media (max-width: 767px) {body.menu-open main, body.menu-open header, body.menu-open footer {filter: blur(2px); pointer-events: none;}}</style>
-</head>
-<body>
-  <button id="hamburger">☰</button>
-  <div id="sidebar"><nav>
-      <a href="index.html#mapa-section">🗺️ Mapa Interactivo</a>
-      <a href="faq.html">❓ FAQ</a>
-      <a href="contribuir.html">🤝 Contribuir</a>
-      <a href="guia-viaje.html">📚 Guía de Viaje</a>
-      <a href="salud-higiene.html">🏥 Salud e Higiene</a>
-      <a href="accesibilidad.html">♿ Accesibilidad</a>
-      <a href="contacto.html" class="active">📞 Contacto</a>
-    </nav></div>
-  <header><h1>🚻 Aseos públicos cerca de mí</h1></header>
-  <main>
-    <div class="ad-container" id="ad-container"></div>
-    <section><h2>📞 Contacto</h2>
-      <p>Gracias por tu interés en nuestro mapa colaborativo de aseos públicos.</p>
-      <h3>Reportar Problemas</h3>
-      <ul><li>Madrid: 010</li><li>Barcelona: 010</li><li>Zaragoza: 010</li><li>Valencia: 010</li><li>Sevilla: 010</li></ul>
-      <h3>Privacidad</h3><p>Cookies técnicas necesarias. AdSense opcional. Derechos RGPD: acceder, rectificar, suprimir, portar datos.</p>
-      <h3>Cookies</h3><p>Necesarias: cookiesDecision. AdSense: opcional. Service Worker: PWA offline.</p>
-      <h3>Legal</h3><p>Proyecto comunitario sin ánimo de lucro. Información de usuarios. No garantizamos 100% exactitud.</p>
-      <h3>Proyecto</h3><p>Misión: mapa completo España. Visión: aseos siempre disponibles. Valores: colaboración, accesibilidad, transparencia.</p>
-    </section>
-  </main>
-  
-  <div id="cookieBanner">Este sitio utiliza cookies.<button id="btnAceptarCookies">Aceptar</button><button id="btnRechazarCookies">Rechazar</button></div>
-  <button id="install-btn">Instalar la App</button>
-  <footer>&copy; 2025 Aseos Públicos Cerca de Mí.</footer>
-  <script>if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js');}
-const hamburger=document.getElementById('hamburger');
-const sidebar=document.getElementById('sidebar');
-const overlay=document.createElement('div');
-overlay.className='menu-overlay';
-document.body.appendChild(overlay);
-function openMenu(){
-  sidebar.classList.add('mobile-open');
-  overlay.classList.add('active');
-  document.body.classList.add('menu-open');
-  hamburger.classList.add('hidden');
-}
-function closeMenu(){
-  sidebar.classList.remove('mobile-open');
-  overlay.classList.remove('active');
-  document.body.classList.remove('menu-open');
-  hamburger.classList.remove('hidden');
-}
-hamburger.addEventListener('click',()=>{
-  if(sidebar.classList.contains('mobile-open')){closeMenu();}else{openMenu();}
-});
-overlay.addEventListener('click',closeMenu);
-const sidebarLinks=sidebar.querySelectorAll('a');
-sidebarLinks.forEach(link=>{
-  link.addEventListener('click',()=>{
-    if(window.innerWidth<768){closeMenu();}
-  });
-});
-const cookieBanner=document.getElementById("cookieBanner");
-const btnAceptarCookies=document.getElementById("btnAceptarCookies");
-const btnRechazarCookies=document.getElementById("btnRechazarCookies");
-const adContainer=document.getElementById("ad-container");
-function loadAdSense(){adContainer.innerHTML='<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0180568308288225" crossorigin="anonymous"></scr'+'ipt><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0180568308288225" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins><scr'+'ipt>(adsbygoogle=window.adsbygoogle||[]).push({});</scr'+'ipt>';}
-const decision=localStorage.getItem("cookiesDecision");
-if(decision==="accepted"){cookieBanner.style.display="none";loadAdSense();}else if(decision==="rejected"){cookieBanner.style.display="none";}else{cookieBanner.style.display="block";}
-btnAceptarCookies.addEventListener("click",()=>{localStorage.setItem("cookiesDecision","accepted");cookieBanner.style.display="none";loadAdSense();});
-btnRechazarCookies.addEventListener("click",()=>{localStorage.setItem("cookiesDecision","rejected");cookieBanner.style.display="none";});
-let deferredPrompt;
-const installBtn=document.getElementById('install-btn');
-window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;installBtn.style.display='block';});
-installBtn.addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();const result=await deferredPrompt.userChoice;deferredPrompt=null;installBtn.style.display='none';}});</script>
-</body>
-</html>
+	<!DOCTYPE html>
+	<html lang="es">
+	<head>
+	  <meta charset="UTF-8">
+	  <title>Contacto y Soporte - Aseos Públicos Cerca de Mí</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <meta name="description" content="Contacta con el equipo de AseosPublicos.es. Reporta incidencias, colabora con nuestro mapa de baños y conoce nuestra misión y valores.">
+	  <meta name="google-adsense-account" content="ca-pub-0180568308288225">
+	  <style>
+		:root {
+		  --primary: #2e7d32;
+		  --primary-dark: #1b5e20;
+		  --background: #f9fafb;
+		  --card-bg: #fff;
+		  --text: #333;
+		  --muted: #666;
+		  --radius: 12px;
+		  --shadow: 0 4px 12px rgba(0,0,0,0.06);
+		}
+		* {margin: 0; padding: 0; box-sizing: border-box;}
+		body {font-family: "Segoe UI", Roboto, Arial, sans-serif; margin: 0; padding: 0; background: var(--background); color: var(--text); line-height: 1.6; padding-left: 0; transition: transform 0.3s ease;}
+		@media (min-width: 768px) {body {padding-left: 250px;}}
+		header {background: var(--primary); color: #fff; padding: 1.5em 1em; text-align: center; box-shadow: var(--shadow); position: relative; z-index: 90;}
+		header h1 {margin: 0; font-size: 1.6rem; font-weight: 600;}
+		#sidebar {position: fixed; left: -250px; top: 0; width: 250px; height: 100vh; background: #fff; box-shadow: 2px 0 10px rgba(0,0,0,0.1); padding: 1em 0; z-index: 1100; overflow-y: auto; transition: left 0.3s ease;}
+		@media (min-width: 768px) {#sidebar {left: 0; padding: 2em 0;}}
+		#sidebar.mobile-open {left: 0;}
+		#sidebar nav {padding-top: 1em;}
+		#sidebar nav a {display: block; padding: 0.8em 1.5em; color: var(--text); text-decoration: none; transition: all 0.3s; border-left: 3px solid transparent;}
+		#sidebar nav a:hover, #sidebar nav a.active {background: #f0f0f0; border-left-color: var(--primary); color: var(--primary);}
+		#hamburger {position: fixed; top: 1.2em; left: 1em; z-index: 2000; background: white; border: none; border-radius: 8px; padding: 0.8em; cursor: pointer; box-shadow: var(--shadow); font-size: 1.5rem; display: block; transition: opacity 0.3s ease, transform 0.3s ease;}
+		@media (min-width: 768px) {#hamburger {display: none;}}
+		#hamburger.hidden {opacity: 0; pointer-events: none; transform: scale(0.8);}
+		main {padding: 2em 1em; max-width: 1200px; margin: 0 auto; position: relative; z-index: 80;}
+		section {background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2em; margin-bottom: 2em; max-width: 800px; margin-left: auto; margin-right: auto;}
+		h2 {margin-top: 0; margin-bottom: 1em; font-size: 1.6rem; color: var(--primary-dark);}
+		h3 {margin-top: 1.5em; margin-bottom: 0.8em; font-size: 1.3rem; color: var(--primary-dark);}
+		p {margin: 1em 0; line-height: 1.7;}
+		ul {margin: 1em 0; padding-left: 2em;}
+		li {margin: 0.5em 0;}
+		#cookieBanner {position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.85); color: white; text-align: center; padding: 14px; z-index: 10000;}
+		#cookieBanner button {margin-left: 10px; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer;}
+		#btnAceptarCookies {background: #4CAF50; color: white;}
+		#btnRechazarCookies {background: #d9534f; color: white;}
+		#install-btn {display: none; position: fixed; bottom: 20px; right: 20px; z-index: 1000; background: var(--primary); color: #fff; border: none; border-radius: 24px; padding: 0.9em 1.4em; font-size: 1em; box-shadow: var(--shadow); cursor: pointer; transition: background 0.2s;}
+		footer {text-align: center; color: var(--muted); font-size: 0.95em; padding: 2em 1em; border-top: 1px solid #ddd; margin-top: 20px;}
+		footer a {color: var(--primary); text-decoration: none; margin: 0 10px;}
+		.menu-overlay {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1050;}
+		.menu-overlay.active {display: block;}
+		body.menu-open {overflow: hidden;}
+	  </style>
+	</head>
+	<body>
+	  <button id="hamburger">☰</button>
+	  <div id="sidebar"><nav>
+		  <a href="index.html">🗺️ Mapa Interactivo</a>
+		  <a href="faq.html">❓ FAQ</a>
+		  <a href="contribuir.html">🤝 Contribuir</a>
+		  <a href="guia-viaje.html">📚 Guía de Viaje</a>
+		  <a href="salud-higiene.html">🏥 Salud e Higiene</a>
+		  <a href="accesibilidad.html">♿ Accesibilidad</a>
+		  <a href="contacto.html" class="active">📞 Contacto</a>
+		</nav></div>
+	  <header><h1>📞 Contacto y Colaboración</h1></header>
+	  <main>
+		<div class="ad-container" id="ad-container"></div>
+		<section>
+		  <h2>¿Cómo puedes contactar con nosotros?</h2>
+		  <p>Gracias por tu interés en <strong>AseosPublicos.es</strong>. Somos una plataforma impulsada por la comunidad y tu opinión es vital para que este mapa siga siendo útil para miles de personas cada día. Si tienes dudas, sugerencias de mejora o simplemente quieres saludarnos, estamos aquí para escucharte.</p>
+		  
+		  <h3>Reportar Problemas con Instalaciones Municipales</h3>
+		  <p>Es importante aclarar que nosotros no gestionamos físicamente los aseos. Si encuentras un baño público municipal sucio, averiado o cerrado en horario operativo, te recomendamos contactar directamente con los servicios de atención al ciudadano de cada ayuntamiento:</p>
+		  <ul>
+			<li><strong>Madrid:</strong> Llama al 010 o usa la app "Avisos Madrid".</li>
+			<li><strong>Barcelona:</strong> Teléfono 010 o a través del portal "Barcelona a tu lado".</li>
+			<li><strong>Zaragoza:</strong> Teléfono 010 de Atención al Ciudadano.</li>
+			<li><strong>Valencia:</strong> Servicio 010 y redes sociales del Ayuntamiento.</li>
+			<li><strong>Sevilla:</strong> Teléfono 010 y servicio de Línea Sevilla.</li>
+		  </ul>
+
+		  <h3>Nuestra Misión, Visión y Valores</h3>
+		  <p>Este proyecto nace con una <strong>misión clara</strong>: democratizar el acceso a la información sobre servicios sanitarios en el espacio público español. Creemos que el acceso a un aseo limpio y seguro es un derecho fundamental que mejora la calidad de vida urbana.</p>
+		  <p>Nuestra <strong>visión</strong> es convertirnos en la base de datos de referencia en España, integrando no solo puntos geográficos, sino también valoraciones reales sobre el estado de higiene y la disponibilidad de servicios adicionales como cambiadores de bebés o acceso para personas con movilidad reducida.</p>
+		  <p>Nos movemos por tres <strong>valores principales</strong>:</p>
+		  <ul>
+			<li><strong>Colaboración:</strong> La web es de todos y para todos.</li>
+			<li><strong>Transparencia:</strong> Información real, sin filtros, proporcionada por usuarios como tú.</li>
+			<li><strong>Accesibilidad:</strong> Fomentar que las ciudades sean amigables para todos los colectivos.</li>
+		  </ul>
+
+		  <h3>Compromiso con la Privacidad y el RGPD</h3>
+		  <p>En cumplimiento con el Reglamento General de Protección de Datos (RGPD), te informamos que el uso de esta web es anónimo. No guardamos correos electrónicos en bases de datos a menos que utilices específicamente el formulario de contribución para reportar un punto. Tienes derecho a acceder, rectificar o suprimir cualquier dato que hayas compartido con nosotros escribiendo a nuestro contacto de soporte en GitHub o a través de las herramientas de privacidad de Google, que gestionan los anuncios de AdSense.</p>
+
+		  <h3>Soporte Técnico y Bugs</h3>
+		  <p>Si la web no carga correctamente el mapa o experimentas problemas con la instalación de la PWA (Aplicación Web Progresiva) en tu móvil, asegúrate de haber aceptado las cookies técnicas y de tener conexión a internet. Este proyecto es comunitario y sin ánimo de lucro, por lo que agradecemos tu paciencia si tardamos un poco en responder a reportes técnicos complejos.</p>
+		</section>
+	  </main>
+	  
+	  <div id="cookieBanner">
+		Este sitio utiliza cookies para mostrar anuncios personalizados. 
+		<a href="politica-cookies.html" style="color: #4CAF50; text-decoration: underline;">Leer más</a>.
+		<button id="btnAceptarCookies">Aceptar</button>
+		<button id="btnRechazarCookies">Rechazar</button>
+	  </div>
+	  <button id="install-btn">Instalar la App</button>
+	  
+	  <footer>
+		<p>© 2026 Aseos Públicos Cerca de Mí.</p>
+		<p>
+		  <a href="aviso-legal.html">Aviso Legal</a> | 
+		  <a href="politica-privacidad.html">Privacidad</a> | 
+		  <a href="politica-cookies.html">Cookies</a>
+		</p>
+	  </footer>
+
+	  <script>
+		if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js');}
+		const hamburger=document.getElementById('hamburger');
+		const sidebar=document.getElementById('sidebar');
+		const overlay=document.createElement('div');
+		overlay.className='menu-overlay';
+		document.body.appendChild(overlay);
+		function openMenu(){
+		  sidebar.classList.add('mobile-open');
+		  overlay.classList.add('active');
+		  document.body.classList.add('menu-open');
+		  hamburger.classList.add('hidden');
+		}
+		function closeMenu(){
+		  sidebar.classList.remove('mobile-open');
+		  overlay.classList.remove('active');
+		  document.body.classList.remove('menu-open');
+		  hamburger.classList.remove('hidden');
+		}
+		hamburger.addEventListener('click',()=>{
+		  if(sidebar.classList.contains('mobile-open')){closeMenu();}else{openMenu();}
+		});
+		overlay.addEventListener('click',closeMenu);
+		
+		const cookieBanner=document.getElementById("cookieBanner");
+		const btnAceptarCookies=document.getElementById("btnAceptarCookies");
+		const btnRechazarCookies=document.getElementById("btnRechazarCookies");
+		const adContainer=document.getElementById("ad-container");
+		function loadAdSense(){adContainer.innerHTML='<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0180568308288225" crossorigin="anonymous"></scr'+'ipt><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0180568308288225" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins><scr'+'ipt>(adsbygoogle=window.adsbygoogle||[]).push({});</scr'+'ipt>';}
+		const decision=localStorage.getItem("cookiesDecision");
+		if(decision==="accepted"){cookieBanner.style.display="none";loadAdSense();}else if(decision==="rejected"){cookieBanner.style.display="none";}else{cookieBanner.style.display="block";}
+		btnAceptarCookies.addEventListener("click",()=>{localStorage.setItem("cookiesDecision","accepted");cookieBanner.style.display="none";loadAdSense();});
+		btnRechazarCookies.addEventListener("click",()=>{localStorage.setItem("cookiesDecision","rejected");cookieBanner.style.display="none";});
+
+		let deferredPrompt;
+		const installBtn=document.getElementById('install-btn');
+		window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;installBtn.style.display='block';});
+		installBtn.addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();const result=await deferredPrompt.userChoice;deferredPrompt=null;installBtn.style.display='none';}});
+	  </script>
+	</body>
+	</html>
