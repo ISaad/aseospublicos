@@ -33,7 +33,7 @@
     #sidebar nav a {display: block; padding: 0.8em 1.5em; color: var(--text); text-decoration: none; transition: all 0.3s; border-left: 3px solid transparent;}
     #sidebar nav a:hover, #sidebar nav a.active {background: #f0f0f0; border-left-color: var(--primary); color: var(--primary);}
     #hamburger {position: fixed; top: 1.2em; left: 1em; z-index: 2000; background: white; border: none; border-radius: 8px; padding: 0.8em; cursor: pointer; box-shadow: var(--shadow); font-size: 1.5rem; display: block; transition: opacity 0.3s ease, transform 0.3s ease;}
-    @media (min-width: 768px) {#hamburger {display: none;}}
+    @media (min-width: 768px) { #hamburger {display: none;} }
     #hamburger.hidden {opacity: 0; pointer-events: none; transform: scale(0.8);}
     main {padding: 2em 1em; max-width: 1200px; margin: 0 auto; position: relative; z-index: 80;}
     section, .card {background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2em; margin-bottom: 2em; max-width: 800px; margin-left: auto; margin-right: auto;}
@@ -73,7 +73,7 @@
     body.menu-open {overflow: hidden;}
     @media (max-width: 767px) {body.menu-open main, body.menu-open header, body.menu-open footer {filter: blur(2px); pointer-events: none;}}
   </style>
-  
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -111,7 +111,6 @@
   }]
 }
 </script>
-  
 </head>
 <body>
   <button id="hamburger">☰</button>
@@ -121,6 +120,7 @@
       <a href="contribuir.html">🤝 Contribuir</a>
       <a href="guia-viaje.html">📚 Guía de Viaje</a>
       <a href="salud-higiene.html">🏥 Salud e Higiene</a>
+      <a href="accesibilidad.html">♿ Accesibilidad</a>
       <a href="contacto.html">📞 Contacto</a>
     </nav></div>
   <header><h1>🚻 Aseos públicos cerca de mí</h1></header>
@@ -152,10 +152,8 @@
     <section>
       <h2>📖 Guía de Aseos por Ciudades</h2>
       <p>Cada ciudad gestiona sus servicios de forma distinta. Es importante conocer las costumbres locales para no llevarse sorpresas.</p>
-      
       <h3>Madrid y Barcelona</h3>
       <p>En Madrid, los tótems autolimpiables son un clásico del centro. En Barcelona, los mercados municipales son el mejor refugio para quien busca un baño limpio. En ambas ciudades, los centros comerciales de las zonas turísticas son opciones excelentes y seguras.</p>
-      
       <h3>Valencia, Zaragoza y Sevilla</h3>
       <p>En el resto de España, los parques urbanos (como el Turia en Valencia o el Parque Grande en Zaragoza) cuentan con dotaciones sanitarias integradas. En Sevilla, los baños cerca de los monumentos principales suelen estar muy concurridos, por lo que te sugerimos consultar nuestro mapa para encontrar alternativas menos saturadas.</p>
     </section>
