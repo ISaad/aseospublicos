@@ -1,42 +1,179 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <link rel="canonical" href="https://www.aseospublicos.es/aviso-legal.html" />
   <meta charset="UTF-8">
   <title>Aviso Legal - Aseos Públicos Cerca de Mí</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    :root { --primary: #2e7d32; --primary-dark: #1b5e20; --background: #f9fafb; --card-bg: #fff; --text: #333; --muted: #666; --radius: 12px; --shadow: 0 4px 12px rgba(0,0,0,0.06); }
-    body {font-family: "Segoe UI", Roboto, Arial, sans-serif; margin: 0; padding: 0; background: var(--background); color: var(--text); line-height: 1.6; transition: transform 0.3s ease;}
-    @media (min-width: 768px) {body {padding-left: 250px;}}
-    header {background: var(--primary); color: #fff; padding: 1.5em 1em; text-align: center; box-shadow: var(--shadow);}
-    #sidebar {position: fixed; left: 0; top: 0; width: 250px; height: 100vh; background: #fff; box-shadow: 2px 0 10px rgba(0,0,0,0.1); padding: 2em 0; z-index: 1100;}
-    @media (max-width: 767px) {#sidebar {display: none;}}
-    #sidebar nav a {display: block; padding: 0.8em 1.5em; color: var(--text); text-decoration: none; transition: all 0.3s; border-left: 3px solid transparent;}
-    #sidebar nav a:hover {background: #f0f0f0; border-left-color: var(--primary); color: var(--primary);}
-    main {padding: 2em 1em; max-width: 800px; margin: 0 auto;}
-    section {background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2em; margin-bottom: 2em;}
-    h2 {color: var(--primary-dark); margin-top: 0;}
-    footer {text-align: center; color: var(--muted); padding: 2em;}
-    .btn-back {display: inline-block; margin-top: 20px; color: var(--primary); text-decoration: none; font-weight: bold;}
+    :root {
+      --primary: #2e7d32;
+      --primary-dark: #1b5e20;
+      --background: #f9fafb;
+      --card-bg: #fff;
+      --text: #333;
+      --muted: #666;
+      --radius: 12px;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      transition: transform 0.3s ease;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding-left: 250px;
+      }
+    }
+
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 1.5em 1em;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    #sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 250px;
+      height: 100vh;
+      background: #fff;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      padding: 2em 0;
+      z-index: 1100;
+    }
+
+    @media (max-width: 767px) {
+      #sidebar {
+        display: none;
+      }
+    }
+
+    #sidebar nav a {
+      display: block;
+      padding: 0.8em 1.5em;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.3s;
+      border-left: 3px solid transparent;
+    }
+
+    #sidebar nav a:hover {
+      background: #f0f0f0;
+      border-left-color: var(--primary);
+      color: var(--primary);
+    }
+
+    main {
+      padding: 2em 1em;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2em;
+      margin-bottom: 2em;
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      margin-top: 1.5em;
+      font-size: 1.4rem;
+    }
+
+    h2:first-of-type {
+      margin-top: 0;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 2em;
+    }
+
+    .btn-back {
+      display: inline-block;
+      margin-top: 20px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+    }
   </style>
 </head>
+
 <body>
   <div id="sidebar">
     <nav><a href="index.html">🗺️ Volver al Mapa</a></nav>
   </div>
-  <header><h1>Aviso Legal</h1></header>
+  <header>
+    <h1>Aviso Legal</h1>
+  </header>
   <main>
     <section>
-      <h2>1. Información General</h2>
-      <p>En cumplimiento de la Ley 34/2002, de 11 de julio, de servicios de la sociedad de la información y de comercio electrónico, se informa que el sitio web <strong>AseosPublicos.es</strong> es un proyecto informativo gestionado de forma colaborativa.</p>
-      <h2>2. Responsabilidad de Contenidos</h2>
-      <p>La información mostrada en el mapa proviene de fuentes públicas y aportaciones de usuarios. No garantizamos la disponibilidad permanente ni el estado de limpieza de los aseos listados. Asimismo, advertimos que algunos servicios pueden ser de pago según la entidad que los gestione.</p>
-      <h2>3. Propiedad Intelectual</h2>
-      <p>El código y diseño de esta web son propiedad del titular. Queda prohibida la reproducción total o parcial sin autorización.</p>
+      <h2>1. Datos Identificativos</h2>
+      <p>En cumplimiento con el deber de información recogido en el artículo 10 de la Ley 34/2002, de 11 de julio, de
+        Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSI-CE), se facilitan los siguientes
+        datos:</p>
+      <ul>
+        <li><strong>Titular:</strong> Proyecto AseosPublicos.es</li>
+        <li><strong>Email:</strong> <a href="mailto:hola@aseospublicos.es">hola@aseospublicos.es</a></li>
+        <li><strong>Sitio Web:</strong> www.aseospublicos.es</li>
+      </ul>
+
+      <h2>2. Usuarios</h2>
+      <p>El acceso y/o uso de este portal atribuye la condición de USUARIO, que acepta, desde dicho acceso y/o uso, las
+        Condiciones Generales de Uso aquí reflejadas.</p>
+
+      <h2>3. Uso del Portal</h2>
+      <p>AseosPublicos.es proporciona el acceso a multitud de informaciones, servicios o datos (en adelante, "los
+        contenidos") en Internet pertenecientes al titular o a sus licenciantes. El USUARIO asume la responsabilidad del
+        uso del portal.</p>
+
+      <h2>4. Exclusión de Garantías y Responsabilidad</h2>
+      <p>El titular no se hace responsable, en ningún caso, de los daños y perjuicios de cualquier naturaleza que
+        pudieran ocasionar, a título enunciativo: errores u omisiones en los contenidos, falta de disponibilidad del
+        portal o la transmisión de virus o programas maliciosos o lesivos en los contenidos, a pesar de haber adoptado
+        todas las medidas tecnológicas necesarias para evitarlo.</p>
+
+      <p>La información sobre la ubicación y estado de los aseos es colaborativa y puede no estar actualizada. Se
+        recomienda siempre verificar la información in situ.</p>
+
+      <h2>5. Modificaciones</h2>
+      <p>El titular se reserva el derecho de efectuar sin previo aviso las modificaciones que considere oportunas en su
+        portal, pudiendo cambiar, suprimir o añadir tanto los contenidos y servicios que se presten a través de la misma
+        como la forma en la que éstos aparezcan presentados o localizados en su portal.</p>
+
       <a href="index.html" class="btn-back">← Volver al mapa interactivo</a>
     </section>
   </main>
   <footer>© 2026 Aseos Públicos Cerca de Mí</footer>
+  <script>
+    if (window.self !== window.top) {
+      document.body.style.paddingLeft = '0';
+      const toHide = ['#sidebar', 'header', 'footer', '.btn-back'];
+      toHide.forEach(s => {
+        const el = document.querySelector(s);
+        if (el) el.style.display = 'none';
+      });
+      document.querySelector('main').style.padding = '1em';
+      document.querySelector('section').style.boxShadow = 'none';
+      document.querySelector('section').style.margin = '0';
+    }
+  </script>
 </body>
+
 </html>

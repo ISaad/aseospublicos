@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <link rel="canonical" href="https://www.aseospublicos.es/faq.html" />
   <meta charset="UTF-8">
   <title>Preguntas Frecuentes (FAQ) - Aseos Públicos Cerca de Mí</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Resolvemos tus dudas sobre cómo encontrar baños públicos en España, horarios, limpieza, accesibilidad y cómo colaborar con nuestro mapa interactivo.">
+  <meta name="description"
+    content="Resolvemos tus dudas sobre cómo encontrar baños públicos en España, horarios, limpieza, accesibilidad y cómo colaborar con nuestro mapa interactivo.">
   <meta name="google-adsense-account" content="ca-pub-0180568308288225">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2e7d32">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Aseos">
   <style>
     :root {
       --primary: #2e7d32;
@@ -16,40 +23,213 @@
       --text: #333;
       --muted: #666;
       --radius: 12px;
-      --shadow: 0 4px 12px rgba(0,0,0,0.06);
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     }
-    * {margin: 0; padding: 0; box-sizing: border-box;}
-    body {font-family: "Segoe UI", Roboto, Arial, sans-serif; background: var(--background); color: var(--text); line-height: 1.6; padding-left: 0; transition: transform 0.3s ease;}
-    @media (min-width: 768px) {body {padding-left: 250px;}}
-    header {background: var(--primary); color: #fff; padding: 1.5em 1em; text-align: center; box-shadow: var(--shadow); position: relative; z-index: 90;}
-    header h1 {margin: 0; font-size: 1.6rem; font-weight: 600;}
-    #sidebar {position: fixed; left: -250px; top: 0; width: 250px; height: 100vh; background: #fff; box-shadow: 2px 0 10px rgba(0,0,0,0.1); padding: 1em 0; z-index: 1100; overflow-y: auto; transition: left 0.3s ease;}
-    @media (min-width: 768px) {#sidebar {left: 0; padding: 2em 0;}}
-    #sidebar.mobile-open {left: 0;}
-    #sidebar nav a {display: block; padding: 0.8em 1.5em; color: var(--text); text-decoration: none; transition: all 0.3s; border-left: 3px solid transparent;}
-    #sidebar nav a:hover, #sidebar nav a.active {background: #f0f0f0; border-left-color: var(--primary); color: var(--primary);}
-    #hamburger {position: fixed; top: 1.2em; left: 1em; z-index: 2000; background: white; border: none; border-radius: 8px; padding: 0.8em; cursor: pointer; box-shadow: var(--shadow); font-size: 1.5rem;}
-    @media (min-width: 768px) {#hamburger {display: none;}}
-    main {padding: 2em 1em; max-width: 1200px; margin: 0 auto; position: relative; z-index: 80;}
-    section {background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2.5em; margin-bottom: 2em; max-width: 900px; margin-left: auto; margin-right: auto;}
-    h2 {margin-top: 0; margin-bottom: 1.5em; font-size: 2rem; color: var(--primary-dark); text-align: center;}
-    .faq-item {margin-bottom: 2.5em; border-bottom: 1px solid #eee; padding-bottom: 1.5em;}
-    .faq-item:last-child {border-bottom: none;}
-    .faq-item h3 {color: var(--primary); font-size: 1.3rem; margin-bottom: 0.8em;}
-    .faq-item p {color: var(--text); line-height: 1.8;}
-    #cookieBanner {position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.85); color: white; text-align: center; padding: 14px; z-index: 10000;}
-    #cookieBanner button {margin-left: 10px; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer;}
-    #btnAceptarCookies {background: #4CAF50; color: white;}
-    #btnRechazarCookies {background: #d9534f; color: white;}
-    footer {text-align: center; color: var(--muted); font-size: 0.95em; padding: 2em 1em; border-top: 1px solid #ddd; margin-top: 20px;}
-    footer a {color: var(--primary); text-decoration: none; margin: 0 10px;}
-    .menu-overlay {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1050;}
-    .menu-overlay.active {display: block;}
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      padding-left: 0;
+      transition: transform 0.3s ease;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding-left: 250px;
+      }
+    }
+
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 1em;
+      text-align: center;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 70px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 0 40px;
+      /* Space for hamburger */
+    }
+
+    #sidebar {
+      position: fixed;
+      left: -250px;
+      top: 0;
+      width: 250px;
+      height: 100vh;
+      background: #fff;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      padding: 1em 0;
+      z-index: 1100;
+      overflow-y: auto;
+      transition: left 0.3s ease;
+    }
+
+    @media (min-width: 768px) {
+      #sidebar {
+        left: 0;
+        padding: 2em 0;
+      }
+    }
+
+    #sidebar.mobile-open {
+      left: 0;
+    }
+
+    #sidebar nav a {
+      display: block;
+      padding: 0.8em 1.5em;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.3s;
+      border-left: 3px solid transparent;
+    }
+
+    #sidebar nav a:hover,
+    #sidebar nav a.active {
+      background: #f0f0f0;
+      border-left-color: var(--primary);
+      color: var(--primary);
+    }
+
+    #hamburger {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1101;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5em 0.7em;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      font-size: 1.2rem;
+      display: block;
+    }
+
+    @media (min-width: 768px) {
+      #hamburger {
+        display: none;
+      }
+    }
+
+    main {
+      padding: 1em 1em;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 80;
+    }
+
+    section {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2.5em;
+      margin-bottom: 2em;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 1.5em;
+      font-size: 2rem;
+      color: var(--primary-dark);
+      text-align: center;
+    }
+
+    .faq-item {
+      margin-bottom: 2.5em;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 1.5em;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item h3 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-bottom: 0.8em;
+    }
+
+    .faq-item p {
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .ad-container {
+      text-align: center;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    .ad-container:empty {
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95em;
+      padding: 2em 1em;
+      border-top: 1px solid #ddd;
+      margin-top: 20px;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1050;
+    }
+
+    .menu-overlay.active {
+      display: block;
+    }
   </style>
 </head>
+
 <body>
-  <button id="hamburger">☰</button>
-  <div id="sidebar"><nav>
+  <header>
+    <button id="hamburger">☰</button>
+    <h1>❓ Preguntas Frecuentes</h1>
+  </header>
+  <div id="sidebar">
+    <nav>
       <a href="index.html">🗺️ Mapa Interactivo</a>
       <a href="faq.html" class="active">❓ FAQ</a>
       <a href="contribuir.html">🤝 Contribuir</a>
@@ -57,100 +237,96 @@
       <a href="salud-higiene.html">🏥 Salud e Higiene</a>
       <a href="accesibilidad.html">♿ Accesibilidad</a>
       <a href="contacto.html">📞 Contacto</a>
-    </nav></div>
-  <header><h1>❓ Centro de Ayuda</h1></header>
+    </nav>
+  </div>
   <main>
-    <div class="ad-container" id="ad-container" style="text-align: center; margin-bottom: 20px;"></div>
+    <div class="ad-container" id="ad-container"></div>
     <section>
       <h2>Preguntas Frecuentes</h2>
-      
+
       <div class="faq-item">
         <h3>¿Cómo puedo encontrar aseos gratuitos en Madrid?</h3>
-        <p>En la capital, la red más fiable de aseos gratuitos se encuentra en los centros culturales municipales, bibliotecas públicas y grandes parques como El Retiro o la Casa de Campo. También puedes utilizar los servicios de los intercambiadores de transporte (como Moncloa o Plaza de Castilla), aunque algunos pueden requerir el uso de una tarjeta de transporte. Nuestro mapa te indica cuáles son de acceso libre.</p>
+        <p>En la capital, la red más fiable de aseos gratuitos se encuentra en los centros culturales municipales,
+          bibliotecas públicas y grandes parques como El Retiro o la Casa de Campo. También puedes utilizar los
+          servicios de los intercambiadores de transporte (como Moncloa o Plaza de Castilla), aunque algunos pueden
+          requerir el uso de una tarjeta de transporte. Nuestro mapa te indica cuáles son de acceso libre.</p>
       </div>
 
       <div class="faq-item">
         <h3>¿Son realmente públicos y gratuitos los baños en Barcelona?</h3>
-        <p>Barcelona cuenta con una red de módulos autolimpiables en la calle que suelen ser gratuitos o tener un coste simbólico. Además, los mercados municipales (como la Boquería o Santa Caterina) ofrecen servicios excelentes durante su horario comercial. En las playas de la Ciudad Condal, durante la temporada alta, se instalan módulos adicionales totalmente accesibles y sin coste para el usuario.</p>
+        <p>Barcelona cuenta con una red de módulos autolimpiables en la calle que suelen ser gratuitos o tener un coste
+          simbólico. Además, los mercados municipales (como la Boquería o Santa Caterina) ofrecen servicios excelentes
+          durante su horario comercial. En las playas de la Ciudad Condal, durante la temporada alta, se instalan
+          módulos adicionales totalmente accesibles y sin coste para el usuario.</p>
       </div>
 
       <div class="faq-item">
         <h3>¿Cómo sé si un aseo es accesible para personas con movilidad reducida (PMR)?</h3>
-        <p>En nuestro mapa interactivo, cada punto dispone de una ficha informativa. Buscamos específicamente el icono de la silla de ruedas. Ciudades como Zaragoza y Valencia han hecho un gran esfuerzo por adaptar el 90% de sus servicios públicos según la normativa vigente, garantizando espacios de giro de 1,50m y barras de apoyo adecuadas.</p>
+        <p>En nuestro mapa interactivo, cada punto dispone de una ficha informativa. Buscamos específicamente el icono
+          de la silla de ruedas. Ciudades como Zaragoza y Valencia han hecho un gran esfuerzo por adaptar el 90% de sus
+          servicios públicos según la normativa vigente, garantizando espacios de giro de 1,50m y barras de apoyo
+          adecuadas.</p>
       </div>
 
       <div class="faq-item">
         <h3>¿Qué debo hacer si encuentro un baño cerrado o sucio?</h3>
-        <p>Aunque nosotros mantenemos el mapa, la limpieza física depende del ayuntamiento o el gestor del local. Te recomendamos usar el botón "Reportar incidencia" en nuestra web para avisar a otros usuarios. Si es un servicio municipal, llamar al 010 es la forma más rápida de que el servicio de mantenimiento actúe.</p>
+        <p>Aunque nosotros mantenemos el mapa, la limpieza física depende del ayuntamiento o el gestor del local. Te
+          recomendamos usar el botón "Reportar incidencia" en nuestra web para avisar a otros usuarios. Si es un
+          servicio municipal, llamar al 010 es la forma más rápida de que el servicio de mantenimiento actúe.</p>
       </div>
 
       <div class="faq-item">
         <h3>¿La web funciona si me quedo sin datos en el móvil?</h3>
-        <p>¡Sí! Gracias a que somos una PWA (Aplicación Web Progresiva), si instalas la app en tu pantalla de inicio, parte del contenido y el mapa se guardan en la memoria caché de tu dispositivo. Esto te permite consultar ubicaciones previamente cargadas incluso en zonas de poca cobertura o si vas justo de datos.</p>
+        <p>¡Sí! Gracias a que somos una PWA (Aplicación Web Progresiva), si instalas la app en tu pantalla de inicio,
+          parte del contenido y el mapa se guardan en la memoria caché de tu dispositivo. Esto te permite consultar
+          ubicaciones previamente cargadas incluso en zonas de poca cobertura o si vas justo de datos.</p>
       </div>
 
       <div class="faq-item">
         <h3>¿Es legal entrar a un bar solo para usar el baño en España?</h3>
-        <p>Este es un tema polémico. Legalmente, los establecimientos de hostelería tienen el derecho de admisión, y muchos reservan el uso de los aseos para sus clientes. Sin embargo, en situaciones de urgencia, la mayoría de los hosteleros suelen ser comprensivos. Nuestro mapa prioriza los baños que son **estrictamente públicos** (municipales) para evitarte situaciones incómodas.</p>
+        <p>Este es un tema polémico. Legalmente, los establecimientos de hostelería tienen el derecho de admisión, y
+          muchos reservan el uso de los aseos para sus clientes. Sin embargo, en situaciones de urgencia, la mayoría de
+          los hosteleros suelen ser comprensivos. Nuestro mapa prioriza los baños que son **estrictamente públicos**
+          (municipales) para evitarte situaciones incómodas.</p>
       </div>
     </section>
   </main>
-  
+
   <div id="cookieBanner">
-    Este sitio utiliza cookies para personalizar anuncios y analizar el tráfico. 
+    Este sitio utiliza cookies para personalizar anuncios y analizar el tráfico.
     <a href="politica-cookies.html" style="color: #4CAF50; text-decoration: underline;">Más información</a>.
     <button id="btnAceptarCookies">Aceptar</button>
     <button id="btnRechazarCookies">Rechazar</button>
   </div>
-  
+
   <footer>
     <p>© 2026 Aseos Públicos Cerca de Mí.</p>
     <p>
-      <a href="aviso-legal.html">Aviso Legal</a> | 
-      <a href="politica-privacidad.html">Privacidad</a> | 
+      <a href="aviso-legal.html">Aviso Legal</a> |
+      <a href="politica-privacidad.html">Privacidad</a> |
       <a href="politica-cookies.html">Cookies</a>
     </p>
   </footer>
 
   <script>
-    if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js');}
-    const hamburger=document.getElementById('hamburger');
-    const sidebar=document.getElementById('sidebar');
-    const overlay=document.createElement('div');
-    overlay.className='menu-overlay';
+    if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }
+    const hamburger = document.getElementById('hamburger');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.createElement('div');
+    overlay.className = 'menu-overlay';
     document.body.appendChild(overlay);
-    
-    hamburger.addEventListener('click',()=>{
+
+    hamburger.addEventListener('click', () => {
       sidebar.classList.toggle('mobile-open');
       overlay.classList.toggle('active');
     });
-    overlay.addEventListener('click',()=>{
+    overlay.addEventListener('click', () => {
       sidebar.classList.remove('mobile-open');
       overlay.classList.remove('active');
     });
-
-    const cookieBanner=document.getElementById("cookieBanner");
-    const btnAceptarCookies=document.getElementById("btnAceptarCookies");
-    const btnRechazarCookies=document.getElementById("btnRechazarCookies");
-    const adContainer=document.getElementById("ad-container");
-
-    function loadAdSense(){
-      adContainer.innerHTML='<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0180568308288225" crossorigin="anonymous"></scr'+'ipt><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0180568308288225" data-ad-slot="1234567890" data-ad-format="auto"></ins><scr'+'ipt>(adsbygoogle=window.adsbygoogle||[]).push({});</scr'+'ipt>';
-    }
-
-    const decision=localStorage.getItem("cookiesDecision");
-    if(decision==="accepted"){cookieBanner.style.display="none";loadAdSense();}
-    else if(decision==="rejected"){cookieBanner.style.display="none";}
-    
-    btnAceptarCookies.addEventListener("click",()=>{
-      localStorage.setItem("cookiesDecision","accepted");
-      cookieBanner.style.display="none";
-      loadAdSense();
-    });
-    btnRechazarCookies.addEventListener("click",()=>{
-      localStorage.setItem("cookiesDecision","rejected");
-      cookieBanner.style.display="none";
-    });
   </script>
+  <script src="cookie-consent.js"></script>
+  <script src="legal-modal.js"></script>
 </body>
+
 </html>

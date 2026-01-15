@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <link rel="canonical" href="https://www.aseospublicos.es/salud-higiene.html" />
   <meta charset="UTF-8">
-  <title>Salud e Higiene en Aseos Públicos - Consejos Prácticos</title>
+  <title>Salud e Higiene en Baños Públicos - Aseos Públicos Cerca de Mí</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Guía completa sobre higiene y salud al utilizar baños públicos. Aprende a prevenir contagios y mantente seguro en tus viajes por España.">
+  <meta name="description"
+    content="Guía completa sobre higiene y salud al utilizar baños públicos. Aprende a prevenir contagios y mantente seguro en tus viajes por España.">
   <meta name="google-adsense-account" content="ca-pub-0180568308288225">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2e7d32">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Aseos">
   <style>
     :root {
       --primary: #2e7d32;
@@ -16,40 +23,238 @@
       --text: #333;
       --muted: #666;
       --radius: 12px;
-      --shadow: 0 4px 12px rgba(0,0,0,0.06);
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     }
-    * {margin: 0; padding: 0; box-sizing: border-box;}
-    body {font-family: "Segoe UI", Roboto, Arial, sans-serif; background: var(--background); color: var(--text); line-height: 1.6; padding-left: 0; transition: transform 0.3s ease;}
-    @media (min-width: 768px) {body {padding-left: 250px;}}
-    header {background: var(--primary); color: #fff; padding: 1.5em 1em; text-align: center; box-shadow: var(--shadow); position: relative; z-index: 90;}
-    header h1 {margin: 0; font-size: 1.6rem; font-weight: 600;}
-    #sidebar {position: fixed; left: -250px; top: 0; width: 250px; height: 100vh; background: #fff; box-shadow: 2px 0 10px rgba(0,0,0,0.1); padding: 1em 0; z-index: 1100; overflow-y: auto; transition: left 0.3s ease;}
-    @media (min-width: 768px) {#sidebar {left: 0; padding: 2em 0;}}
-    #sidebar.mobile-open {left: 0;}
-    #sidebar nav a {display: block; padding: 0.8em 1.5em; color: var(--text); text-decoration: none; transition: all 0.3s; border-left: 3px solid transparent;}
-    #sidebar nav a:hover, #sidebar nav a.active {background: #f0f0f0; border-left-color: var(--primary); color: var(--primary);}
-    #hamburger {position: fixed; top: 1.2em; left: 1em; z-index: 2000; background: white; border: none; border-radius: 8px; padding: 0.8em; cursor: pointer; box-shadow: var(--shadow); font-size: 1.5rem;}
-    @media (min-width: 768px) {#hamburger {display: none;}}
-    main {padding: 2em 1em; max-width: 1200px; margin: 0 auto; position: relative; z-index: 80;}
-    section {background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2.5em; margin-bottom: 2em; max-width: 850px; margin-left: auto; margin-right: auto;}
-    h2 {margin-top: 0; margin-bottom: 1em; font-size: 1.8rem; color: var(--primary-dark);}
-    h3 {margin-top: 1.5em; margin-bottom: 0.8em; font-size: 1.4rem; color: var(--primary-dark);}
-    p {margin: 1em 0; line-height: 1.8;}
-    ul {margin: 1em 0; padding-left: 2em;}
-    li {margin: 0.5em 0;}
-    #cookieBanner {position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.85); color: white; text-align: center; padding: 14px; z-index: 10000;}
-    #cookieBanner button {margin-left: 10px; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer;}
-    #btnAceptarCookies {background: #4CAF50; color: white;}
-    #btnRechazarCookies {background: #d9534f; color: white;}
-    footer {text-align: center; color: var(--muted); font-size: 0.95em; padding: 2em 1em; border-top: 1px solid #ddd; margin-top: 20px;}
-    footer a {color: var(--primary); text-decoration: none; margin: 0 10px;}
-    .menu-overlay {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1050;}
-    .menu-overlay.active {display: block;}
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      padding-left: 0;
+      transition: transform 0.3s ease;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding-left: 250px;
+      }
+    }
+
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 1em;
+      text-align: center;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 70px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 0 40px;
+    }
+
+    #sidebar {
+      position: fixed;
+      left: -250px;
+      top: 0;
+      width: 250px;
+      height: 100vh;
+      background: #fff;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      padding: 1em 0;
+      z-index: 1100;
+      overflow-y: auto;
+      transition: left 0.3s ease;
+    }
+
+    @media (min-width: 768px) {
+      #sidebar {
+        left: 0;
+        padding: 2em 0;
+      }
+    }
+
+    #sidebar.mobile-open {
+      left: 0;
+    }
+
+    #sidebar nav a {
+      display: block;
+      padding: 0.8em 1.5em;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.3s;
+      border-left: 3px solid transparent;
+    }
+
+    #sidebar nav a:hover,
+    #sidebar nav a.active {
+      background: #f0f0f0;
+      border-left-color: var(--primary);
+      color: var(--primary);
+    }
+
+    #hamburger {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1101;
+      background: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5em 0.7em;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      font-size: 1.2rem;
+      display: block;
+    }
+
+    @media (min-width: 768px) {
+      #hamburger {
+        display: none;
+      }
+    }
+
+    main {
+      padding: 1em 1em;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 80;
+    }
+
+    section {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2.5em;
+      margin-bottom: 2em;
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 1em;
+      font-size: 1.8rem;
+      color: var(--primary-dark);
+    }
+
+    h3 {
+      margin-top: 1.5em;
+      margin-bottom: 0.8em;
+      font-size: 1.4rem;
+      color: var(--primary-dark);
+    }
+
+    p {
+      margin: 1em 0;
+      line-height: 1.8;
+    }
+
+    ul {
+      margin: 1em 0;
+      padding-left: 2em;
+    }
+
+    li {
+      margin: 0.5em 0;
+    }
+
+    #cookieBanner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      color: white;
+      text-align: center;
+      padding: 14px;
+      z-index: 10000;
+    }
+
+    #cookieBanner button {
+      margin-left: 10px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #btnAceptarCookies {
+      background: #4CAF50;
+      color: white;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95em;
+      padding: 2em 1em;
+      border-top: 1px solid #ddd;
+      margin-top: 20px;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1050;
+    }
+
+    .menu-overlay.active {
+      display: block;
+    }
+
+    .ad-container {
+      text-align: center;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    .ad-container:empty {
+      display: none;
+    }
   </style>
 </head>
+
 <body>
-  <button id="hamburger">☰</button>
-  <div id="sidebar"><nav>
+  <header>
+    <button id="hamburger">☰</button>
+    <h1>🏥 Salud e Higiene</h1>
+  </header>
+  <div id="sidebar">
+    <nav>
       <a href="index.html">🗺️ Mapa Interactivo</a>
       <a href="faq.html">❓ FAQ</a>
       <a href="contribuir.html">🤝 Contribuir</a>
@@ -57,94 +262,84 @@
       <a href="salud-higiene.html" class="active">🏥 Salud e Higiene</a>
       <a href="accesibilidad.html">♿ Accesibilidad</a>
       <a href="contacto.html">📞 Contacto</a>
-    </nav></div>
-  <header><h1>🏥 Salud e Higiene</h1></header>
+    </nav>
+  </div>
   <main>
-    <div class="ad-container" id="ad-container" style="text-align: center; margin-bottom: 20px;"></div>
+    <div class="ad-container" id="ad-container"></div>
     <section>
       <h2>Protocolos de Seguridad en Aseos Públicos</h2>
-      <p>Utilizar aseos públicos en grandes ciudades como Madrid, Barcelona o Sevilla requiere un mínimo de precaución para evitar el contacto con gérmenes y bacterias. Aunque la mayoría de los servicios listados en nuestro mapa cuentan con servicios de limpieza regulares, seguir estos consejos te mantendrá seguro.</p>
-      
+      <p>Utilizar aseos públicos en grandes ciudades como Madrid, Barcelona o Sevilla requiere un mínimo de precaución
+        para evitar el contacto con gérmenes y bacterias. Aunque la mayoría de los servicios listados en nuestro mapa
+        cuentan con servicios de limpieza regulares, seguir estos consejos te mantendrá seguro.</p>
+
       <h3>La regla de oro: El lavado de manos</h3>
       <p>Parece obvio, pero hacerlo correctamente salva vidas. Sigue estos pasos siempre:</p>
       <ul>
         <li><strong>Duración:</strong> Al menos 20 segundos frotando con energía.</li>
         <li><strong>Superficie:</strong> No olvides el dorso de las manos, entre los dedos y debajo de las uñas.</li>
-        <li><strong>Secado:</strong> Usa siempre papel desechable si está disponible. Evita los secadores de aire caliente si el baño no parece bien ventilado, ya que pueden dispersar partículas.</li>
+        <li><strong>Secado:</strong> Usa siempre papel desechable si está disponible. Evita los secadores de aire
+          caliente si el baño no parece bien ventilado, ya que pueden dispersar partículas.</li>
       </ul>
 
       <h3>Tu Kit de Higiene Personal</h3>
       <p>Si eres de los que prefiere prevenir, te recomendamos llevar siempre encima un pequeño neceser con:</p>
       <ul>
-        <li><strong>Gel Hidroalcohólico:</strong> Con al menos un 60% de alcohol para cuando no hay jabón disponible.</li>
-        <li><strong>Toallitas desinfectantes:</strong> Útiles para limpiar superficies de contacto antes de usarlas.</li>
-        <li><strong>Jabón en láminas:</strong> Ocupan poquísimo espacio y te aseguran poder lavarte las manos aunque el dispensador del baño esté vacío.</li>
+        <li><strong>Gel Hidroalcohólico:</strong> Con al menos un 60% de alcohol para cuando no hay jabón disponible.
+        </li>
+        <li><strong>Toallitas desinfectantes:</strong> Útiles para limpiar superficies de contacto antes de usarlas.
+        </li>
+        <li><strong>Jabón en láminas:</strong> Ocupan poquísimo espacio y te aseguran poder lavarte las manos aunque el
+          dispensador del baño esté vacío.</li>
       </ul>
 
       <h3>¿Cómo identificar un baño seguro?</h3>
       <p>Antes de usar una instalación, fíjate en estos detalles que indican un buen mantenimiento:</p>
-      <p>Un suelo seco, la ausencia de olores fuertes y la presencia de suministros básicos (papel higiénico y jabón) son indicadores de que el servicio recibe mantenimiento constante. En ciudades como Valencia o Zaragoza, los baños autolimpiables de la calle cuentan con sistemas de desinfección automática tras cada uso, lo que los hace extremadamente seguros.</p>
-      
+      <p>Un suelo seco, la ausencia de olores fuertes y la presencia de suministros básicos (papel higiénico y jabón)
+        son indicadores de que el servicio recibe mantenimiento constante. En ciudades como Valencia o Zaragoza, los
+        baños autolimpiables de la calle cuentan con sistemas de desinfección automática tras cada uso, lo que los hace
+        extremadamente seguros.</p>
+
       <h3>Prevención de Contagios</h3>
-      <p>Evita tocar directamente los pomos de las puertas o los grifos al salir. Un truco clásico es usar el mismo papel con el que te has secado las manos para abrir la puerta y tirarlo a la papelera justo antes de salir. ¡Higiene máxima, cabronazo!</p>
+      <p>Evita tocar directamente los pomos de las puertas o los grifos al salir. Un truco clásico es usar el mismo
+        papel con el que te has secado las manos para abrir la puerta y tirarlo a la papelera justo antes de salir.</p>
     </section>
   </main>
-  
+
   <div id="cookieBanner">
-    Este sitio utiliza cookies para mejorar tu experiencia. 
+    Este sitio utiliza cookies para mejorar tu experiencia.
     <a href="politica-cookies.html" style="color: #4CAF50; text-decoration: underline;">Saber más</a>.
     <button id="btnAceptarCookies">Aceptar</button>
     <button id="btnRechazarCookies">Rechazar</button>
   </div>
-  
+
   <footer>
     <p>© 2026 Aseos Públicos Cerca de Mí.</p>
     <p>
-      <a href="aviso-legal.html">Aviso Legal</a> | 
-      <a href="politica-privacidad.html">Privacidad</a> | 
+      <a href="aviso-legal.html">Aviso Legal</a> |
+      <a href="politica-privacidad.html">Privacidad</a> |
       <a href="politica-cookies.html">Cookies</a>
     </p>
   </footer>
 
   <script>
-    if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js');}
-    const hamburger=document.getElementById('hamburger');
-    const sidebar=document.getElementById('sidebar');
-    const overlay=document.createElement('div');
-    overlay.className='menu-overlay';
+    if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }
+    const hamburger = document.getElementById('hamburger');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.createElement('div');
+    overlay.className = 'menu-overlay';
     document.body.appendChild(overlay);
-    
-    hamburger.addEventListener('click',()=>{
+
+    hamburger.addEventListener('click', () => {
       sidebar.classList.toggle('mobile-open');
       overlay.classList.toggle('active');
     });
-    overlay.addEventListener('click',()=>{
+    overlay.addEventListener('click', () => {
       sidebar.classList.remove('mobile-open');
       overlay.classList.remove('active');
     });
-
-    const cookieBanner=document.getElementById("cookieBanner");
-    const btnAceptarCookies=document.getElementById("btnAceptarCookies");
-    const btnRechazarCookies=document.getElementById("btnRechazarCookies");
-    const adContainer=document.getElementById("ad-container");
-
-    function loadAdSense(){
-      adContainer.innerHTML='<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0180568308288225" crossorigin="anonymous"></scr'+'ipt><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0180568308288225" data-ad-slot="1234567890" data-ad-format="auto"></ins><scr'+'ipt>(adsbygoogle=window.adsbygoogle||[]).push({});</scr'+'ipt>';
-    }
-
-    const decision=localStorage.getItem("cookiesDecision");
-    if(decision==="accepted"){cookieBanner.style.display="none";loadAdSense();}
-    else if(decision==="rejected"){cookieBanner.style.display="none";}
-    
-    btnAceptarCookies.addEventListener("click",()=>{
-      localStorage.setItem("cookiesDecision","accepted");
-      cookieBanner.style.display="none";
-      loadAdSense();
-    });
-    btnRechazarCookies.addEventListener("click",()=>{
-      localStorage.setItem("cookiesDecision","rejected");
-      cookieBanner.style.display="none";
-    });
   </script>
+  <script src="cookie-consent.js"></script>
+  <script src="legal-modal.js"></script>
 </body>
+
 </html>

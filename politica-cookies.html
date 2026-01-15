@@ -1,43 +1,224 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <link rel="canonical" href="https://www.aseospublicos.es/politica-cookies.html" />
   <meta charset="UTF-8">
-  <title>Cookies - Aseos Públicos Cerca de Mí</title>
+  <title>Política de Cookies - Aseos Públicos Cerca de Mí</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    :root { --primary: #2e7d32; --primary-dark: #1b5e20; --background: #f9fafb; --card-bg: #fff; --text: #333; --muted: #666; --radius: 12px; --shadow: 0 4px 12px rgba(0,0,0,0.06); }
-    body {font-family: "Segoe UI", Roboto, Arial, sans-serif; margin: 0; padding: 0; background: var(--background); color: var(--text); line-height: 1.6;}
-    @media (min-width: 768px) {body {padding-left: 250px;}}
-    header {background: var(--primary); color: #fff; padding: 1.5em 1em; text-align: center;}
-    #sidebar {position: fixed; left: 0; top: 0; width: 250px; height: 100vh; background: #fff; box-shadow: 2px 0 10px rgba(0,0,0,0.1); padding: 2em 0;}
-    @media (max-width: 767px) {#sidebar {display: none;}}
-    #sidebar nav a {display: block; padding: 0.8em 1.5em; color: var(--text); text-decoration: none;}
-    main {padding: 2em 1em; max-width: 800px; margin: 0 auto;}
-    section {background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2em;}
-    h2 {color: var(--primary-dark);}
-    footer {text-align: center; color: var(--muted); padding: 2em;}
+    :root {
+      --primary: #2e7d32;
+      --primary-dark: #1b5e20;
+      --background: #f9fafb;
+      --card-bg: #fff;
+      --text: #333;
+      --muted: #666;
+      --radius: 12px;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding-left: 250px;
+      }
+    }
+
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 1.5em 1em;
+      text-align: center;
+    }
+
+    #sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 250px;
+      height: 100vh;
+      background: #fff;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      padding: 2em 0;
+    }
+
+    @media (max-width: 767px) {
+      #sidebar {
+        display: none;
+      }
+    }
+
+    #sidebar nav a {
+      display: block;
+      padding: 0.8em 1.5em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    main {
+      padding: 2em 1em;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2em;
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      margin-top: 1.5em;
+      font-size: 1.4rem;
+    }
+
+    h2:first-of-type {
+      margin-top: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1em 0;
+      font-size: 0.9em;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .btn-reset {
+      background: #f44336;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 2em;
+    }
   </style>
 </head>
+
 <body>
   <div id="sidebar">
     <nav><a href="index.html">🗺️ Volver al Mapa</a></nav>
   </div>
-  <header><h1>Política de Cookies</h1></header>
+  <header>
+    <h1>Política de Cookies</h1>
+  </header>
   <main>
     <section>
       <h2>¿Qué son las cookies?</h2>
-      <p>Una cookie es un pequeño fichero de texto que se descarga en su navegador al acceder a determinadas páginas web.</p>
+      <p>Una cookie es un pequeño fichero de texto que se descarga en su navegador al acceder a determinadas páginas
+        web. Su finalidad es permitir que la web recuerde su visita cuando vuelva a navegar por esa página.</p>
+
       <h2>Cookies utilizadas en este sitio</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Proveedor</th>
+            <th>Finalidad</th>
+            <th>Duración</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>cookiesDecision</td>
+            <td>Propia</td>
+            <td>Almacena si el usuario ha aceptado o rechazado las cookies.</td>
+            <td>Persistente</td>
+          </tr>
+          <tr>
+            <td>_ga, _gid</td>
+            <td>Google Analytics</td>
+            <td>Análisis de tráfico anónimo (si se activase).</td>
+            <td>2 años</td>
+          </tr>
+          <tr>
+            <td>__gads, __gpi</td>
+            <td>Google AdSense</td>
+            <td>Servir anuncios y medir su rendimiento.</td>
+            <td>Hasta 13 meses</td>
+          </tr>
+          <tr>
+            <td>NID, SID</td>
+            <td>Google Maps</td>
+            <td>Personalización de mapas y preferencias de usuario.</td>
+            <td>6 meses</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Información Importante sobre Google</h2>
+      <p>Este sitio utiliza servicios de Google. Puede consultar cómo Google utiliza la información y cómo controlar los
+        datos enviados a Google visitando el siguiente enlace oficial:
+        <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Cómo utiliza
+          Google la información de sitios web o aplicaciones que utilizan sus servicios</a>.
+      </p>
+
+      <h2>Cómo cambiar su consentimiento</h2>
+      <p>Puede cambiar su decisión en cualquier momento pulsando el siguiente botón:</p>
+      <button class="btn-reset" onclick="resetCookieConsent()">Restablecer configuración de cookies</button>
+
+      <h2>Gestión de cookies en el navegador</h2>
+      <p>Usted puede permitir, bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las
+        opciones del navegador instalado en su ordenador:</p>
       <ul>
-        <li><strong>Cookies de terceros:</strong> Google AdSense y Google Maps descargan sus propias cookies para el funcionamiento de los anuncios y la visualización de mapas.</li>
-        <li><strong>Cookies de sesión:</strong> Para recordar si has aceptado el banner de cookies.</li>
+        <li><a href="https://support.google.com/chrome/answer/95647?hl=es" target="_blank">Chrome</a></li>
+        <li><a
+            href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias"
+            target="_blank">Firefox</a></li>
+        <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank">Safari</a></li>
+        <li><a
+            href="https://support.microsoft.com/es-es/windows/eliminar-y-administrar-cookies-168dab11-0753-043d-7c16-ede5947fc64d"
+            target="_blank">Edge</a></li>
       </ul>
-      <h2>Gestión de cookies</h2>
-      <p>Usted puede permitir, bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador instalado en su ordenador.</p>
-      <a href="index.html" style="display:block; margin-top:20px; color:var(--primary); text-decoration:none; font-weight:bold;">← Volver al inicio</a>
+
+      <a href="index.html"
+        style="display:block; margin-top:20px; color:var(--primary); text-decoration:none; font-weight:bold;">← Volver
+        al inicio</a>
     </section>
   </main>
+  <script src="cookie-consent.js"></script>
   <footer>© 2026 Aseos Públicos Cerca de Mí</footer>
+  <script>
+    if (window.self !== window.top) {
+      document.body.style.paddingLeft = '0';
+      const toHide = ['#sidebar', 'header', 'footer', '.btn-back'];
+      toHide.forEach(s => {
+        const el = document.querySelector(s);
+        if (el) el.style.display = 'none';
+      });
+      document.querySelector('main').style.padding = '1em';
+      document.querySelector('section').style.boxShadow = 'none';
+      document.querySelector('section').style.margin = '0';
+    }
+  </script>
 </body>
+
 </html>
