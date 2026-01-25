@@ -2,6 +2,12 @@
 <html lang="es">
 
 <head>
+  <script>
+    // Redirect index.html to root to avoid duplicate content issues
+    if (window.location.pathname.endsWith('/index.html')) {
+      window.location.replace(window.location.href.replace('/index.html', '/'));
+    }
+  </script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZM82373TQ3"></script>
   <script>
@@ -510,7 +516,7 @@
   </header>
   <div id="sidebar">
     <nav>
-      <a href="index.html#mapa-section" class="active">🗺️ Mapa Interactivo</a>
+      <a href="#mapa-section" class="active">🗺️ Mapa Interactivo</a>
       <a href="faq.html">❓ FAQ</a>
       <a href="contribuir.html">🤝 Contribuir</a>
       <a href="guia-viaje.html">📚 Guía de Viaje</a>
