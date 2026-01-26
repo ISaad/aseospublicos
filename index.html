@@ -517,10 +517,13 @@
   <div id="sidebar">
     <nav>
       <a href="#mapa-section" class="active">🗺️ Mapa Interactivo</a>
+      <a href="quienes-somos.html">👋 Quiénes Somos</a>
       <a href="faq.html">❓ FAQ</a>
       <a href="contribuir.html">🤝 Contribuir</a>
       <a href="guia-viaje.html">📚 Guía de Viaje</a>
       <a href="salud-higiene.html">🏥 Salud e Higiene</a>
+      <a href="impacto-social.html">🌍 Impacto Social</a>
+      <a href="normativa.html">⚖️ Normativa</a>
       <a href="accesibilidad.html">♿ Accesibilidad</a>
       <a href="contacto.html">📞 Contacto</a>
     </nav>
@@ -530,6 +533,8 @@
       <h1>🗺️ Encuentra Baños Públicos Rápidamente</h1>
       <p class="subtitle">La herramienta definitiva para localizar aseos en Madrid, Barcelona, Valencia y toda España.
       </p>
+
+
       <p style="margin-top: 1.5em;">En <strong>AseosPublicos.es</strong> sabemos que la necesidad puede surgir en
         cualquier momento. Por eso, hemos cartografiado los mejores puntos de alivio en las principales ciudades
         españolas. Ya sea que busques un <strong>baño público gratuito</strong> o uno de pago con mejores servicios,
@@ -541,7 +546,8 @@
 
     <section id="mapa-section">
       <h2>🗺️ Mapa de Aseos Públicos en España</h2>
-      <p><strong>Usa el mapa interactivo para localizar el servicio más cercano:</strong></p>
+      <p><strong>Usa el mapa interactivo para localizar el servicio más cercano<span
+            id="user-city-text"></span>:</strong></p>
       <div class="responsive-iframe map-iframe">
         <iframe src="https://www.google.com/maps/d/embed?mid=1YRT_X5tf7YNgvNL7ubI6jaO1EoAFxlM&ehbc=2E312F&noprof=1"
           allowfullscreen loading="lazy"></iframe>
@@ -566,17 +572,58 @@
     </section>
 
     <section>
-      <h2>📖 Guía de Aseos por Ciudades</h2>
-      <p>Cada ciudad gestiona sus servicios de forma distinta. Es importante conocer las costumbres locales para no
-        llevarse sorpresas.</p>
-      <h3>Madrid y Barcelona</h3>
-      <p>En Madrid, los tótems autolimpiables son un clásico del centro. En Barcelona, los mercados municipales son el
-        mejor refugio para quien busca un baño limpio. En ambas ciudades, los centros comerciales de las zonas
-        turísticas son opciones excelentes y seguras.</p>
-      <h3>Valencia, Zaragoza y Sevilla</h3>
-      <p>En el resto de España, los parques urbanos (como el Turia en Valencia o el Parque Grande en Zaragoza) cuentan
-        con dotaciones sanitarias integradas. En Sevilla, los baños cerca de los monumentos principales suelen estar muy
-        concurridos, por lo que te sugerimos consultar nuestro mapa para encontrar alternativas menos saturadas.</p>
+      <h2>📖 Guía Detallada de Aseos por Ciudades</h2>
+      <p>Cada ciudad en España gestiona sus servicios de forma distinta. Es fundamental conocer las particularidades
+        locales para no llevarse sorpresas desagradables durante tu visita.</p>
+
+      <h3>Madrid: La Capital de los Tótems</h3>
+      <p>En <strong>Madrid</strong>, el Ayuntamiento ha instalado una amplia red de aseos públicos autolimpiables
+        conocidos popularmente como "tótems". Estos se encuentran estratégicamente ubicados en plazas como la Puerta del
+        Sol, Callao y cerca de los principales museos. Suelen costar entre 0,10€ y 0,20€. Además, las grandes estaciones
+        como <strong>Atocha y Chamartín</strong> cuentan con servicios premium gestionados de forma privada.</p>
+
+      <h3>Barcelona: Mercados y Modernismo</h3>
+      <p><strong>Barcelona</strong> destaca por permitir el uso de los aseos en sus magníficos mercados municipales
+        (como La Boquería o Sant Antoni), que suelen estar en excelentes condiciones. En las zonas de playa, se
+        habilitan módulos adicionales durante la temporada de verano. El Metro de Barcelona también está incorporando
+        servicios en sus estaciones más concurridas.</p>
+
+      <h3>Valencia y Sevilla: Parques y Casco Histórico</h3>
+      <p>En <strong>Valencia</strong>, el cauce del río Turia es un oasis de kilómetros que cuenta con varios puntos de
+        aseos públicos gratuitos. En <strong>Sevilla</strong>, durante eventos como la Semana Santa o la Feria de Abril,
+        la ciudad se transforma y se instalan cientos de aseos portátiles, aunque durante el resto del año, las
+        bibliotecas y centros cívicos son tus mejores aliados.</p>
+
+      <h3>Bilbao y el Norte de España</h3>
+      <p>En el norte, la limpieza es una prioridad absoluta. Ciudades como <strong>Bilbao, San Sebastián y
+          Santander</strong> disponen de cabinas de diseño moderno que se integran perfectamente en el entorno urbano.
+        Muchas de ellas son gratuitas o funcionan con un sistema de limpieza automática tras cada uso.</p>
+    </section>
+
+    <section>
+      <h2>🚻 Tipos de Aseos que encontrarás en España</h2>
+      <p>Es importante saber distinguir los diferentes tipos de instalaciones para saber qué esperar en cuanto a
+        limpieza y precio:</p>
+      <ul>
+        <li><strong>Cabinas Autolimpiables:</strong> Son módulos individuales en la vía pública. Tras cada uso, la
+          cabina se desinfecta automáticamente. Son la opción más segura en cuanto a higiene.</li>
+        <li><strong>Aseos en Edificios Públicos:</strong> Bibliotecas, centros culturales y museos suelen permitir el
+          acceso a sus baños. Son gratuitos y suelen estar muy bien cuidados.</li>
+        <li><strong>Estaciones de Transporte:</strong> Como mencionamos, suelen ser de pago (0,50€ - 1€) pero ofrecen
+          servicios adicionales como cambiadores para bebés y espacios más amplios.</li>
+        <li><strong>Centros Comerciales:</strong> Son de libre acceso en su mayoría y una excelente opción si buscas
+          comodidad y aire acondicionado.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>⚖️ Marco Legal y Derechos</h2>
+      <p>¿Sabías que en muchas comunidades autónomas los establecimientos de hostelería están obligados a permitir el
+        uso del aseo a sus clientes? Aunque hay debate sobre si un no-cliente puede usarlo, la cortesía suele imperar.
+        Sin embargo, los ayuntamientos tienen la responsabilidad legal de proveer servicios básicos de saneamiento en la
+        vía pública, siguiendo normativas de salud pública y accesibilidad universal.</p>
+      <p>Nuestra plataforma aboga por una <strong>Ley de Aseos Libres</strong> que garantice que nadie tenga que pasar
+        por una situación de urgencia sin una solución digna a menos de 10 minutos de distancia.</p>
     </section>
 
     <section>
@@ -658,6 +705,24 @@
     const installBtn = document.getElementById('install-btn');
     window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; installBtn.style.display = 'block'; });
     installBtn.addEventListener('click', async () => { if (deferredPrompt) { deferredPrompt.prompt(); const result = await deferredPrompt.userChoice; deferredPrompt = null; installBtn.style.display = 'none'; } });
+
+    // Dynamic City Detection
+    async function detectCity() {
+      try {
+        const response = await fetch('https://ipwho.is/');
+        const data = await response.json();
+        if (data.success && data.city) {
+          const citySpan = document.getElementById('user-city-text');
+          if (citySpan) {
+            citySpan.textContent = ' en ' + data.city;
+          }
+          console.log('Ciudad detectada:', data.city);
+        }
+      } catch (error) {
+        console.error('Error detectando ciudad:', error);
+      }
+    }
+    detectCity();
   </script>
   <script src="cookie-consent.js"></script>
   <script src="legal-modal.js"></script>
