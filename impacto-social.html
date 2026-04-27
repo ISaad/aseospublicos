@@ -2,7 +2,17 @@
 <html lang="es">
 
 <head>
-    <!-- Google tag (gtag.js) -->
+    <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied'
+  });
+</script>
+  <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZM82373TQ3"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -21,10 +31,20 @@
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-MVLZ3DSS');</script>
     <!-- End Google Tag Manager -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0180568308288225" crossorigin="anonymous"></script>
+
     <link rel="canonical" href="https://www.aseospublicos.es/impacto-social.html" />
     <meta charset="UTF-8">
     <title>Impacto Social y Ambiental de los Aseos Públicos - AseosPublicos.es</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="Impacto Social y Ambiental de los Aseos Públicos - AseosPublicos.es">
+  <meta property="og:description" content="Análisis del impacto social, económico y ambiental de la red de aseos públicos en las ciudades españolas. Un derecho ciudadano fundamental.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.aseospublicos.es/impacto-social.html">
+  <meta property="og:site_name" content="Aseos Públicos Cerca de Mí">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:image" content="https://www.aseospublicos.es/favicon.png">
+  <meta name="author" content="AseosPublicos.es">
     <meta name="description"
         content="Análisis del impacto social, económico y ambiental de la red de aseos públicos en las ciudades españolas. Un derecho ciudadano fundamental.">
     <meta name="google-adsense-account" content="ca-pub-0180568308288225">
@@ -32,219 +52,51 @@
     <meta name="theme-color" content="#2e7d32">
     <link rel="apple-touch-icon" href="/favicon.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <style>
-        :root {
-            --primary: #2e7d32;
-            --primary-dark: #1b5e20;
-            --background: #f9fafb;
-            --card-bg: #fff;
-            --text: #333;
-            --muted: #666;
-            --radius: 12px;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: "Segoe UI", Roboto, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: var(--background);
-            color: var(--text);
-            line-height: 1.6;
-            padding-left: 0;
-            transition: transform 0.3s ease;
-        }
-
-        @media (min-width: 768px) {
-            body {
-                padding-left: 250px;
-            }
-        }
-
-        header {
-            background: var(--primary);
-            color: #fff;
-            padding: 1em;
-            text-align: center;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 70px;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 1.2rem;
-            font-weight: 600;
-            padding: 0 40px;
-        }
-
-        #sidebar {
-            position: fixed;
-            left: -250px;
-            top: 0;
-            width: 250px;
-            height: 100vh;
-            background: #fff;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-            padding: 1em 0;
-            z-index: 1100;
-            overflow-y: auto;
-            transition: left 0.3s ease;
-        }
-
-        @media (min-width: 768px) {
-            #sidebar {
-                left: 0;
-                padding: 2em 0;
-            }
-        }
-
-        #sidebar.mobile-open {
-            left: 0;
-        }
-
-        #sidebar nav a {
-            display: block;
-            padding: 0.8em 1.5em;
-            color: var(--text);
-            text-decoration: none;
-            transition: all 0.3s;
-            border-left: 3px solid transparent;
-        }
-
-        #sidebar nav a:hover,
-        #sidebar nav a.active {
-            background: #f0f0f0;
-            border-left-color: var(--primary);
-            color: var(--primary);
-        }
-
-        #hamburger {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1101;
-            background: white;
-            border: none;
-            border-radius: 8px;
-            padding: 0.5em 0.7em;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            font-size: 1.2rem;
-            display: block;
-        }
-
-        @media (min-width: 768px) {
-            #hamburger {
-                display: none;
-            }
-        }
-
-        main {
-            padding: 1em 1em;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 80;
-        }
-
-        section {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 2.5em;
-            margin-bottom: 2em;
-            max-width: 850px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        h2 {
-            margin-top: 0;
-            margin-bottom: 1em;
-            font-size: 1.8rem;
-            color: var(--primary-dark);
-        }
-
-        h3 {
-            margin-top: 1.5em;
-            margin-bottom: 0.8em;
-            font-size: 1.4rem;
-            color: var(--primary-dark);
-        }
-
-        p {
-            margin: 1em 0;
-            line-height: 1.8;
-        }
-
-        footer {
-            text-align: center;
-            color: var(--muted);
-            font-size: 0.95em;
-            padding: 2em 1em;
-            border-top: 1px solid #ddd;
-            margin-top: 20px;
-        }
-
-        footer a {
-            color: var(--primary);
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        .menu-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1050;
-        }
-
-        .menu-overlay.active {
-            display: block;
-        }
-    </style>
+  <link rel="stylesheet" href="/style.css">
 </head>
 
-<body>
+<body data-kofi="aseospublicoses">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MVLZ3DSS" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <header>
-        <button id="hamburger">☰</button>
-        <h1>🌍 Impacto Social y Ambiental</h1>
+        <button id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+        <h1>Impacto Social y Ambiental</h1>
     </header>
-    <div id="sidebar">
-        <nav>
-            <a href="/">🗺️ Mapa Interactivo</a>
-            <a href="quienes-somos.html">👋 Quiénes Somos</a>
-            <a href="faq.html">❓ FAQ</a>
-            <a href="contribuir.html">🤝 Contribuir</a>
-            <a href="guia-viaje.html">📚 Guía de Viaje</a>
-            <a href="salud-higiene.html">🏥 Salud e Higiene</a>
-            <a href="impacto-social.html" class="active">🌍 Impacto Social</a>
-            <a href="normativa.html">⚖️ Normativa</a>
-            <a href="accesibilidad.html">♿ Accesibilidad</a>
-            <a href="contacto.html">📞 Contacto</a>
-        </nav>
+  <div id="sidebar">
+    <div class="sidebar-header">
+      <a href="/" class="sidebar-brand">Aseos Públicos</a>
+      <button id="sidebar-close" aria-label="Cerrar menú">&times;</button>
     </div>
+    <nav>
+      <a href="/">Mapa Interactivo</a>
+      <a href="quienes-somos.html">Quiénes Somos</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contribuir.html">Contribuir</a>
+      <a href="contacto.html">Contacto</a>
+      <div class="nav-divider"></div>
+      <details class="nav-group">
+        <summary>Guías</summary>
+        <div class="nav-group-links">
+          <a href="guia-viaje.html">Guía de Viaje</a>
+          <a href="aseos-trenes-espana.html">Aseos en Trenes</a>
+          <a href="mejores-ciudades-aseos-publicos.html">Mejores Ciudades</a>
+          <a href="aseos-playas-espana.html">Aseos en Playas</a>
+          <a href="aseos-emergencia-espana.html">Guía de Emergencia</a>
+        </div>
+      </details>
+      <details class="nav-group" open>
+        <summary>Información</summary>
+        <div class="nav-group-links">
+          <a href="salud-higiene.html">Salud e Higiene</a>
+          <a href="impacto-social.html" class="active">Impacto Social</a>
+          <a href="normativa.html">Normativa</a>
+          <a href="accesibilidad.html">Accesibilidad</a>
+        </div>
+      </details>
+    </nav>
+  </div>
     <main>
         <section>
             <h2>¿Por qué importan los baños públicos?</h2>
@@ -291,7 +143,15 @@
         </section>
     </main>
 
-    <footer>
+      <div id="cookieBanner">
+    <span>Este sitio usa cookies para anuncios y analítica. <a href="politica-cookies.html">Leer más</a>.</span>
+    <div class="cookie-btns">
+      <button id="btnAceptarCookies">Aceptar</button>
+      <button id="btnRechazarCookies">Rechazar</button>
+    </div>
+  </div>
+
+  <footer>
         <p>© 2026 Aseos Públicos Cerca de Mí.</p>
         <p>
             <a href="aviso-legal.html">Aviso Legal</a> |
@@ -319,6 +179,7 @@
     </script>
     <script src="cookie-consent.js"></script>
     <script src="legal-modal.js"></script>
+  <script src="/nav.js"></script>
 </body>
 
 </html>
