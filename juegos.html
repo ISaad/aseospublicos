@@ -44,9 +44,9 @@
 
   <link rel="stylesheet" href="/style.css">
   <style>
+    main { overflow-x: hidden; }
     .game-container {
-      width: 100%;
-      max-width: 400px;
+      width: min(100%, 400px);
       aspect-ratio: 2 / 3;
       margin: 1rem auto;
       border-radius: 8px;
@@ -55,9 +55,10 @@
       display: block;
       background: #f4f4f4;
     }
-    #gameCanvas, #gameCanvas2 {
+    #gameCanvas, #gameCanvas2, #gameCanvas3 {
       width: 100%;
       height: 100%;
+      max-width: 100%;
       display: block;
       cursor: pointer;
       touch-action: none;
@@ -87,6 +88,32 @@
       padding: 0.2rem 0.6rem;
       border-radius: 99px;
     }
+    .games-index {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin: 1rem 0 0.25rem;
+    }
+    .game-card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.8rem 1rem;
+      background: #f5f5f5;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 10px;
+      text-decoration: none;
+      color: inherit;
+      min-height: 52px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .game-card:hover, .game-card:active { background: #e8f5e9; border-color: #a5d6a7; }
+    .game-card-icon { font-size: 1.5rem; line-height: 1; flex-shrink: 0; }
+    .game-card-info { display: flex; flex-direction: column; }
+    .game-card-info strong { font-size: 0.9rem; }
+    .game-card-info span { font-size: 0.75rem; color: #777; }
   </style>
 </head>
 
@@ -120,6 +147,9 @@
           <a href="mejores-ciudades-aseos-publicos.html">Mejores Ciudades</a>
           <a href="aseos-playas-espana.html">Aseos en Playas</a>
           <a href="aseos-emergencia-espana.html">Guía de Emergencia</a>
+          <a href="aseos-aeropuertos-espana.html">Aseos en Aeropuertos</a>
+          <a href="aseos-autopistas-espana.html">Aseos en Autopistas</a>
+          <a href="aseos-museos-monumentos.html">Aseos en Museos</a>
         </div>
       </details>
       <details class="nav-group">
@@ -139,6 +169,20 @@
     <section>
       <h2>Juegos</h2>
       <p>Mini-juegos temáticos para pasar el rato mientras localizas el baño más cercano. ¿Hasta qué puntuación llegas?</p>
+      <div class="games-index">
+        <a href="#papel-volador-section" class="game-card">
+          <span class="game-card-icon">🧻</span>
+          <span class="game-card-info"><strong>Papel Volador</strong><span>Esquiva los chorros</span></span>
+        </a>
+        <a href="#aseo-express-section" class="game-card">
+          <span class="game-card-icon">🚽</span>
+          <span class="game-card-info"><strong>Aseo Express</strong><span>Gestiona el servicio</span></span>
+        </a>
+        <a href="#germinator-section" class="game-card">
+          <span class="game-card-icon">🦠</span>
+          <span class="game-card-info"><strong>Germinator</strong><span>Elimina los gérmenes</span></span>
+        </a>
+      </div>
     </section>
 
     <section id="papel-volador-section">
@@ -165,6 +209,19 @@
         <canvas id="gameCanvas2" width="420" height="540" aria-label="Juego Aseo Express"></canvas>
       </div>
       <p class="game-hint">Toca los aseos sucios para limpiarlos</p>
+    </section>
+
+    <section id="germinator-section">
+      <div class="games-intro">
+        <h2 style="margin:0">Germinator</h2>
+        <span class="game-badge">Nuevo</span>
+      </div>
+      <p>El baño está lleno de gérmenes. Usa el rollo de papel como pelota y la tapa del inodoro como pala para eliminarlos a todos. ¡Sin gérmenes, sin problemas!</p>
+
+      <div class="game-container" style="aspect-ratio: 420/540;">
+        <canvas id="gameCanvas3" width="420" height="540" aria-label="Juego Germinator"></canvas>
+      </div>
+      <p class="game-hint">Mueve el ratón o desliza el dedo para controlar la tapa</p>
     </section>
   </main>
 
@@ -1268,6 +1325,381 @@
       var dt = Math.min(nowMs - lastT, 60);
       lastT = nowMs;
       update(dt);
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    reset();
+    loop();
+
+  }());
+  </script>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- GERMINATOR — Breakout with toilet paper roll + toilet lid + germs       -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <script>
+  (function () {
+    'use strict';
+
+    const canvas = document.getElementById('gameCanvas3');
+    const ctx    = canvas.getContext('2d');
+    const W      = canvas.width;   // 420
+    const H      = canvas.height;  // 540
+
+    // ── layout ────────────────────────────────────────────────────────────────
+    const BRICK_COLS  = 7;
+    const BRICK_ROWS  = 5;
+    const BRICK_W     = 52;
+    const BRICK_H     = 26;
+    const BRICK_GAP   = 4;
+    const BRICK_PAD_X = 16;   // (420 - 7*52 - 6*4) / 2 = 16
+    const BRICK_TOP   = 64;
+
+    const PADDLE_W    = 88;
+    const PADDLE_H    = 14;
+    const PADDLE_Y    = H - 48;
+
+    const BALL_R      = 11;
+    const BALL_SPEED  = 5.0;
+
+    // ── germ colour palettes [light, dark] ───────────────────────────────────
+    const PALETTES = [
+      ['#66bb6a', '#388e3c'],
+      ['#d4e157', '#9e9d24'],
+      ['#ab47bc', '#6a1b9a'],
+      ['#ef5350', '#b71c1c'],
+      ['#26c6da', '#00838f'],
+    ];
+
+    // ── state ─────────────────────────────────────────────────────────────────
+    let mode, score, lives, best, paddle, ball, bricks;
+    best = 0;
+
+    // ── rounded rect helper ───────────────────────────────────────────────────
+    function rrect(x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.arcTo(x + w, y,     x + w, y + r,     r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+      ctx.lineTo(x + r, y + h);
+      ctx.arcTo(x, y + h,     x, y + h - r,     r);
+      ctx.lineTo(x, y + r);
+      ctx.arcTo(x, y,         x + r, y,          r);
+      ctx.closePath();
+    }
+
+    // ── tile background ───────────────────────────────────────────────────────
+    var tilePat3;
+    (function () {
+      const ts = 48, oc = document.createElement('canvas');
+      oc.width = oc.height = ts;
+      const c = oc.getContext('2d');
+      c.fillStyle = '#e8f5e9';
+      c.fillRect(0, 0, ts, ts);
+      c.strokeStyle = '#c8e6c9';
+      c.lineWidth = 1.5;
+      c.strokeRect(0.75, 0.75, ts - 1.5, ts - 1.5);
+      const hl = c.createLinearGradient(0, 0, ts * 0.6, ts * 0.6);
+      hl.addColorStop(0, 'rgba(255,255,255,0.45)');
+      hl.addColorStop(1, 'rgba(255,255,255,0)');
+      c.fillStyle = hl;
+      c.fillRect(2, 2, ts - 4, ts - 4);
+      tilePat3 = ctx.createPattern(oc, 'repeat');
+    }());
+
+    // ── init ──────────────────────────────────────────────────────────────────
+    function initBricks() {
+      bricks = [];
+      for (let r = 0; r < BRICK_ROWS; r++) {
+        for (let c = 0; c < BRICK_COLS; c++) {
+          bricks.push({
+            x:      BRICK_PAD_X + c * (BRICK_W + BRICK_GAP),
+            y:      BRICK_TOP   + r * (BRICK_H + BRICK_GAP),
+            w:      BRICK_W,
+            h:      BRICK_H,
+            pal:    PALETTES[(r + c * 2) % PALETTES.length],
+            alive:  true,
+          });
+        }
+      }
+    }
+
+    function reset() {
+      mode   = 'ready';
+      score  = 0;
+      lives  = 3;
+      paddle = { x: W / 2 - PADDLE_W / 2, y: PADDLE_Y, w: PADDLE_W, h: PADDLE_H };
+      ball   = { x: W / 2, y: PADDLE_Y - BALL_R - 1, vx: 0, vy: 0 };
+      initBricks();
+    }
+
+    function launch() {
+      const angle = -Math.PI / 2 + (Math.random() - 0.5) * 0.7;
+      ball.vx = BALL_SPEED * Math.cos(angle);
+      ball.vy = BALL_SPEED * Math.sin(angle);
+      mode = 'playing';
+    }
+
+    // ── input ─────────────────────────────────────────────────────────────────
+    function setPaddleX(clientX) {
+      const rect = canvas.getBoundingClientRect();
+      const rx   = (clientX - rect.left) * (W / rect.width);
+      paddle.x   = Math.max(0, Math.min(W - paddle.w, rx - paddle.w / 2));
+      if (mode === 'ready') ball.x = paddle.x + paddle.w / 2;
+    }
+
+    canvas.addEventListener('mousemove',  function (e) { setPaddleX(e.clientX); });
+    canvas.addEventListener('touchmove',  function (e) { e.preventDefault(); setPaddleX(e.touches[0].clientX); }, { passive: false });
+    canvas.addEventListener('pointerdown', function (e) {
+      e.preventDefault();
+      if (mode === 'ready') { launch(); return; }
+      if (mode === 'won' || mode === 'dead') { reset(); }
+    });
+
+    // ── physics ───────────────────────────────────────────────────────────────
+    function update() {
+      if (mode !== 'playing') return;
+
+      ball.x += ball.vx;
+      ball.y += ball.vy;
+
+      // Walls
+      if (ball.x - BALL_R < 0)  { ball.x = BALL_R;     ball.vx =  Math.abs(ball.vx); }
+      if (ball.x + BALL_R > W)  { ball.x = W - BALL_R; ball.vx = -Math.abs(ball.vx); }
+      if (ball.y - BALL_R < 0)  { ball.y = BALL_R;     ball.vy =  Math.abs(ball.vy); }
+
+      // Paddle
+      if (
+        ball.vy > 0 &&
+        ball.y + BALL_R >= paddle.y &&
+        ball.y + BALL_R <= paddle.y + paddle.h + 6 &&
+        ball.x >= paddle.x - BALL_R &&
+        ball.x <= paddle.x + paddle.w + BALL_R
+      ) {
+        ball.y = paddle.y - BALL_R;
+        const hit   = (ball.x - (paddle.x + paddle.w / 2)) / (paddle.w / 2);
+        const angle = hit * (Math.PI / 3);
+        ball.vx = BALL_SPEED * Math.sin(angle);
+        ball.vy = -Math.abs(BALL_SPEED * Math.cos(angle));
+      }
+
+      // Bricks
+      for (let i = 0; i < bricks.length; i++) {
+        const b = bricks[i];
+        if (!b.alive) continue;
+        if (ball.x + BALL_R > b.x && ball.x - BALL_R < b.x + b.w &&
+            ball.y + BALL_R > b.y && ball.y - BALL_R < b.y + b.h) {
+          b.alive = false;
+          score += 10;
+          // Determine reflection axis by smallest overlap
+          const oL = ball.x + BALL_R - b.x,  oR = b.x + b.w - (ball.x - BALL_R);
+          const oT = ball.y + BALL_R - b.y,  oB = b.y + b.h - (ball.y - BALL_R);
+          const m  = Math.min(oL, oR, oT, oB);
+          if (m === oT || m === oB) ball.vy = -ball.vy; else ball.vx = -ball.vx;
+          break;
+        }
+      }
+
+      // Win / lose
+      if (bricks.every(function (b) { return !b.alive; })) {
+        mode = 'won';
+        if (score > best) best = score;
+        return;
+      }
+      if (ball.y - BALL_R > H) {
+        lives--;
+        if (lives <= 0) {
+          mode = 'dead';
+          if (score > best) best = score;
+        } else {
+          mode = 'ready';
+          ball = { x: paddle.x + paddle.w / 2, y: PADDLE_Y - BALL_R - 1, vx: 0, vy: 0 };
+        }
+      }
+    }
+
+    // ── draw helpers ──────────────────────────────────────────────────────────
+    function drawPaddle() {
+      const { x, y, w, h } = paddle;
+      // Toilet lid: white ceramic, rounded, with hinge dots and highlight
+      const g = ctx.createLinearGradient(x, y, x, y + h);
+      g.addColorStop(0, '#f5f5f5');
+      g.addColorStop(0.6, '#e8e8e8');
+      g.addColorStop(1, '#cccccc');
+      rrect(x, y, w, h, h / 2);
+      ctx.fillStyle = g;
+      ctx.fill();
+      ctx.strokeStyle = '#aaa';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      // Specular highlight
+      rrect(x + 5, y + 2, w - 10, h * 0.38, 4);
+      ctx.fillStyle = 'rgba(255,255,255,0.65)';
+      ctx.fill();
+      // Hinge circles
+      [x + 8, x + w - 8].forEach(function (hx) {
+        ctx.beginPath();
+        ctx.arc(hx, y + h / 2, 4, 0, Math.PI * 2);
+        ctx.fillStyle = '#bbb';
+        ctx.fill();
+        ctx.strokeStyle = '#999';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      });
+    }
+
+    function drawBall() {
+      const { x, y } = ball;
+      // Toilet paper roll viewed end-on
+      // Outer paper ring
+      const og = ctx.createRadialGradient(x - BALL_R * 0.3, y - BALL_R * 0.3, 1, x, y, BALL_R);
+      og.addColorStop(0, '#ffffff');
+      og.addColorStop(1, '#d8d8d0');
+      ctx.beginPath();
+      ctx.arc(x, y, BALL_R, 0, Math.PI * 2);
+      ctx.fillStyle = og;
+      ctx.fill();
+      ctx.strokeStyle = '#bbb';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      // Paper layer ring
+      ctx.beginPath();
+      ctx.arc(x, y, BALL_R * 0.72, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(160,150,140,0.35)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      // Cardboard tube
+      const innerR = BALL_R * 0.42;
+      ctx.beginPath();
+      ctx.arc(x, y, innerR, 0, Math.PI * 2);
+      ctx.fillStyle = '#c49a6c';
+      ctx.fill();
+      ctx.strokeStyle = '#9e7245';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      // Hole
+      ctx.beginPath();
+      ctx.arc(x, y, innerR * 0.45, 0, Math.PI * 2);
+      ctx.fillStyle = '#6b4423';
+      ctx.fill();
+    }
+
+    function drawGerm(b) {
+      const { x, y, w, h, pal } = b;
+      const cx = x + w / 2, cy = y + h / 2;
+      const sk = 7, sw = 5;
+      // Spikes (drawn behind body)
+      ctx.fillStyle = pal[0];
+      // Top
+      ctx.beginPath(); ctx.moveTo(cx - sw, y + 2); ctx.lineTo(cx + sw, y + 2); ctx.lineTo(cx, y - sk); ctx.closePath(); ctx.fill();
+      // Bottom
+      ctx.beginPath(); ctx.moveTo(cx - sw, y + h - 2); ctx.lineTo(cx + sw, y + h - 2); ctx.lineTo(cx, y + h + sk); ctx.closePath(); ctx.fill();
+      // Left
+      ctx.beginPath(); ctx.moveTo(x + 2, cy - sw * 0.7); ctx.lineTo(x + 2, cy + sw * 0.7); ctx.lineTo(x - sk, cy); ctx.closePath(); ctx.fill();
+      // Right
+      ctx.beginPath(); ctx.moveTo(x + w - 2, cy - sw * 0.7); ctx.lineTo(x + w - 2, cy + sw * 0.7); ctx.lineTo(x + w + sk, cy); ctx.closePath(); ctx.fill();
+
+      // Body
+      rrect(x + 1, y + 1, w - 2, h - 2, 8);
+      const bg = ctx.createLinearGradient(x, y, x, y + h);
+      bg.addColorStop(0, pal[0]);
+      bg.addColorStop(1, pal[1]);
+      ctx.fillStyle = bg;
+      ctx.fill();
+      ctx.strokeStyle = pal[1];
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // Highlight
+      rrect(x + 5, y + 3, (w - 10) * 0.55, h * 0.28, 4);
+      ctx.fillStyle = 'rgba(255,255,255,0.38)';
+      ctx.fill();
+
+      // Eyes
+      const ey = cy - 1, eo = w * 0.18;
+      [-1, 1].forEach(function (s) {
+        ctx.beginPath(); ctx.arc(cx + s * eo, ey, 3.2, 0, Math.PI * 2);
+        ctx.fillStyle = 'white'; ctx.fill();
+        ctx.beginPath(); ctx.arc(cx + s * eo + 0.7, ey + 0.5, 1.6, 0, Math.PI * 2);
+        ctx.fillStyle = '#111'; ctx.fill();
+      });
+
+      // Mouth
+      ctx.beginPath();
+      ctx.arc(cx, ey + 6, 3.5, 0.25, Math.PI - 0.25);
+      ctx.strokeStyle = 'rgba(0,0,0,0.32)';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+
+    function drawHUD() {
+      ctx.font = 'bold 15px system-ui, sans-serif';
+      ctx.fillStyle = 'rgba(30,60,30,0.8)';
+      ctx.textAlign = 'left';
+      ctx.fillText('Puntos: ' + score, 10, 30);
+      ctx.textAlign = 'right';
+      const hearts = lives >= 3 ? '❤️❤️❤️' : lives === 2 ? '❤️❤️🖤' : lives === 1 ? '❤️🖤🖤' : '🖤🖤🖤';
+      ctx.fillText(hearts, W - 8, 30);
+      if (best > 0) {
+        ctx.textAlign = 'center';
+        ctx.fillStyle = 'rgba(30,60,30,0.45)';
+        ctx.font = '12px system-ui';
+        ctx.fillText('Récord: ' + best, W / 2, 30);
+      }
+    }
+
+    function drawOverlay(title, lines, cta) {
+      ctx.fillStyle = 'rgba(0,0,0,0.50)';
+      ctx.fillRect(0, 0, W, H);
+      const ph = 190, py = (H - ph) / 2;
+      rrect(W * 0.09, py, W * 0.82, ph, 16);
+      ctx.fillStyle = 'rgba(255,255,255,0.97)';
+      ctx.fill();
+      ctx.fillStyle = '#2e7d32';
+      ctx.font = 'bold 23px system-ui';
+      ctx.textAlign = 'center';
+      ctx.fillText(title, W / 2, py + 46);
+      ctx.fillStyle = '#444';
+      ctx.font = '15px system-ui';
+      lines.forEach(function (l, i) { ctx.fillText(l, W / 2, py + 78 + i * 23); });
+      ctx.fillStyle = '#2e7d32';
+      ctx.font = 'bold 14px system-ui';
+      ctx.fillText(cta, W / 2, py + ph - 18);
+    }
+
+    // ── draw frame ────────────────────────────────────────────────────────────
+    function draw() {
+      ctx.fillStyle = tilePat3;
+      ctx.fillRect(0, 0, W, H);
+
+      bricks.forEach(function (b) { if (b.alive) drawGerm(b); });
+      drawPaddle();
+      drawBall();
+      drawHUD();
+
+      if (mode === 'ready') {
+        drawOverlay(
+          'Germinator',
+          ['Destruye todos los gérmenes', 'con el rollo de papel higiénico.', lives < 3 ? 'Vida perdida — ¡sigue!' : '3 vidas · mueve el ratón / dedo'],
+          '▶ Clic / Toca para lanzar'
+        );
+      } else if (mode === 'won') {
+        drawOverlay('¡Baño Limpio! 🧹', ['¡Eliminaste todos los gérmenes!', 'Puntuación: ' + score], '▶ Jugar de nuevo');
+      } else if (mode === 'dead') {
+        drawOverlay(
+          'Los gérmenes ganaron…',
+          ['Puntuación final: ' + score, best > 0 ? 'Récord: ' + best : '¡Inténtalo de nuevo!'],
+          '▶ Reintentar'
+        );
+      }
+    }
+
+    // ── loop ──────────────────────────────────────────────────────────────────
+    function loop() {
+      update();
       draw();
       requestAnimationFrame(loop);
     }

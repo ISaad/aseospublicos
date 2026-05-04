@@ -91,6 +91,24 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://www.aseospublicos.es/aseos-aeropuertos-espana.html</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aseospublicos.es/aseos-autopistas-espana.html</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.aseospublicos.es/aseos-museos-monumentos.html</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.aseospublicos.es/juegos.html</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
