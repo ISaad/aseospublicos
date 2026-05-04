@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied'
+  });
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZM82373TQ3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-ZM82373TQ3');
+  </script>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-MVLZ3DSS');</script>
+  <!-- End Google Tag Manager -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0180568308288225" crossorigin="anonymous"></script>
+
+  <link rel="canonical" href="https://www.aseospublicos.es/juegos.html" />
+  <meta charset="UTF-8">
+  <title>Juegos - AseosPublicos.es</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Juega a Papel Volador y otros mini-juegos temáticos de aseos públicos. Esquiva los chorros de los inodoros con tu rollo de papel higiénico.">
+  <meta name="author" content="AseosPublicos.es">
+  <meta name="google-adsense-account" content="ca-pub-0180568308288225">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2e7d32">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32">
+
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .game-container {
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 2 / 3;
+      margin: 1rem auto;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      display: block;
+      background: #f4f4f4;
+    }
+    #gameCanvas, #gameCanvas2 {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: pointer;
+      touch-action: none;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .game-hint {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+    .games-intro {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .game-badge {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 99px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MVLZ3DSS" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header>
+    <button id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+    <h1>Juegos</h1>
+  </header>
+  <div id="sidebar">
+    <div class="sidebar-header">
+      <a href="/" class="sidebar-brand">Aseos Públicos</a>
+      <button id="sidebar-close" aria-label="Cerrar menú">&times;</button>
+    </div>
+    <nav>
+      <a href="/">Mapa Interactivo</a>
+      <a href="quienes-somos.html">Quiénes Somos</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contribuir.html">Contribuir</a>
+      <a href="contacto.html">Contacto</a>
+      <a href="juegos.html" class="active">Juegos</a>
+      <div class="nav-divider"></div>
+      <details class="nav-group">
+        <summary>Guías</summary>
+        <div class="nav-group-links">
+          <a href="guia-viaje.html">Guía de Viaje</a>
+          <a href="aseos-trenes-espana.html">Aseos en Trenes</a>
+          <a href="mejores-ciudades-aseos-publicos.html">Mejores Ciudades</a>
+          <a href="aseos-playas-espana.html">Aseos en Playas</a>
+          <a href="aseos-emergencia-espana.html">Guía de Emergencia</a>
+        </div>
+      </details>
+      <details class="nav-group">
+        <summary>Información</summary>
+        <div class="nav-group-links">
+          <a href="salud-higiene.html">Salud e Higiene</a>
+          <a href="impacto-social.html">Impacto Social</a>
+          <a href="normativa.html">Normativa</a>
+          <a href="accesibilidad.html">Accesibilidad</a>
+        </div>
+      </details>
+    </nav>
+  </div>
+  <main>
+    <div class="ad-container" id="ad-container"></div>
+
+    <section>
+      <h2>Juegos</h2>
+      <p>Mini-juegos temáticos para pasar el rato mientras localizas el baño más cercano. ¿Hasta qué puntuación llegas?</p>
+    </section>
+
+    <section id="papel-volador-section">
+      <div class="games-intro">
+        <h2 style="margin:0">Papel Volador</h2>
+        <span class="game-badge">Nuevo</span>
+      </div>
+      <p>Guía el rollo de papel higiénico esquivando los potentes chorros de agua que salen de los inodoros. Cuanto más lejos llegues, más puntos consigues.</p>
+
+      <div class="game-container">
+        <canvas id="gameCanvas" width="400" height="600" aria-label="Juego Papel Volador"></canvas>
+      </div>
+      <p class="game-hint">Pulsa Espacio, haz clic o toca la pantalla para volar</p>
+    </section>
+
+    <section id="aseo-express-section">
+      <div class="games-intro">
+        <h2 style="margin:0">Aseo Express</h2>
+        <span class="game-badge">Nuevo</span>
+      </div>
+      <p>Gestiona los aseos y mantén a los clientes contentos. Limpia rápido — si esperan demasiado se van sin dejar propina... o directamente se marchan y pierdes una vida.</p>
+
+      <div class="game-container" style="aspect-ratio: 420/540;">
+        <canvas id="gameCanvas2" width="420" height="540" aria-label="Juego Aseo Express"></canvas>
+      </div>
+      <p class="game-hint">Toca los aseos sucios para limpiarlos</p>
+    </section>
+  </main>
+
+  <div id="cookieBanner">
+    <span>Este sitio usa cookies para anuncios y analítica. <a href="politica-cookies.html">Leer más</a>.</span>
+    <div class="cookie-btns">
+      <button id="btnAceptarCookies">Aceptar</button>
+      <button id="btnRechazarCookies">Rechazar</button>
+    </div>
+  </div>
+  <button id="install-btn">Instalar la App</button>
+
+  <footer>
+    <p>© 2026 Aseos Públicos Cerca de Mí.</p>
+    <p>
+      <a href="aviso-legal.html">Aviso Legal</a> |
+      <a href="politica-privacidad.html">Privacidad</a> |
+      <a href="politica-cookies.html">Cookies</a>
+    </p>
+  </footer>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+    let deferredPrompt;
+    const installBtn = document.getElementById('install-btn');
+    window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; installBtn.style.display = 'block'; });
+    installBtn.addEventListener('click', async () => { if (deferredPrompt) { deferredPrompt.prompt(); const result = await deferredPrompt.userChoice; deferredPrompt = null; installBtn.style.display = 'none'; } });
+  </script>
+  <script src="cookie-consent.js"></script>
+  <script src="legal-modal.js"></script>
+  <script src="/nav.js"></script>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- PAPEL VOLADOR GAME                                                      -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <script>
+  (function () {
+    'use strict';
+
+    const canvas = document.getElementById('gameCanvas');
+    const ctx    = canvas.getContext('2d');
+    const W      = canvas.width;   // 400
+    const H      = canvas.height;  // 600
+
+    // ── constants ─────────────────────────────────────────────────────────────
+    const GRAVITY     = 0.44;
+    const FLAP_V      = -9.2;
+    const COL_SPEED   = 2.6;
+    const COL_W       = 62;
+    const COL_GAP     = 162;  // vertical opening the roll must fly through
+    const SPAWN_AFTER = 70;   // frames delay before first column
+    const SPAWN_EVERY = 120;  // frames between subsequent columns
+    const ROLL_X      = 88;   // fixed horizontal position of roll centre
+    const ROLL_R      = 21;   // roll radius
+
+    // ── state ─────────────────────────────────────────────────────────────────
+    let mode;        // 'ready' | 'playing' | 'dead'
+    let score, best;
+    let roll;        // { y, vy, angle }
+    let cols;        // [{ x, gapMid, scored }]
+    let gameTick;    // frame counter while playing
+    let animTick;    // always-running frame counter for idle animations
+
+    best = 0;
+    animTick = 0;
+
+    function reset() {
+      mode     = 'ready';
+      score    = 0;
+      gameTick = 0;
+      roll     = { y: H / 2, vy: 0, angle: 0 };
+      cols     = [];
+    }
+
+    function flap() {
+      if (mode === 'dead')  { reset(); return; }
+      if (mode === 'ready') { mode = 'playing'; }
+      roll.vy    = FLAP_V;
+      roll.angle = -0.45;
+    }
+
+    // ── input ─────────────────────────────────────────────────────────────────
+    window.addEventListener('keydown', function (e) {
+      if (e.code === 'Space') { e.preventDefault(); flap(); }
+    });
+    canvas.addEventListener('pointerdown', function (e) {
+      e.preventDefault();
+      flap();
+    });
+
+    // ── helper: rounded rectangle path ────────────────────────────────────────
+    function rrect(x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.arcTo(x + w, y,     x + w, y + r,     r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+      ctx.lineTo(x + r, y + h);
+      ctx.arcTo(x, y + h,     x, y + h - r,     r);
+      ctx.lineTo(x, y + r);
+      ctx.arcTo(x, y,         x + r, y,          r);
+      ctx.closePath();
+    }
+
+    // ── tile background (built once into an offscreen canvas) ─────────────────
+    var tilePat;
+    (function buildTiles() {
+      var ts  = 48;
+      var oc  = document.createElement('canvas');
+      oc.width  = ts;
+      oc.height = ts;
+      var c   = oc.getContext('2d');
+
+      // base tile colour
+      c.fillStyle = '#f2f2f2';
+      c.fillRect(0, 0, ts, ts);
+
+      // grout lines
+      c.strokeStyle = '#d6d6d6';
+      c.lineWidth = 1.5;
+      c.strokeRect(0.75, 0.75, ts - 1.5, ts - 1.5);
+
+      // subtle highlight (top-left corner of each tile)
+      var hl = c.createLinearGradient(0, 0, ts * 0.6, ts * 0.6);
+      hl.addColorStop(0,   'rgba(255,255,255,0.55)');
+      hl.addColorStop(1,   'rgba(255,255,255,0)');
+      c.fillStyle = hl;
+      c.fillRect(2, 2, ts - 4, ts - 4);
+
+      tilePat = ctx.createPattern(oc, 'repeat');
+    })();
+
+    function drawBg() {
+      ctx.fillStyle = tilePat;
+      ctx.fillRect(0, 0, W, H);
+    }
+
+    // ── water column colour ────────────────────────────────────────────────────
+    function waterGrad(colX) {
+      var g = ctx.createLinearGradient(colX, 0, colX + COL_W, 0);
+      g.addColorStop(0,    'rgba(40,  120, 220, 0.86)');
+      g.addColorStop(0.25, 'rgba(110, 190, 255, 0.93)');
+      g.addColorStop(0.75, 'rgba(110, 190, 255, 0.93)');
+      g.addColorStop(1,    'rgba(40,  120, 220, 0.86)');
+      return g;
+    }
+
+    // ── toilet bowl drawn at the gap edge ─────────────────────────────────────
+    //    orientation 'down': bowl opening faces downward (top column)
+    //    orientation 'up':   bowl opening faces upward   (bottom column)
+    // Draws a full toilet (with open lid) at the gap edge of a water column.
+    // orientation 'down': toilet at top column gap, bowl opening faces down.
+    // orientation 'up':   toilet at bottom column gap, bowl opening faces up.
+    // Local y=0 = gap edge. Positive y = deeper into the stream.
+    function drawToilet(cx, rimY, orientation) {
+      ctx.save();
+      ctx.translate(cx, rimY);
+      if (orientation === 'down') ctx.scale(1, -1);
+
+      var sw = COL_W + 12;  // seat width — wider than column (pipe-cap silhouette)
+      var sh = 10;          // seat height
+      var bw = COL_W + 2;   // bowl width
+      var bh = 28;          // bowl depth
+      var tw = COL_W - 6;   // tank width
+      var th = 24;          // tank height
+      var lw = tw + 14;     // open lid width — slightly wider than tank
+      var lh = 8;           // open lid thickness (it's lying flat behind the tank)
+
+      // ── Open lid (furthest from gap, represents lid folded flat back against wall) ──
+      // Slightly wider than the tank; lighter shade to read as a separate ceramic piece.
+      ctx.fillStyle = '#d4d4d4';
+      ctx.strokeStyle = '#b0b0b0';
+      ctx.lineWidth = 1.5;
+      rrect(-lw / 2, sh + bh + th, lw, lh, 4);
+      ctx.fill();
+      ctx.stroke();
+      // Lid top highlight
+      ctx.fillStyle = 'rgba(255,255,255,0.45)';
+      rrect(-lw / 2 + 4, sh + bh + th + 1, lw - 8, 3, 2);
+      ctx.fill();
+      // Small hinge dots — signal that the lid is hinged/open
+      ctx.fillStyle = '#a0a0a0';
+      ctx.beginPath();
+      ctx.arc(-tw / 2 + 5, sh + bh + th + lh / 2, 2.5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc( tw / 2 - 5, sh + bh + th + lh / 2, 2.5, 0, Math.PI * 2);
+      ctx.fill();
+
+      // ── Tank ──
+      ctx.fillStyle = '#e6e6e6';
+      ctx.strokeStyle = '#c8c8c8';
+      ctx.lineWidth = 1.5;
+      rrect(-tw / 2, sh + bh, tw, th, 5);
+      ctx.fill();
+      ctx.stroke();
+      // Flush button on tank
+      ctx.fillStyle = '#cccccc';
+      ctx.beginPath();
+      ctx.ellipse(tw * 0.28, sh + bh + th * 0.4, 5, 3.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#b8b8b8';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      // ── Bowl body (trapezoid) ──
+      ctx.fillStyle = '#f0f0f0';
+      ctx.strokeStyle = '#cccccc';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(-bw / 2,      sh);
+      ctx.lineTo( bw / 2,      sh);
+      ctx.lineTo( bw / 2 - 10, sh + bh);
+      ctx.lineTo(-bw / 2 + 10, sh + bh);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      // ── Water in bowl (blue pool with small highlight) ──
+      ctx.fillStyle = '#3aa8f0';
+      ctx.beginPath();
+      ctx.ellipse(0, sh + bh * 0.7, bw / 2 - 13, 7.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.38)';
+      ctx.beginPath();
+      ctx.ellipse(-5, sh + bh * 0.64, 7, 3, -0.2, 0, Math.PI * 2);
+      ctx.fill();
+
+      // ── Seat (at gap edge, y=0) — rounded rect, widest element, acts as the cap ──
+      ctx.fillStyle = '#f8f8f8';
+      ctx.strokeStyle = '#c8c8c8';
+      ctx.lineWidth = 2.5;
+      rrect(-sw / 2, 0, sw, sh, 5);
+      ctx.fill();
+      ctx.stroke();
+      // Seat highlight
+      ctx.fillStyle = 'rgba(255,255,255,0.65)';
+      rrect(-sw / 2 + 5, 1.5, sw - 10, 3.5, 2);
+      ctx.fill();
+
+      ctx.restore();
+    }
+
+    // ── animated water droplets ────────────────────────────────────────────────
+    function drawDroplets(colX, y, dir, t) {
+      // dir: +1 drops go down (from top stream), -1 drops go up (from bottom stream)
+      var cx = colX + COL_W / 2;
+      ctx.save();
+      for (var i = 0; i < 7; i++) {
+        var phase   = t * 0.09 + i * 0.93;
+        var dx      = (i - 3) * (COL_W / 8);
+        var dist    = (Math.abs(Math.sin(phase)) * 14 + 5) * dir;
+        var alpha   = 0.45 + 0.45 * Math.abs(Math.sin(phase + 0.3));
+        var radius  = 2 + Math.abs(Math.sin(phase * 0.7)) * 1.8;
+
+        ctx.fillStyle = 'rgba(80, 170, 255, ' + alpha.toFixed(2) + ')';
+        ctx.beginPath();
+        ctx.ellipse(cx + dx, y + dist, radius * 0.65, radius, 0, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.restore();
+    }
+
+    // ── draw one column pair ───────────────────────────────────────────────────
+    function drawColumn(col) {
+      var topH = col.gapMid - COL_GAP / 2;   // height of top stream
+      var botY = col.gapMid + COL_GAP / 2;   // y where bottom stream starts
+      var botH = H - botY;
+
+      var wg = waterGrad(col.x);
+
+      // top water stream
+      if (topH > 0) {
+        ctx.fillStyle = wg;
+        ctx.fillRect(col.x, 0, COL_W, topH);
+        // highlight stripe
+        ctx.fillStyle = 'rgba(255,255,255,0.22)';
+        ctx.fillRect(col.x + 7, 0, 9, topH);
+        // edge darkening
+        ctx.fillStyle = 'rgba(0,0,0,0.08)';
+        ctx.fillRect(col.x, 0, 4, topH);
+        ctx.fillRect(col.x + COL_W - 4, 0, 4, topH);
+      }
+
+      // bottom water stream
+      if (botH > 0) {
+        ctx.fillStyle = wg;
+        ctx.fillRect(col.x, botY, COL_W, botH);
+        ctx.fillStyle = 'rgba(255,255,255,0.22)';
+        ctx.fillRect(col.x + 7, botY, 9, botH);
+        ctx.fillStyle = 'rgba(0,0,0,0.08)';
+        ctx.fillRect(col.x, botY, 4, botH);
+        ctx.fillRect(col.x + COL_W - 4, botY, 4, botH);
+      }
+
+      // droplets at gap edges
+      if (topH > 0) drawDroplets(col.x, topH, 1, animTick);
+      if (botH > 0) drawDroplets(col.x, botY, -1, animTick);
+
+      // toilet bowls at gap edges
+      var bCx = col.x + COL_W / 2;
+      if (topH > 0) drawToilet(bCx, topH, 'down');
+      if (botH > 0) drawToilet(bCx, botY, 'up');
+    }
+
+    // ── draw the toilet paper roll ─────────────────────────────────────────────
+    function drawRoll() {
+      ctx.save();
+      ctx.translate(ROLL_X, roll.y);
+
+      // tilt based on velocity (clamped)
+      var tilt = Math.max(-0.9, Math.min(1.1, roll.angle));
+      ctx.rotate(tilt);
+
+      var r = ROLL_R;
+
+      // drop shadow
+      ctx.beginPath();
+      ctx.ellipse(3, 5, r, r * 0.82, 0, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0,0,0,0.16)';
+      ctx.fill();
+
+      // outer paper body — white with very subtle warm-gray shading
+      var pg = ctx.createRadialGradient(-r * 0.32, -r * 0.32, 2, 0, 0, r);
+      pg.addColorStop(0,    '#ffffff');
+      pg.addColorStop(0.55, '#f2f2f0');
+      pg.addColorStop(1,    '#d8d8d6');
+      ctx.beginPath();
+      ctx.arc(0, 0, r, 0, Math.PI * 2);
+      ctx.fillStyle = pg;
+      ctx.fill();
+
+      // paper layer rings
+      ctx.strokeStyle = 'rgba(180,180,178,0.45)';
+      ctx.lineWidth = 0.9;
+      [0.54, 0.72, 0.88].forEach(function (f) {
+        ctx.beginPath();
+        ctx.arc(0, 0, r * f, 0, Math.PI * 2);
+        ctx.stroke();
+      });
+
+      // outer edge
+      ctx.strokeStyle = '#c0c0be';
+      ctx.lineWidth = 1.8;
+      ctx.beginPath();
+      ctx.arc(0, 0, r, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // perforations (small dots near the outer edge)
+      ctx.fillStyle = 'rgba(160,160,158,0.6)';
+      var n = 20;
+      for (var i = 0; i < n; i++) {
+        var a = (i / n) * Math.PI * 2;
+        ctx.beginPath();
+        ctx.arc(Math.cos(a) * (r - 3.8), Math.sin(a) * (r - 3.8), 1.4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // cardboard tube
+      var tr  = r * 0.37;
+      var tg  = ctx.createRadialGradient(-tr * 0.3, -tr * 0.3, 1, 0, 0, tr);
+      tg.addColorStop(0, '#d09030');
+      tg.addColorStop(1, '#6a4008');
+      ctx.beginPath();
+      ctx.arc(0, 0, tr, 0, Math.PI * 2);
+      ctx.fillStyle = tg;
+      ctx.fill();
+      ctx.strokeStyle = '#483005';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      // tube hollow
+      ctx.beginPath();
+      ctx.arc(0, 0, tr * 0.44, 0, Math.PI * 2);
+      ctx.fillStyle = '#1c0e02';
+      ctx.fill();
+
+      // small shine on tube
+      ctx.beginPath();
+      ctx.arc(-tr * 0.25, -tr * 0.25, tr * 0.2, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,0.18)';
+      ctx.fill();
+
+      ctx.restore();
+    }
+
+    // ── score display ──────────────────────────────────────────────────────────
+    function drawHUD() {
+      ctx.textAlign = 'center';
+      ctx.font = 'bold 48px system-ui, sans-serif';
+      // shadow
+      ctx.fillStyle = 'rgba(0,0,0,0.42)';
+      ctx.fillText(score, W / 2 + 2, 68);
+      // white text
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText(score, W / 2, 66);
+    }
+
+    // ── overlay panels ─────────────────────────────────────────────────────────
+    function panel(x, y, w, h) {
+      rrect(x, y, w, h, 10);
+      ctx.fillStyle   = 'rgba(255,255,255,0.93)';
+      ctx.shadowColor = 'rgba(0,0,0,0.18)';
+      ctx.shadowBlur  = 12;
+      ctx.fill();
+      ctx.shadowBlur  = 0;
+      ctx.strokeStyle = 'rgba(0,0,0,0.10)';
+      ctx.lineWidth   = 1;
+      ctx.stroke();
+    }
+
+    function drawReadyScreen() {
+      var pw = 290, ph = 192;
+      var px = (W - pw) / 2;
+      var py = H / 2 - ph / 2 - 30;
+      panel(px, py, pw, ph);
+
+      ctx.fillStyle  = '#166534';
+      ctx.font       = 'bold 26px system-ui, sans-serif';
+      ctx.textAlign  = 'center';
+      ctx.fillText('Papel Volador', W / 2, py + 46);
+
+      ctx.fillStyle = '#555555';
+      ctx.font      = '14px system-ui, sans-serif';
+      ctx.fillText('Esquiva los chorros de los', W / 2, py + 82);
+      ctx.fillText('inodoros con tu rollo de papel', W / 2, py + 102);
+
+      // animated pulsing prompt
+      var pulse = 0.7 + 0.3 * Math.abs(Math.sin(animTick * 0.07));
+      ctx.fillStyle = 'rgba(217,119,6,' + pulse.toFixed(2) + ')';
+      ctx.font      = 'bold 16px system-ui, sans-serif';
+      ctx.fillText('▶ Toca o pulsa Espacio', W / 2, py + 152);
+    }
+
+    function drawGameOverScreen() {
+      var pw = 290, ph = 210;
+      var px = (W - pw) / 2;
+      var py = H / 2 - ph / 2 - 10;
+      panel(px, py, pw, ph);
+
+      ctx.fillStyle = '#b91c1c';
+      ctx.font      = 'bold 28px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('¡Fin del juego!', W / 2, py + 50);
+
+      ctx.fillStyle = '#333333';
+      ctx.font      = '16px system-ui, sans-serif';
+      ctx.fillText('Puntuación: ' + score, W / 2, py + 96);
+
+      ctx.fillStyle = '#166534';
+      ctx.font      = '15px system-ui, sans-serif';
+      ctx.fillText('Récord: ' + best, W / 2, py + 120);
+
+      var pulse2 = 0.7 + 0.3 * Math.abs(Math.sin(animTick * 0.07));
+      ctx.fillStyle = 'rgba(217,119,6,' + pulse2.toFixed(2) + ')';
+      ctx.font      = 'bold 16px system-ui, sans-serif';
+      ctx.fillText('▶ Toca para reintentar', W / 2, py + 170);
+    }
+
+    // ── circle vs axis-aligned rectangle collision ─────────────────────────────
+    function circleRect(cx, cy, cr, rx, ry, rw, rh) {
+      var nearX = cx < rx ? rx : cx > rx + rw ? rx + rw : cx;
+      var nearY = cy < ry ? ry : cy > ry + rh ? ry + rh : cy;
+      var dx = cx - nearX;
+      var dy = cy - nearY;
+      return dx * dx + dy * dy < cr * cr;
+    }
+
+    // ── die ────────────────────────────────────────────────────────────────────
+    function die() {
+      mode = 'dead';
+      if (score > best) best = score;
+      roll.vy = FLAP_V * 0.45;
+    }
+
+    // ── update ─────────────────────────────────────────────────────────────────
+    function update() {
+      if (mode === 'ready') {
+        // gentle idle bob
+        roll.y = H / 2 + Math.sin(animTick * 0.055) * 14;
+        return;
+      }
+      if (mode === 'dead') return;
+
+      // mode === 'playing'
+      gameTick++;
+
+      // physics
+      roll.vy    += GRAVITY;
+      roll.y     += roll.vy;
+      roll.angle += roll.vy * 0.022;
+
+      // column spawn
+      var spawnTick = gameTick - SPAWN_AFTER;
+      if (spawnTick >= 0 && spawnTick % SPAWN_EVERY === 0) {
+        var margin  = 80;
+        var gapMid  = margin + Math.random() * (H - margin * 2);
+        cols.push({ x: W, gapMid: gapMid, scored: false });
+      }
+
+      // move columns & detect scoring
+      for (var i = cols.length - 1; i >= 0; i--) {
+        cols[i].x -= COL_SPEED;
+        if (!cols[i].scored && cols[i].x + COL_W / 2 < ROLL_X) {
+          cols[i].scored = true;
+          score++;
+        }
+        if (cols[i].x + COL_W < 0) cols.splice(i, 1);
+      }
+
+      // boundary collision
+      if (roll.y + ROLL_R >= H || roll.y - ROLL_R <= 0) { die(); return; }
+
+      // column collision
+      for (var j = 0; j < cols.length; j++) {
+        var col  = cols[j];
+        var topH = col.gapMid - COL_GAP / 2;
+        var botY = col.gapMid + COL_GAP / 2;
+
+        // quick horizontal reject
+        if (ROLL_X + ROLL_R < col.x || ROLL_X - ROLL_R > col.x + COL_W) continue;
+
+        // top stream: y=[0, topH]
+        if (topH > 0 && circleRect(ROLL_X, roll.y, ROLL_R, col.x, 0, COL_W, topH)) {
+          die(); return;
+        }
+        // bottom stream: y=[botY, H]
+        if (circleRect(ROLL_X, roll.y, ROLL_R, col.x, botY, COL_W, H - botY)) {
+          die(); return;
+        }
+      }
+    }
+
+    // ── render ─────────────────────────────────────────────────────────────────
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      drawBg();
+      for (var i = 0; i < cols.length; i++) drawColumn(cols[i]);
+      drawRoll();
+      if (mode === 'playing' || mode === 'dead') drawHUD();
+      if (mode === 'ready') drawReadyScreen();
+      if (mode === 'dead')  drawGameOverScreen();
+    }
+
+    // ── main loop ──────────────────────────────────────────────────────────────
+    function loop() {
+      animTick++;
+      update();
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    reset();
+    loop();
+
+  })();
+  </script>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- ASEO EXPRESS GAME                                                       -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <script>
+  (function () {
+    'use strict';
+
+    var canvas = document.getElementById('gameCanvas2');
+    var ctx    = canvas.getContext('2d');
+    var W = canvas.width;   // 420
+    var H = canvas.height;  // 540
+
+    // ── layout ────────────────────────────────────────────────────────────────
+    var HUD_H  = 62;
+    var N_T    = 3;
+    var T_CX   = [80, 210, 340];   // toilet centre-x positions
+    var T_Y    = 92;               // toilet stall top-y (leave room for back-wall sign)
+    var T_W    = 90;               // stall width
+    var T_H    = 126;              // stall height
+    var Q_Y    = 378;              // y centre of queuing customers
+
+    // ── timing (ms) ───────────────────────────────────────────────────────────
+    var USE_MIN      = 4000;
+    var USE_MAX      = 8500;
+    var WAIT_FULL    = 5000;   // < 5 s  →  full tip
+    var WAIT_PARTIAL = 11000;  // < 11 s →  partial tip
+    var WAIT_LEAVE   = 17000;  // > 17 s →  leave angry (lose life)
+    var SPAWN_START  = 4500;
+    var SPAWN_MIN    = 1800;
+
+    // ── visual ────────────────────────────────────────────────────────────────
+    var CUST_COLORS = ['#e74c3c','#3498db','#27ae60','#e67e22','#9b59b6','#16a085','#d35400','#e91e63'];
+
+    // ── tile pattern (same style as Game 1) ──────────────────────────────────
+    var tilePat;
+    (function () {
+      var ts = 48, oc = document.createElement('canvas');
+      oc.width = oc.height = ts;
+      var c = oc.getContext('2d');
+      c.fillStyle = '#f0f0f0'; c.fillRect(0, 0, ts, ts);
+      c.strokeStyle = '#d4d4d4'; c.lineWidth = 1.5;
+      c.strokeRect(0.75, 0.75, ts - 1.5, ts - 1.5);
+      var hl = c.createLinearGradient(0, 0, ts * 0.6, ts * 0.6);
+      hl.addColorStop(0, 'rgba(255,255,255,0.52)');
+      hl.addColorStop(1, 'rgba(255,255,255,0)');
+      c.fillStyle = hl; c.fillRect(2, 2, ts - 4, ts - 4);
+      tilePat = ctx.createPattern(oc, 'repeat');
+    }());
+
+    // ── rrect helper ──────────────────────────────────────────────────────────
+    function rrect(x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y); ctx.arcTo(x + w, y,     x + w, y + r,     r);
+      ctx.lineTo(x + w, y + h - r); ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+      ctx.lineTo(x + r, y + h); ctx.arcTo(x,     y + h, x,     y + h - r, r);
+      ctx.lineTo(x, y + r); ctx.arcTo(x,     y,     x + r, y,           r);
+      ctx.closePath();
+    }
+
+    // ── game state ────────────────────────────────────────────────────────────
+    var lives, score, tips, started, over;
+    var toilets, customers, effects;
+    var spawnTimer, spawnInterval, nextId, nowMs;
+
+    function reset() {
+      lives = 3; score = 0; tips = 0;
+      started = false; over = false;
+      nextId = 0; spawnTimer = 0; spawnInterval = SPAWN_START;
+      effects = []; customers = [];
+      toilets = T_CX.map(function (cx, i) {
+        return { id: i, cx: cx, state: 'clean', dirt: 0, maxDirt: 0, clicks: 0, useEnd: 0, flash: 0 };
+      });
+    }
+
+    // ── customer helpers ──────────────────────────────────────────────────────
+    function queuedCustomers() {
+      return customers.filter(function (c) { return c.state === 'queuing'; });
+    }
+
+    function refreshQueue() {
+      var q = queuedCustomers();
+      var gap = 46;
+      var startX = W / 2 - (q.length - 1) * gap / 2;
+      q.forEach(function (c, i) { c.tx = startX + i * gap; c.ty = Q_Y; });
+    }
+
+    function tryAssign() {
+      var q = queuedCustomers();
+      if (!q.length) return;
+      var free = toilets.find(function (t) { return t.state === 'clean'; });
+      if (!free) return;
+      var c = q[0];
+      var waited = nowMs - c.waitStart;
+      c.tipAmt = waited < WAIT_FULL ? 3 : waited < WAIT_PARTIAL ? 1 : 0;
+      c.state    = 'using';
+      c.toiletId = free.id;
+      free.state  = 'occupied';
+      free.useEnd = nowMs + c.useTime;
+      refreshQueue();
+    }
+
+    function spawnCustomer() {
+      var c = {
+        id: nextId++,
+        color: CUST_COLORS[nextId % CUST_COLORS.length],
+        state: 'walking',
+        expr: 'happy',
+        toiletId: -1,
+        waitStart: 0,
+        useTime: USE_MIN + Math.random() * (USE_MAX - USE_MIN),
+        tipAmt: 0,
+        x: W + 28, y: Q_Y,
+        tx: W / 2, ty: Q_Y,
+        angry: false,
+        leaving: false
+      };
+      customers.push(c);
+      refreshQueue();
+      return c;
+    }
+
+    function addFx(x, y, text, color) {
+      effects.push({ x: x, y: y, text: text, color: color, age: 0, life: 950 });
+    }
+
+    // ── click / tap ───────────────────────────────────────────────────────────
+    canvas.addEventListener('pointerdown', function (e) {
+      e.preventDefault();
+      var r  = canvas.getBoundingClientRect();
+      var mx = (e.clientX - r.left) * (W / r.width);
+      var my = (e.clientY - r.top)  * (H / r.height);
+
+      if (!started) { started = true; return; }
+      if (over)     { reset(); started = true; return; }
+
+      toilets.forEach(function (t) {
+        if (t.state !== 'dirty') return;
+        if (mx < t.cx - T_W/2 || mx > t.cx + T_W/2 || my < T_Y || my > T_Y + T_H) return;
+
+        t.clicks++; t.flash = 260;
+        var remaining = t.maxDirt - t.clicks;
+
+        if (remaining <= 0) {
+          t.state = 'clean'; t.dirt = 0; t.clicks = 0;
+          score += 10;
+          addFx(t.cx, T_Y + T_H / 2, '✓ Limpio! +10', '#22c55e');
+          tryAssign();
+        } else {
+          addFx(t.cx, T_Y + 55, remaining + ' clic' + (remaining > 1 ? 's' : '') + ' más', '#60a5fa');
+        }
+      });
+    }, { passive: false });
+
+    // ── update ────────────────────────────────────────────────────────────────
+    function update(dt) {
+      if (!started || over) return;
+
+      spawnTimer += dt;
+      if (spawnTimer >= spawnInterval) {
+        spawnTimer -= spawnInterval;
+        spawnCustomer();
+        spawnInterval = Math.max(SPAWN_MIN, spawnInterval - 160);
+      }
+
+      var speed = 195 * dt / 1000;
+      var toRemove = [];
+
+      customers.forEach(function (c) {
+        var dx = c.tx - c.x, dy = c.ty - c.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist > 1) { c.x += (dx / dist) * Math.min(speed, dist); c.y += (dy / dist) * Math.min(speed, dist); }
+        else          { c.x = c.tx; c.y = c.ty; }
+
+        // Walking → arrived → queuing
+        if (c.state === 'walking' && dist < 2) {
+          c.state = 'queuing'; c.waitStart = nowMs;
+          refreshQueue(); tryAssign();
+        }
+
+        // Queuing — update patience
+        if (c.state === 'queuing') {
+          var w = nowMs - c.waitStart;
+          c.expr = w < WAIT_FULL ? 'happy' : w < WAIT_PARTIAL ? 'neutral' : w < WAIT_LEAVE ? 'annoyed' : 'angry';
+          if (w >= WAIT_LEAVE && !c.leaving) {
+            c.leaving = true; c.state = 'done'; c.angry = true;
+            c.tx = W + 60; c.ty = Q_Y;
+            lives--; addFx(c.x, c.y - 32, '−1 vida', '#ef4444');
+            if (lives <= 0) { lives = 0; over = true; }
+            refreshQueue(); tryAssign();
+          }
+        }
+
+        // Using — check if done
+        if (c.state === 'using' && c.toiletId >= 0) {
+          var t = toilets[c.toiletId];
+          if (nowMs >= t.useEnd) {
+            var maxD = Math.min(3, 1 + Math.floor(Math.random() * (score < 30 ? 2 : 3)));
+            t.state = 'dirty'; t.dirt = maxD; t.maxDirt = maxD; t.clicks = 0;
+            tips += c.tipAmt; score += 15 + c.tipAmt * 2;
+            if (c.tipAmt > 0) addFx(t.cx, T_Y - 10, '+$' + c.tipAmt + ' propina', '#f59e0b');
+            addFx(t.cx, T_Y - 26, '+' + (15 + c.tipAmt * 2) + ' pts', '#22c55e');
+            // Reposition customer below stall then walk off
+            c.x = t.cx; c.y = T_Y + T_H + 12;
+            c.state = 'done'; c.angry = false;
+            c.tx = -60; c.ty = Q_Y;
+            tryAssign();
+          }
+        }
+
+        // Remove off-screen done customers
+        if (c.state === 'done' && Math.abs(c.x - c.tx) < 4 && (c.tx < 0 || c.tx > W)) {
+          toRemove.push(c.id);
+        }
+      });
+
+      customers = customers.filter(function (c) { return toRemove.indexOf(c.id) < 0; });
+      toilets.forEach(function (t) { if (t.flash > 0) t.flash -= dt; });
+      effects.forEach(function (ef) { ef.age += dt; ef.y -= 24 * dt / 1000; });
+      effects = effects.filter(function (ef) { return ef.age < ef.life; });
+    }
+
+    // ── draw stall ────────────────────────────────────────────────────────────
+    function drawStall(t) {
+      var x = t.cx - T_W / 2, y = T_Y, w = T_W, h = T_H, cx = t.cx;
+
+      var border, bg;
+      if (t.flash > 0)              { border = '#93c5fd'; bg = '#eff6ff'; }
+      else if (t.state === 'clean') { border = '#86efac'; bg = '#f0fdf4'; }
+      else if (t.state === 'occupied') { border = '#fcd34d'; bg = '#fefce8'; }
+      else                          { border = '#fca5a5'; bg = '#fff1f2'; }
+
+      rrect(x, y, w, h, 8); ctx.fillStyle = bg; ctx.fill();
+      ctx.strokeStyle = border; ctx.lineWidth = 2.5; ctx.stroke();
+
+      // Stall number label
+      ctx.fillStyle = 'rgba(0,0,0,0.28)'; ctx.font = '10px system-ui'; ctx.textAlign = 'center';
+      ctx.fillText('Aseo ' + (t.id + 1), cx, y + 13);
+
+      // ── toilet bowl (front view) ──────────────────────────────────────────
+      var bw = w - 18, bh = 50, tkW = w - 26, tkH = 16, by = y + 18;
+
+      // Tank
+      ctx.fillStyle = t.state === 'dirty' ? '#e5e7eb' : '#f3f4f6';
+      ctx.strokeStyle = '#d1d5db'; ctx.lineWidth = 1.5;
+      rrect(cx - tkW/2, by, tkW, tkH, 4); ctx.fill(); ctx.stroke();
+
+      // Bowl body
+      var bowlC = t.state === 'dirty'
+        ? (t.dirt >= 3 ? '#c5a566' : t.dirt >= 2 ? '#dbc98a' : '#ede4b5')
+        : '#f9fafb';
+      ctx.fillStyle = bowlC; ctx.strokeStyle = '#d1d5db'; ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(cx - bw/2,     by + tkH);
+      ctx.lineTo(cx + bw/2,     by + tkH);
+      ctx.lineTo(cx + bw/2 - 8, by + tkH + bh);
+      ctx.lineTo(cx - bw/2 + 8, by + tkH + bh);
+      ctx.closePath(); ctx.fill(); ctx.stroke();
+
+      // Seat ring
+      ctx.fillStyle = '#f3f4f6'; ctx.strokeStyle = '#d1d5db'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.ellipse(cx, by + tkH, bw/2, 9, 0, 0, Math.PI*2);
+      ctx.fill(); ctx.stroke();
+
+      // Water in bowl
+      ctx.fillStyle = t.state === 'dirty' && t.dirt >= 2 ? '#b59a5a' : '#93c5fd';
+      ctx.beginPath(); ctx.ellipse(cx, by + tkH + bh * 0.73, bw/2 - 10, 6, 0, 0, Math.PI*2);
+      ctx.fill();
+
+      // Dirt marks
+      if (t.state === 'dirty') {
+        var shown = t.maxDirt - t.clicks;
+        ctx.fillStyle = 'rgba(100,58,0,0.38)';
+        for (var d = 0; d < shown; d++) {
+          var ox = d === 0 ? -9 : d === 1 ? 9 : 0;
+          var oy = d === 0 ? 10 : d === 1 ? 24 : 39;
+          ctx.beginPath(); ctx.ellipse(cx + ox, by + tkH + oy, 8 - d, 4.5 - d*0.3, d*0.4, 0, Math.PI*2);
+          ctx.fill();
+        }
+        // Smell lines for high dirt
+        if (shown >= 2) {
+          ctx.strokeStyle = 'rgba(100,58,0,0.32)'; ctx.lineWidth = 1.5;
+          for (var s = 0; s < Math.min(shown, 3); s++) {
+            var sx = cx - 8 + s * 10;
+            ctx.beginPath();
+            ctx.moveTo(sx, by + tkH + 2);
+            ctx.bezierCurveTo(sx+5, by+tkH-6, sx-5, by+tkH-12, sx, by+tkH-20);
+            ctx.stroke();
+          }
+        }
+
+        // Tap progress dots
+        for (var p = 0; p < t.maxDirt; p++) {
+          var dotX = cx + (p - (t.maxDirt - 1) / 2) * 16;
+          ctx.beginPath(); ctx.arc(dotX, y + h - 22, 5.5, 0, Math.PI*2);
+          ctx.fillStyle = p < t.clicks ? '#22c55e' : '#fca5a5';
+          ctx.fill();
+          ctx.strokeStyle = p < t.clicks ? '#16a34a' : '#ef4444';
+          ctx.lineWidth = 1.2; ctx.stroke();
+        }
+        ctx.fillStyle = '#ef4444'; ctx.font = 'bold 10px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('TAP (' + shown + ')', cx, y + h - 7);
+      }
+
+      // Occupied: person silhouette
+      if (t.state === 'occupied') {
+        ctx.fillStyle = 'rgba(180, 120, 0, 0.65)';
+        ctx.beginPath(); ctx.arc(cx, y + h - 30, 9, 0, Math.PI*2); ctx.fill();
+        ctx.fillRect(cx - 6, y + h - 21, 12, 13);
+        ctx.fillStyle = 'rgba(255,255,255,0.85)'; ctx.font = '9px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('En uso', cx, y + h - 4);
+      }
+
+      // Clean: tick
+      if (t.state === 'clean') {
+        ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(cx - 9, y + h - 22);
+        ctx.lineTo(cx - 2, y + h - 14);
+        ctx.lineTo(cx + 10, y + h - 28);
+        ctx.stroke();
+      }
+    }
+
+    // ── draw customer ─────────────────────────────────────────────────────────
+    function drawCustomer(c) {
+      if (c.state === 'using') return;
+      if (c.x < -60 || c.x > W + 60) return;
+
+      ctx.save(); ctx.translate(c.x, c.y);
+      var R = 13;
+
+      // Patience bar (queuing only)
+      if (c.state === 'queuing') {
+        var pct = Math.min(1, (nowMs - c.waitStart) / WAIT_LEAVE);
+        var bW = 34, bH = 5;
+        ctx.fillStyle = 'rgba(0,0,0,0.18)';
+        rrect(-bW/2, -R - 15, bW, bH, 2); ctx.fill();
+        ctx.fillStyle = pct < 0.45 ? '#22c55e' : pct < 0.75 ? '#f59e0b' : '#ef4444';
+        if (bW * (1 - pct) > 1) { rrect(-bW/2, -R - 15, bW * (1 - pct), bH, 2); ctx.fill(); }
+      }
+
+      // Body (coloured rectangle)
+      ctx.fillStyle = c.color;
+      rrect(-7, R - 3, 14, 20, 3); ctx.fill();
+
+      // Legs
+      ctx.strokeStyle = c.color; ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(-4, R + 17); ctx.lineTo(-6, R + 30);
+      ctx.moveTo( 4, R + 17); ctx.lineTo( 6, R + 30);
+      ctx.stroke();
+
+      // Head
+      ctx.beginPath(); ctx.arc(0, 0, R, 0, Math.PI*2);
+      ctx.fillStyle = '#fcd5b0'; ctx.fill();
+      ctx.strokeStyle = '#e8b896'; ctx.lineWidth = 1.2; ctx.stroke();
+
+      // Hair arc
+      ctx.beginPath(); ctx.arc(0, -3, R - 2, Math.PI * 1.1, Math.PI * 1.9);
+      ctx.strokeStyle = c.color; ctx.lineWidth = 4.5; ctx.stroke();
+
+      // Eyes
+      ctx.fillStyle = '#2d2d2d';
+      ctx.beginPath(); ctx.arc(-4.5, -2, 2, 0, Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc( 4.5, -2, 2, 0, Math.PI*2); ctx.fill();
+
+      // Mouth
+      var expr = c.angry ? 'angry' : c.expr;
+      ctx.strokeStyle = '#555'; ctx.lineWidth = 1.6; ctx.beginPath();
+      if (expr === 'happy')   { ctx.arc(0, 2, 5,  0.1*Math.PI, 0.9*Math.PI); }
+      else if (expr === 'neutral' || c.state === 'using') { ctx.moveTo(-4, 5); ctx.lineTo(4, 5); }
+      else if (expr === 'annoyed') { ctx.arc(0, 9, 5, 1.15*Math.PI, 1.85*Math.PI); }
+      else { // angry
+        ctx.arc(0, 9, 5, 1.1*Math.PI, 1.9*Math.PI);
+        ctx.moveTo(-7, -6); ctx.lineTo(-2, -4);
+        ctx.moveTo( 7, -6); ctx.lineTo( 2, -4);
+      }
+      ctx.stroke();
+
+      // Angry X on departing customers
+      if (c.angry && c.state === 'done') {
+        ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(-9,-9); ctx.lineTo(9,9);
+        ctx.moveTo(9,-9); ctx.lineTo(-9,9); ctx.stroke();
+      }
+
+      // Tip coin on happy leavers
+      if (!c.angry && c.state === 'done' && c.tipAmt > 0) {
+        ctx.fillStyle = '#f59e0b'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText('$' + c.tipAmt, 0, -R - 6);
+      }
+
+      ctx.restore();
+    }
+
+    // ── draw HUD ──────────────────────────────────────────────────────────────
+    function drawHUD() {
+      var g = ctx.createLinearGradient(0, 0, 0, HUD_H);
+      g.addColorStop(0, '#166534'); g.addColorStop(1, '#14532d');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, W, HUD_H);
+
+      // Hearts
+      ctx.font = 'bold 20px system-ui'; ctx.textAlign = 'left';
+      for (var i = 0; i < 3; i++) {
+        ctx.fillStyle = i < lives ? '#f87171' : 'rgba(255,255,255,0.22)';
+        ctx.fillText('♥', 10 + i * 23, 30);
+      }
+
+      // Score (left-centre)
+      ctx.fillStyle = '#fff'; ctx.font = 'bold 18px system-ui'; ctx.textAlign = 'center';
+      ctx.fillText(score + ' pts', W / 2, 30);
+
+      // Tips (right-aligned, compact)
+      ctx.fillStyle = '#fde68a'; ctx.font = 'bold 16px system-ui'; ctx.textAlign = 'right';
+      ctx.fillText('$' + tips, W - 10, 20);
+      ctx.fillStyle = 'rgba(253,230,138,0.7)'; ctx.font = '10px system-ui';
+      ctx.fillText('propinas', W - 10, 33);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.48)'; ctx.font = '10px system-ui'; ctx.textAlign = 'center';
+      ctx.fillText('Toca los aseos sucios · máx. espera 17 s', W/2, 52);
+    }
+
+    // ── overlay screens ───────────────────────────────────────────────────────
+    function drawOverlay(title, lines, cta, isDead) {
+      ctx.fillStyle = 'rgba(0,0,0,0.52)'; ctx.fillRect(0, 0, W, H);
+      var pw = Math.min(W - 24, 320), ph = 50 + 40 + lines.length * 24 + 60;
+      var px = (W - pw) / 2, py = H / 2 - ph / 2;
+      rrect(px, py, pw, ph, 12);
+      ctx.fillStyle = 'rgba(255,255,255,0.96)'; ctx.fill();
+      ctx.strokeStyle = 'rgba(0,0,0,0.10)'; ctx.lineWidth = 1; ctx.stroke();
+
+      ctx.fillStyle = isDead ? '#b91c1c' : '#166534';
+      ctx.font = 'bold 23px system-ui'; ctx.textAlign = 'center';
+      ctx.fillText(title, W/2, py + 44);
+
+      ctx.fillStyle = '#444'; ctx.font = '14px system-ui';
+      lines.forEach(function (l, i) { ctx.fillText(l, W/2, py + 82 + i * 24); });
+
+      var pulse = 0.72 + 0.28 * Math.abs(Math.sin(nowMs * 0.0042));
+      ctx.fillStyle = 'rgba(217,119,6,' + pulse.toFixed(2) + ')';
+      ctx.font = 'bold 15px system-ui';
+      ctx.fillText(cta, W/2, py + ph - 22);
+    }
+
+    // ── main render ───────────────────────────────────────────────────────────
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = tilePat; ctx.fillRect(0, 0, W, H);
+
+      drawHUD();
+
+      // ── Restroom framing ─────────────────────────────────────────────────────
+      var restBot = T_Y + T_H + 16;
+
+      // Restroom floor (light green, full width, from HUD to below stalls)
+      ctx.fillStyle = '#f0fdf4';
+      ctx.fillRect(0, HUD_H, W, restBot - HUD_H);
+
+      // Back wall / sign strip (dark green header above stalls)
+      var bwH = T_Y - HUD_H; // 92-62 = 30px
+      ctx.fillStyle = '#14532d';
+      ctx.fillRect(0, HUD_H, W, bwH);
+      // Sign text
+      ctx.fillStyle = '#a7f3d0'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center';
+      ctx.fillText('A S E O S   P Ú B L I C O S', W / 2, HUD_H + bwH * 0.72);
+
+      // Front plinth (narrow strip below stall bases)
+      ctx.fillStyle = '#dcfce7';
+      ctx.fillRect(0, T_Y + T_H, W, restBot - (T_Y + T_H));
+      // Shadow below restroom
+      ctx.fillStyle = 'rgba(0,0,0,0.07)';
+      ctx.fillRect(0, restBot, W, 6);
+
+      // Stall partition walls (gaps between and outside the stall boxes)
+      var wallSegs = [
+        [0,                   T_CX[0] - T_W / 2],
+        [T_CX[0] + T_W / 2,  T_CX[1] - T_W / 2],
+        [T_CX[1] + T_W / 2,  T_CX[2] - T_W / 2],
+        [T_CX[2] + T_W / 2,  W]
+      ];
+      wallSegs.forEach(function (seg) {
+        var wx = seg[0], ww = seg[1] - seg[0];
+        var wg = ctx.createLinearGradient(wx, 0, wx + ww, 0);
+        wg.addColorStop(0,   '#8fa8b8');
+        wg.addColorStop(0.45,'#b0c4ce');
+        wg.addColorStop(1,   '#7a9aaa');
+        ctx.fillStyle = wg; ctx.fillRect(wx, T_Y, ww, T_H);
+        // Horizontal mortar lines on wider partition walls
+        if (ww >= 30) {
+          ctx.strokeStyle = 'rgba(0,0,0,0.10)'; ctx.lineWidth = 0.8;
+          ctx.beginPath();
+          for (var wy = T_Y + 22; wy < T_Y + T_H; wy += 22) {
+            ctx.moveTo(wx + 2, wy); ctx.lineTo(wx + ww - 2, wy);
+          }
+          ctx.stroke();
+        }
+      });
+
+      toilets.forEach(drawStall);
+
+      // ── Queue area ──────────────────────────────────────────────────────────
+      // Floor strip reaching to canvas bottom
+      ctx.fillStyle = 'rgba(0,0,0,0.04)';
+      ctx.fillRect(0, Q_Y - 48, W, H - (Q_Y - 48));
+      ctx.fillStyle = 'rgba(0,0,0,0.32)'; ctx.font = '12px system-ui'; ctx.textAlign = 'left';
+      ctx.fillText('Cola de espera:', 12, Q_Y - 32);
+
+      // Dashed queue line
+      ctx.strokeStyle = 'rgba(0,0,0,0.15)'; ctx.lineWidth = 1;
+      ctx.setLineDash([5, 5]);
+      ctx.beginPath(); ctx.moveTo(12, Q_Y + 40); ctx.lineTo(W - 12, Q_Y + 40);
+      ctx.stroke(); ctx.setLineDash([]);
+
+      customers.forEach(drawCustomer);
+
+      // Floating effects
+      effects.forEach(function (ef) {
+        ctx.globalAlpha = Math.max(0, 1 - ef.age / ef.life);
+        ctx.fillStyle = ef.color; ctx.font = 'bold 15px system-ui'; ctx.textAlign = 'center';
+        ctx.fillText(ef.text, ef.x, ef.y);
+      });
+      ctx.globalAlpha = 1;
+
+      if (!started) drawOverlay('Aseo Express',
+        ['Limpia los aseos antes de que', 'los clientes pierdan la paciencia.', '3 vidas · Propinas por ser rápido'],
+        '▶ Toca para empezar', false);
+      if (over) drawOverlay('¡Fin del servicio!',
+        ['Puntos: ' + score, 'Propinas totales: $' + tips],
+        '▶ Toca para reintentar', true);
+    }
+
+    // ── loop ──────────────────────────────────────────────────────────────────
+    var lastT = Date.now();
+    nowMs = lastT;
+
+    function loop() {
+      nowMs = Date.now();
+      var dt = Math.min(nowMs - lastT, 60);
+      lastT = nowMs;
+      update(dt);
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    reset();
+    loop();
+
+  }());
+  </script>
+
+</body>
+</html>
