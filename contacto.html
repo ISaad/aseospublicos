@@ -124,7 +124,10 @@
 				<div class="icon">✉️</div>
 				<div>
 					<p style="margin:0; font-size: 0.9em; color: var(--muted);">Escríbenos a:</p>
-					<a href="mailto:espis.es30@gmail.com">espis.es30@gmail.com</a>
+					<span id="contact-email"><noscript>activa JavaScript para ver el email</noscript></span>
+					<script>
+						(function(){var u='espis.es30',d='gmail.com';var el=document.getElementById('contact-email');el.innerHTML='<a href="mailto:'+u+'@'+d+'">'+u+'@'+d+'</a>';})();
+					</script>
 				</div>
 			</div>
 
