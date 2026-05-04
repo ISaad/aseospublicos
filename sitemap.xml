@@ -91,6 +91,12 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://www.aseospublicos.es/juegos.html</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.aseospublicos.es/politica-privacidad.html</loc>
     <lastmod>2026-01-25</lastmod>
     <changefreq>yearly</changefreq>
