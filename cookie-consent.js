@@ -2,26 +2,9 @@
 (function () {
     const COOKIE_DECISION_KEY = 'cookiesDecision';
 
-    function loadKofi() {
-        var user = document.body.getAttribute('data-kofi');
-        if (!user) return;
-        var script = document.createElement('script');
-        script.src = 'https://storage.ko-fi.com/cdn/scripts/overlay-widget.js';
-        script.onload = function () {
-            kofiWidgetOverlay.draw(user, {
-                'type': 'floating-chat',
-                'floating-chat.donateButton.text': 'Support me',
-                'floating-chat.donateButton.background-color': '#323842',
-                'floating-chat.donateButton.text-color': '#fff'
-            });
-        };
-        document.body.appendChild(script);
-    }
-
     function dismiss(banner) {
         banner.style.display = 'none';
         document.body.classList.remove('banner-visible');
-        loadKofi();
     }
 
     function initCookieBanner() {
@@ -40,10 +23,8 @@
                 'ad_personalization': 'granted',
                 'analytics_storage': 'granted'
             });
-            loadKofi();
         } else if (decision === 'rejected') {
             banner.style.display = 'none';
-            loadKofi();
         } else {
             banner.style.display = 'block';
             document.body.classList.add('banner-visible');
